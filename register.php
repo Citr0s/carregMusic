@@ -6,16 +6,16 @@
                 <form class="loginForm" action="loginForm.php" method="post">
                    <table>
                        <tr>
-                           <td>Username:</td><td><input type="text" name="username" value="username"></td>
+                           <td>Username:</td><td><input id="registerUserName" type="text" name="username" value="username"></td>
                         </tr>
                        <tr>
-                           <td>Email:</td><td><input type="email" name="email" value="email"></td>
+                           <td>Email:</td><td><input id="Email" type="email" name="email" value="email"></td>
                         </tr>
                         <tr>
-                           <td>Password:</td><td><input type="password" name="loginPassword" value="password"></td>
+                           <td>Password:</td><td><input id="Password" type="password" name="loginPassword" value="password"></td>
                        </tr>
                        <tr>
-                           <td>Password Again:</td><td><input type="password_r" name="loginPassword" value="password"></td>
+                           <td>Password Again:</td><td><input id="PasswordCheck" type="password_r" name="loginPassword" value="password"></td>
                        </tr>
                        <tr>
                            <td>Country of Origin:</td><td class="tdR"><select name="country" class="loginPassword"><option name="UK" >United Kingdom</option></select></td>
