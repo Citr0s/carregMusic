@@ -16,7 +16,7 @@
                 </div>
                 <div class="floatLeft">
                     <ul>
-                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="index.php">HOME</a></li>
                         <li><a href="">TRACKS</a></li>
                         <li><a href="">ARTISTS</a></li>
                         <li><a href="">CONCERTS</a></li>
