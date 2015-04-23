@@ -8,7 +8,7 @@
                 <div id="top5albums">
                    <div class="top5albumCover">
                         <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
+                        <p class="albumCoverText">TESTING A PUSH consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
                     </div>
                    <div class="top5albumCover">
                         <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
