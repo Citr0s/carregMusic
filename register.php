@@ -15,7 +15,7 @@
                            <td>Password:</td><td><input id="Password1" type="password" name="loginPassword" value="password"></td>
                        </tr>
                        <tr>
-                           <td>Password Again:</td><td><input id="PasswordCheck" type="password_r" name="loginPassword" value="password"></td>
+                           <td>Password Again:</td><td><input id="PasswordCheck" type="password" name="loginPassword" value="password"></td>
                        </tr>
                        <tr>
                            <td>Country of Origin:</td><td class="tdR"><select name="country" class="loginPassword"><option name="UK" >United Kingdom</option></select></td>
