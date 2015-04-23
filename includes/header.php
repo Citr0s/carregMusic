@@ -12,7 +12,7 @@
         <div id="header">
            <div class="container">
                <div class="floatLeft">
-                    <a href="index.html"><img src="css/images/logo.png" alt="logo"></a>
+                    <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
                 <div class="floatLeft">
                     <ul>
