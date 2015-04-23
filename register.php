@@ -12,7 +12,7 @@
                            <td>Email:</td><td><input id="Email" type="email" name="email" value="email"></td>
                         </tr>
                         <tr>
-                           <td>Password:</td><td><input id="Password" type="password" name="loginPassword" value="password"></td>
+                           <td>Password:</td><td><input id="Password1" type="password" name="loginPassword" value="password"></td>
                        </tr>
                        <tr>
                            <td>Password Again:</td><td><input id="PasswordCheck" type="password_r" name="loginPassword" value="password"></td>
