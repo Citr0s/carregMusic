@@ -2,7 +2,7 @@
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Register</h2>
-                <p class="tipP">Already have an account? <a href="register.php">Login here</a>.</p>
+                <p class="tipP">Already have an account? <a href="login.php">Login here</a>.</p>
                 <form class="loginForm" action="loginForm.php" method="post">
                    <table>
                        <tr>
