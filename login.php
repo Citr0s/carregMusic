@@ -1,5 +1,5 @@
 <?php
-  require_once('functions/login.functions.php');
+  require_once('core/init.php');
 
   if($_POST){
     echo $_POST['username'];
