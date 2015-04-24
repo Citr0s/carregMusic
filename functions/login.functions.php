@@ -38,7 +38,7 @@ function validateFormField($value, $field) {
             break;
         case 'password':
             if(!validStringMaxLength($value, 25)) {
-                $errorMessage = 'Age must be a number between 18 and 75';
+                $errorMessage = 'Password must be 5 characters or less and must be a string';
             }
             break;
         default:
