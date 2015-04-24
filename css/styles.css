@@ -302,3 +302,8 @@ transform: rotate(360deg);
 .isValid {
     background-color:green;
 }
+.appendedError{ 
+    color:red;
+    width:250px;
+    position: absolute;
+}
