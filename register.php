@@ -1,4 +1,11 @@
-<?php include_once 'includes/header.php'; ?>
+<?php 
+  require_once('core/init.php');
+  include_once 'includes/header.php';
+
+  if(loggedIn()){
+      header('Location: index.php');
+  }
+?>
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Register</h2>

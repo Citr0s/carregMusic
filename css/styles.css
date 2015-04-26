@@ -7,6 +7,7 @@ body{
     background-position: center;
     font-family:'Open Sans', sans-serif;
     /* http://www.google.com/fonts/specimen/Open+Sans */
+    color:white;
 }
 #wrapper{
     margin:0 auto;
@@ -292,6 +293,12 @@ transform: rotate(360deg);
 .tipP{
     border:1px solid #333;
     background-color:#222;
+    padding:15px;
+    width:95%;
+}
+.tipE{
+    border:1px solid #e74c3c;
+    background-color:#c0392b;
     padding:15px;
     width:95%;
 }

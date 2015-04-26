@@ -1,3 +1,4 @@
+<?php require_once('core/init.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +25,19 @@
                 </div>
                 <div class="floatRight">
                     <ul>
-                        <li><a href="login.php">LOGIN</a></li>
-                        <li><a href="register.php" class="register">REGISTER</a></li>
+                        <?php
+                            if(loggedIn()){
+                                echo '
+                                    <li><a href="profile.php?'.$username.'">'.$username.'</a></li>
+                                    <li><a href="logout.php">Logout</a></li>
+                                    ';
+                            }else{
+                        ?>
+                            <li><a href="login.php">LOGIN</a></li>
+                            <li><a href="register.php" class="register">REGISTER</a></li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>
