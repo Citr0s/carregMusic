@@ -7,6 +7,7 @@ body{
     background-position: center;
     font-family:'Open Sans', sans-serif;
     /* http://www.google.com/fonts/specimen/Open+Sans */
+    color:#fff;
 }
 #wrapper{
     margin:0 auto;
@@ -88,6 +89,7 @@ transform: rotate(360deg);
     width:100%;
     background-color:#f3f3f3;
     margin:5px 5px 62px 0px;
+    color:#000;
 }
 #mainContent h2{
     width:100%;
@@ -122,6 +124,7 @@ transform: rotate(360deg);
     width:100%;
     background-color:#f3f3f3;
     margin:5px 0px 62px 0px;
+    color:#000;
 }
 #sidebar h2{
     width:100%;
