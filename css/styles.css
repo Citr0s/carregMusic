@@ -325,3 +325,6 @@ transform: rotate(360deg);
     width:250px;
     position: absolute;
 }
+.profile{
+    margin-top:56px;
+}

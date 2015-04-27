@@ -8,4 +8,15 @@
 
 	if(loggedIn()){
 		$username = $_SESSION['username'];
+
+		$con = mysqli_connect($addr, $user, $password, $db);
+
+		$data = mysqli_query($con, "SELECT nickname, email, country, genre FROM users WHERE '$username' = username LIMIT 1");
+
+		while($row = mysqli_fetch_array($data)){
+			$nickname = $row['nickname'];
+			$email = $row['email'];
+			$country = $row['country'];
+			$genre = $row['genre'];
+		}
 	}

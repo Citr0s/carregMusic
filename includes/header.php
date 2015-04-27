@@ -22,6 +22,7 @@
                         <li><a href="">TRACKS</a></li>
                         <li><a href="">ARTISTS</a></li>
                         <li><a href="">CONCERTS</a></li>
+                        <li><a href="">SEARCH</a></li>
                     </ul>
                 </div>
                 <div class="floatRight">

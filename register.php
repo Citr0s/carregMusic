@@ -95,10 +95,10 @@
                        </tr>
                        <tr>
                            <td>Country of Origin:</td><td class="tdR"><select name="country" class="country"><?php generateCountryList(); ?></select></td>
-                        </tr
+                        </tr>
                         <tr>
                            <td>Favourite Genre:</td><td class="tdR"><select name="genre" class="genre"><?php generateGenreList(); ?></select></td>
-                        </tr
+                        </tr>
                        <tr>
                            <td></td><td><button class="loginRegisterButton">REGISTER</button></td>
                        </tr>
