@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="css/images/favicon.ico?" type="image/x-icon" />
 </head>
 <body>
     <div id="wrapper">
