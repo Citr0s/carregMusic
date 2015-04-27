@@ -82,7 +82,7 @@
                         </tr>
                       
                        <tr>
-                           <td>Nickname:</td><td><input id="registerUserName" type="text" name="nickname" placeholder="nickname" value="<?php if($_POST){HtmlText($_POST['nickname']);} ?>"></td>
+                           <td>Nickname:</td><td><input id="nickName" type="text" name="nickname" placeholder="nickname" value="<?php if($_POST){HtmlText($_POST['nickname']);} ?>"></td>
                         </tr>
                        <tr>
                            <td>Email:</td><td><input id="Email" type="email" name="email" placeholder="email" value="<?php if($_POST){HtmlText($_POST['email']);} ?>"></td>
