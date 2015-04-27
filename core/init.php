@@ -2,7 +2,9 @@
 	session_start();
 	
 	require_once('config.php');
-	//require_once('database/connect.php');
-	require_once('functions/login.functions.php');
+	require_once("functions\connection.funcs.php");
+	require_once('functions\login.functions.php');
 
-	$username = $_SESSION['username'];
+	if(loggedIn()){
+		$username = $_SESSION['username'];
+	}

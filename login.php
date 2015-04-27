@@ -30,20 +30,29 @@
       }
 
       if(!$errorMessages) {
-          //pull username and password from db
-          $usernameDB = 'john';
-          $passwordDB = 'snow';
+          
+        $con = mysqli_connect($addr, $user, $password, $db);
 
-          $username = sanitise(trim($_POST['username']));
-          $password = sanitise(trim($_POST['password']));
+        $username = sanitise(trim($_POST['username']));
+        $password = sanitise(trim($_POST['password']));
 
-          if($username === $usernameDB && $password === $passwordDB){
-              $_SESSION['username'] = $username;
-              setcookie('username', $username, 3600, '/');
-              header('Location: index.php');
-          }else{
-              $errorMessages['form'] = 'Username or Password incorrect';
-          }
+        $usernameDB = '';
+        $passwordDB = '';
+
+        $data = mysqli_query($con, "SELECT username, userPassword FROM users WHERE username = '$username' LIMIT 1");
+
+        while($row = mysqli_fetch_array($data)){
+          $usernameDB = $row['username'];
+          $passwordDB = $row['userPassword'];
+        }
+
+        if($username === $usernameDB && $password === $passwordDB){
+            $_SESSION['username'] = $username;
+            setcookie('username', $username, 3600, '/');
+            header('Location: index.php');
+        }else{
+            $errorMessages['form'] = 'Username or Password incorrect';
+        }
       }
     }
   

@@ -58,7 +58,7 @@ function validateFormField($value, $field) {
             break;
 		case 'password':
 			if (!validStringMaxLength($value, minLength, passwdMaxLength)) {
-				$errorMessage = 'Password must have between '.minLength.' and '.passwdMaxLength.' characters';
+				$errorMessage = 'Password must be between '.minLength.' and '.passwdMaxLength.' characters long.';
 			}
             break;
 		case 'email':
