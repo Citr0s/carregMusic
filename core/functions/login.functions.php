@@ -56,37 +56,36 @@ function validateFormField($value, $field) {
                 $errorMessage = 'Name must be 5 characters or less and must be a string';
             }
             break;
-		case 'password':
-			if (!validStringMaxLength($value, minLength, passwdMaxLength)) {
-				$errorMessage = 'Password must be between '.minLength.' and '.passwdMaxLength.' characters long.';
-			}
+        case 'nickname':
+            if(!validStringMaxLength($value, minLength, nicknameMaxLength)) {
+                $errorMessage = 'Login must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
+            }
             break;
 		case 'email':
 			if(!validEmail($value) || strlen($value) > emailMaxLength) {
 				$errorMessage = 'Invalid email address';
 			}
 			break;
-		case 'login':
-		    if(!validStringMaxLength($value, minLength, passwdMaxLength)) {
-                $errorMessage = 'Login must have between '.minLength.' and '.loginMaxLength.' characters and must be a string';
+        case 'password':
+            if (!validStringMaxLength($value, minLength, passwdMaxLength)) {
+                $errorMessage = 'Password must be between '.minLength.' and '.passwdMaxLength.' characters long.';
             }
-			break;
-		case 'nickname':
-			if(!validStringMaxLength($value, minLength, nicknameMaxLength)) {
-                $errorMessage = 'Login must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
+            break;
+        case 'passwordCheck':
+            if (!validStringMaxLength($value, minLength, passwdMaxLength)) {
+                $errorMessage = 'Password must be between '.minLength.' and '.passwdMaxLength.' characters long.';
             }
-			break;
-		case 'genre':
-            if(!validIntegerRange($value, 1, genreMaxValue)) {
-                $errorMessage = 'Please choose your favorite genre from dropdown list.';
-            }
-			break;
+            break;
 		case 'country':
             if(!validIntegerRange($value, 1, countryMaxValue)) {
                 $errorMessage = 'Please choose country from dropdown list.';
             }
 			break;
-        default:
+        case 'genre':
+            if(!validIntegerRange($value, 1, genreMaxValue)) {
+                $errorMessage = 'Please choose your favorite genre from dropdown list.';
+            }
+            break;
     }
     return $errorMessage;
 }

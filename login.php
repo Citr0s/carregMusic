@@ -68,6 +68,10 @@
                       echo '<p>'.$error.'</p>';
                     }
                     echo '</div>';
+                  }else if($_GET){
+                    echo '<div class="tipS">';
+                      echo '<p>You have been registered successfully. You can now log in.</p>';
+                    echo '</div>';
                   }else{
                     echo '<div class="tipP">To access extra features please <a href="register.php">register here</a>.</div>';
                   }

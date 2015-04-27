@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 function safePOST($variable)  {
     return mysql_real_escape_string($_POST[$variable]);
@@ -47,6 +47,11 @@ function validateFormField($value, $field) {
 	$errorMessage = '';
 	
 	switch($field) {
+        case 'username':
+            if(!validStringMaxLength($value, minLength, passwdMaxLength)) {
+                $errorMessage = 'Username must have between '.minLength.' and '.loginMaxLength.' characters and must be a string';
+            }
+            break;
 		case 'password':
 			if (!validStringMaxLength($value, minLength, passwdMaxLength)) {
 				$errorMessage; = 'Password must have between '.minLength.' and '.passwdMaxLength.' characters.';
@@ -56,14 +61,9 @@ function validateFormField($value, $field) {
 				$errorMessage = 'Invalid email address';
 			}
 			break;
-		case 'login':
-		    if(!validStringMaxLength($value, minLength, passwdMaxLength)) {
-                $errorMessage = 'Login must have between '.minLength.' and '.loginMaxLength.' characters and must be a string';
-            }
-			break;
 		case 'nickname':
 			if(!validStringMaxLength($value, minLength, nicknameMaxLength)) {
-                $errorMessage = 'Login must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
+                $errorMessage = 'Nickname must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
             }
 			break;
 		case 'genre':

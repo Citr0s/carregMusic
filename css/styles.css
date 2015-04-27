@@ -9,6 +9,9 @@ body{
     /* http://www.google.com/fonts/specimen/Open+Sans */
     color:#fff;
 }
+select{
+    color:#000;
+}
 #wrapper{
     margin:0 auto;
     width:100%;
@@ -301,6 +304,12 @@ transform: rotate(360deg);
 .tipE{
     border:1px solid #e74c3c;
     background-color:#c0392b;
+    padding:15px;
+    width:95%;
+}
+.tipS{
+    border:1px solid #2ecc71;
+    background-color:#27ae60;
     padding:15px;
     width:95%;
 }
