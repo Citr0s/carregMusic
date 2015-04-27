@@ -65,6 +65,14 @@ transform: rotate(360deg);
     color:#fff;
     border-radius:15px;
 }
+#threeLineButton {
+    display:none;
+    text-decoration: none;
+    font-size: 3em;
+    position: fixed;
+    top:0;
+    left:70px;
+}
 #banner{
     background: no-repeat url(images/banner.jpg);
     background-size: cover;
@@ -328,3 +336,11 @@ transform: rotate(360deg);
 .profile{
     margin-top:56px;
 }
+
+@media all and (max-width: 500px) {
+  
+#threeLineButton {
+    display:block;
+}
+
+}/*end of media query 500px*/
