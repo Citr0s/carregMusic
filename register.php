@@ -80,7 +80,7 @@
                        <tr>
                            <td>Username:</td><td><input id="registerUserName" type="text" name="username" placeholder="username" value="<?php if($_POST){HtmlText($_POST['username']);} ?>"></td>
                         </tr>
-                       <tr>
+                      
                        <tr>
                            <td>Nickname:</td><td><input id="registerUserName" type="text" name="nickname" placeholder="nickname" value="<?php if($_POST){HtmlText($_POST['nickname']);} ?>"></td>
                         </tr>
