@@ -343,4 +343,8 @@ transform: rotate(360deg);
     display:block;
 }
 
+ul {
+    display: none;
+}
+
 }/*end of media query 500px*/
