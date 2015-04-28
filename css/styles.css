@@ -339,8 +339,21 @@ transform: rotate(360deg);
 
 @media all and (max-width: 500px) {
   
+#responsiveMenuContainer {
+    border:4px solid red;
+    width:300px;
+    transform:translateX(-100%);
+}
+
 #threeLineButton {
-    display:block;
+    display:inline-block;
+    position: fixed;
+    top:0;
+    left:70px;
+}
+
+.hideMenu {
+    transform:translateX(0);
 }
 
 #header ul {
@@ -363,11 +376,6 @@ transform: rotate(360deg);
    margin:0;
    padding:0;
    float: none;
-}
-
-#responsiveMenuContainer {
-    border:4px solid red;
-    width:300px;
 }
 
 
