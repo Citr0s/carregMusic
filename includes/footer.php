@@ -10,7 +10,7 @@
         </div>
         
     </div>
-    <script src="js/"
     <script src="js/responsiveMenu.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
