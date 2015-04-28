@@ -352,7 +352,7 @@ transform: rotate(360deg);
     left:70px;
 }
 
-.hideMenu {
+.showMenu {
     transform:translateX(0);
 }
 
