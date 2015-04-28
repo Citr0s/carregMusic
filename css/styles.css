@@ -345,16 +345,16 @@ transform: rotate(360deg);
     transform:translateX(-100%);
 }
 
+.showMenu {
+    transform:translateX(0);
+}
+
 #threeLineButton {
     display:inline-block;
     visibility: visible;
     position: fixed;
     top:0;
     left:70px;
-}
-
-.showMenu {
-    transform:translateX(0);
 }
 
 #header ul {

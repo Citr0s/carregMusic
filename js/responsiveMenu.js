@@ -1,6 +1,6 @@
 var threeLineButton = document.getElementById("threeLineButton");
 
-var container = document.getElementsByClassName("container");
+var container = document.getElementById("wrapper");
 
 
 threeLineButton.addEventListener("click", menuButtonClicked, false);
