@@ -344,7 +344,29 @@ transform: rotate(360deg);
 }
 
 ul {
-    display: none;
+    width:300px;
+    background-color:#888;
+    -webkit-padding-start: 0px;
+    margin:0 0;
 }
+ul li {
+    display: block;
+    width:100%;
+    border:3px solid black;
+}
+
+ul li a {
+    display: block;
+    
+}
+.floatRight, .floatLeft{
+   margin:0;
+   padding:0;
+   float: none;
+}
+#header ul{
+    -webkit-padding-start: 0px;
+}
+
 
 }/*end of media query 500px*/

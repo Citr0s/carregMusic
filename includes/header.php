@@ -16,8 +16,8 @@
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
+                <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
                 <div class="floatLeft">
-                 <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
                     <ul>
                         <li><a href="index.php">HOME</a></li>
                         <li><a href="">TRACKS</a></li>
