@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	define('loginMaxLength', 14);
 	define('passwdMaxLength', 32);
 	define('nicknameMaxLength', 25);
@@ -13,7 +15,6 @@
 	$password = "l017063e";
 	$db = "l017063e";
 
-	session_start();
 
 	require_once("functions\connection.funcs.php");
 	require_once('functions\login.functions.php');

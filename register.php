@@ -25,7 +25,7 @@
       }
 
       if(!$errorMessages) {
-          
+
         $con = mysqli_connect($addr, $user, $password, $db);
 
         $username = sanitise(trim($_POST['username']));
@@ -46,7 +46,13 @@
           $passwordDB = $row['userPassword'];
         }
 
-        if($username === $usernameDB){
+        if(){
+
+        }else{
+          if($pasword !== $passwordCheck){
+            $errorMessages['form'] = 'Passwords don\'t match';
+          }
+        }if($username == $usernameDB){
             $errorMessages['form'] = 'User with this username already exists';
         }else{
           mysqli_query($con, "INSERT INTO users (username, userPassword, userNickname, userEmail, genreID, countryID) VALUES('$username', '$password', '$nickname', '$email', '$genre', '$country')") 

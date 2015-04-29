@@ -8,15 +8,86 @@
 
     $con = mysqli_connect($addr, $user, $password, $db);
 
-    $data = mysqli_query($con, "SELECT nickname, email, country, genre FROM users WHERE username = '$username' LIMIT 1");
+    $data = mysqli_query($con, "SELECT userNickname, userEmail, countries.countryName, genres.genreName, countryID, genreID FROM users INNER JOIN countries USING (countryID) INNER JOIN genres USING (genreID) WHERE username = '$username' LIMIT 1");
 
     while($row = mysqli_fetch_array($data)){
-      $nickname = $row['nickname'];
-      $email = $row['email'];
-      $country = $row['country'];
-      $genre = $row['genre'];
+      $nickname = $row['userNickname'];
+      $email = $row['userEmail'];
+      $countryID = $row['countryID'];
+      $country = $row['countryName'];
+      $genreID = $row['genreID'];
+      $genre = $row['genreName'];
     }
 
+    $errorMessages = array();
+
+    if($_POST){
+      if(isset($_POST['password']) || isset($_POST['passwordCheck'])){
+        $expected = array('password', 'passwordCheck');
+        $required = array('password', 'passwordCheck');
+
+        foreach($expected as $field) {
+          $fieldValue = trim($_POST[$field]);
+          if(empty($fieldValue)){
+            if(isRequired($field, $required)) {
+                $errorMessages[$field] = ucfirst($field).' is a required field';
+            }
+          }else{
+            if($msg = validateFormField($fieldValue, $field)) {
+                $errorMessages[$field] = $msg;
+            }
+          }
+        }
+
+        if(!$errorMessages){
+            
+          $con = mysqli_connect($addr, $user, $password, $db);
+
+          $password = sanitise(trim($_POST['password']));
+          $passwordCheck = sanitise(trim($_POST['passwordCheck']));
+
+          if($password !== $passwordCheck){
+            $errorMessages['form'] = 'Passwords don\'t match';
+
+            echo $password;
+            echo $passwordCheck;
+
+          }else{
+            mysqli_query($con, "UPDATE users SET userPassword = '$password' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error()); 
+            header("Location: profile.php?".$username."&success");
+          }
+        }
+      }else{
+        $expected = array('nickname', 'email', 'country', 'genre');
+        $required = array('nickname', 'email', 'country', 'genre');
+
+        foreach($expected as $field) {
+          $fieldValue = trim($_POST[$field]);
+          if(empty($fieldValue)){
+            if(isRequired($field, $required)) {
+                $errorMessages[$field] = ucfirst($field).' is a required field';
+            }
+          }else{
+            if($msg = validateFormField($fieldValue, $field)) {
+                $errorMessages[$field] = $msg;
+            }
+          }
+        }
+
+        if(!$errorMessages){
+            
+          $con = mysqli_connect($addr, $user, $password, $db);
+
+          $nickname = sanitise(trim($_POST['nickname']));
+          $email = sanitise(trim($_POST['email']));
+          $country = sanitise(trim($_POST['country']));
+          $genre = sanitise(trim($_POST['genre']));
+
+          mysqli_query($con, "UPDATE users SET userNickname = '$nickname', userEmail = '$email', countryID = '$country', genreID = '$genre' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error()); 
+          header("Location: profile.php?".$username."&success");
+        }
+      }
+    }
 ?>
         <div class="container">
             <div class="formContainer">
@@ -28,9 +99,9 @@
                       echo '<p>'.$error.'</p>';
                     }
                     echo '</div>';
-                  }else if($_GET){
+                  }else if(isset($_GET['success'])){
                     echo '<div class="tipS">';
-                      echo '<p>You have been registered successfully. You can now log in.</p>';
+                      echo '<p>Your details have been saved successfully.</p>';
                     echo '</div>';
                   }else{
                     echo '<div class="tipP">To access extra features please <a href="register.php">register here</a>.</div>';
@@ -40,16 +111,16 @@
                    <table>
                         <th colspan="2" align="left">Update Your Information</th>
                        <tr>
-                           <td>Nickname:</td><td><input type="text" name="username" value="<?php echo $nickname; ?>" placeholder="nickname"></td>
+                           <td>Nickname:</td><td><input type="text" name="nickname" value="<?php echo $nickname; ?>" placeholder="nickname"></td>
                         </tr>
                        <tr>
-                           <td>Email:</td><td><input type="text" name="username" value="<?php echo $email; ?>" placeholder="nickname"></td>
+                           <td>Email:</td><td><input type="text" name="email" value="<?php echo $email; ?>" placeholder="nickname"></td>
                         </tr>
                        <tr>
-                           <td>Country of Origin:</td><td class="tdR"><select name="country" class="country"><option value="<?php echo $country; ?>"><?php echo $country; ?></option><?php generateCountryList(); ?></select></td>
+                           <td>Country of Origin:</td><td class="tdR"><select name="country" class="country"><option value="<?php echo $countryID; ?>"><?php echo $country; ?></option><?php generateCountryList(); ?></select></td>
                         </tr>
                         <tr>
-                           <td>Favourite Genre:</td><td class="tdR"><select name="genre" class="genre"><option value="<?php echo $genre; ?>"><?php echo $genre; ?></option><?php generateGenreList(); ?></select></td>
+                           <td>Favourite Genre:</td><td class="tdR"><select name="genre" class="genre"><option value="<?php echo $genreID; ?>"><?php echo $genre; ?></option><?php generateGenreList(); ?></select></td>
                         </tr>
                        <tr>
                            <td></td><td><button class="loginRegisterButton">SAVE</button></td>
