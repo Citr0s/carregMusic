@@ -1,6 +1,22 @@
 <?php 
-    require_once("core/init.php");
-    include_once 'includes/header.php'; 
+    require_once 'core/init.php';
+    include_once 'includes/header.php';
+
+    if(!loggedIn()){
+      header("Location: index.php");
+    }
+
+    $con = mysqli_connect($addr, $user, $password, $db);
+
+    $data = mysqli_query($con, "SELECT nickname, email, country, genre FROM users WHERE username = '$username' LIMIT 1");
+
+    while($row = mysqli_fetch_array($data)){
+      $nickname = $row['nickname'];
+      $email = $row['email'];
+      $country = $row['country'];
+      $genre = $row['genre'];
+    }
+
 ?>
         <div class="container">
             <div class="formContainer">
@@ -27,13 +43,13 @@
                            <td>Nickname:</td><td><input type="text" name="username" value="<?php echo $nickname; ?>" placeholder="nickname"></td>
                         </tr>
                        <tr>
-                           <td>Email:</td><td><input type="text" name="username" value="<?php if($_POST){HtmlText($_POST['nickname']);} ?>" placeholder="nickname"></td>
+                           <td>Email:</td><td><input type="text" name="username" value="<?php echo $email; ?>" placeholder="nickname"></td>
                         </tr>
                        <tr>
-                           <td>Country of Origin:</td><td class="tdR"><select name="country" class="country"><?php generateCountryList(); ?></select></td>
+                           <td>Country of Origin:</td><td class="tdR"><select name="country" class="country"><option value="<?php echo $country; ?>"><?php echo $country; ?></option><?php generateCountryList(); ?></select></td>
                         </tr>
                         <tr>
-                           <td>Favourite Genre:</td><td class="tdR"><select name="genre" class="genre"><?php generateGenreList(); ?></select></td>
+                           <td>Favourite Genre:</td><td class="tdR"><select name="genre" class="genre"><option value="<?php echo $genre; ?>"><?php echo $genre; ?></option><?php generateGenreList(); ?></select></td>
                         </tr>
                        <tr>
                            <td></td><td><button class="loginRegisterButton">SAVE</button></td>
