@@ -48,10 +48,6 @@
 
           if($password !== $passwordCheck){
             $errorMessages['form'] = 'Passwords don\'t match';
-
-            echo $password;
-            echo $passwordCheck;
-
           }else{
             mysqli_query($con, "UPDATE users SET userPassword = '$password' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error()); 
             header("Location: profile.php?".$username."&success");

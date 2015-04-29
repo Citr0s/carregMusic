@@ -46,14 +46,10 @@
           $passwordDB = $row['userPassword'];
         }
 
-        if(){
-
-        }else{
-          if($pasword !== $passwordCheck){
-            $errorMessages['form'] = 'Passwords don\'t match';
-          }
-        }if($username == $usernameDB){
-            $errorMessages['form'] = 'User with this username already exists';
+        if($pasword !== $passwordCheck){
+          $errorMessages['form'] = 'Passwords don\'t match';
+        }elseif($username == $usernameDB){
+          $errorMessages['form'] = 'User with this username already exists';
         }else{
           mysqli_query($con, "INSERT INTO users (username, userPassword, userNickname, userEmail, genreID, countryID) VALUES('$username', '$password', '$nickname', '$email', '$genre', '$country')") 
           or die("Query adding new user failed:" . mysql_error()); 
