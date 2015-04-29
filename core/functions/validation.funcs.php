@@ -6,7 +6,7 @@ function safePOST($variable)  {
 
 function validStringMaxLength($value, $min, $max) {
     $isOkay = false;
-    if(strlen($value) <= $max && strlen($value) >= $min) {
+    if(strlen($value) <= $max && strlen($value) >= $min && !is_numeric($value)) {
         $isOkay = true;
     }
     return $isOkay;
@@ -48,7 +48,7 @@ function validateFormField($value, $field) {
 	
 	switch($field) {
         case 'username':
-            if(!validStringMaxLength($value, minLength, passwdMaxLength)) {
+            if(!validStringMaxLength($value, minLength, loginMaxLength)) {
                 $errorMessage = 'Username must have between '.minLength.' and '.loginMaxLength.' characters and must be a string';
             }
             break;

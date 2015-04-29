@@ -74,7 +74,7 @@
                     }
                     echo '</div>';
                   }else{
-                    echo '<div class="tipP">Already have an account? <a href="login.php">Login here</a>.</div>';
+                    echo '<div class="tipP"><p>Already have an account? <a href="login.php">Login here</a>.</p></div>';
                   }
                 ?>
                 <form id="appendHere" class="loginForm" action="#" method="post">

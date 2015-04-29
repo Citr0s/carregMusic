@@ -306,20 +306,20 @@ transform: rotate(360deg);
 .tipP{
     border:1px solid #333;
     background-color:#222;
-    padding:15px;
-    width:95%;
+    margin:0px 5px;
 }
 .tipE{
     border:1px solid #e74c3c;
     background-color:#c0392b;
-    padding:15px;
-    width:95%;
+    margin:0px 5px;
 }
 .tipS{
     border:1px solid #2ecc71;
     background-color:#27ae60;
-    padding:15px;
-    width:95%;
+    margin:0px 5px;
+}
+.tipP p, .tipE p, .tipS p{
+    padding:5px;
 }
 .notValid {
     border:1px solid #e74c3c;
