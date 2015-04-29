@@ -395,5 +395,7 @@ transform: rotate(360deg);
     padding:0;
     margin:0;
 }
-
+.artistName{
+    padding:15px;
+}
 }/*end of media query 500px*/

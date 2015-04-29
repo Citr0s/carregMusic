@@ -21,8 +21,8 @@
                 <div class="floatLeft">
                     <ul>
                         <li><a href="index.php">HOME</a></li>
-                        <li><a href="">TRACKS</a></li>
-                        <li><a href="artists.php">ARTISTS</a></li>
+                        <li><a href="tracks.php">TRACKS</a></li>
+                        <li><a href="">ARTISTS</a></li>
                         <li><a href="">CONCERTS</a></li>
                         <li><a href="">SEARCH</a></li>
                     </ul>
