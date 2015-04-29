@@ -322,11 +322,13 @@ transform: rotate(360deg);
     width:95%;
 }
 .notValid {
-    background-color:red;
+    border:1px solid #e74c3c;
+    background-color:#c0392b;
 }
 
 .isValid {
-    background-color:green;
+    border:1px solid #2ecc71;
+    background-color:#27ae60;
 }
 .appendedError{ 
     color:red;

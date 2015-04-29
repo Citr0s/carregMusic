@@ -86,6 +86,17 @@ function emailVal () {
 function passwordVal () {
  //if(!isHTML5Support()){   
     
+//    if(Password1.value == null || Password1.value == ""){
+//        Password1.setAttribute("class", "notValid");
+//        addErrorMessage(3);
+//        canSubmit = false;  
+//    }
+//    if(PasswordCheck.value == null || PasswordCheck.value == ""){
+//        PasswordCheck.setAttribute("class", "notValid");
+//        addErrorMessage(3);
+//        canSubmit = false;  
+//    }
+
     if(Password1.value !== PasswordCheck.value){
         Password1.setAttribute("class", "notValid");
         PasswordCheck.setAttribute("class", "notValid");;

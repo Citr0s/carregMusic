@@ -46,7 +46,7 @@
           $passwordDB = $row['userPassword'];
         }
 
-        if($pasword !== $passwordCheck){
+        if($password !== $passwordCheck){
           $errorMessages['form'] = 'Passwords don\'t match';
         }elseif($username == $usernameDB){
           $errorMessages['form'] = 'User with this username already exists';

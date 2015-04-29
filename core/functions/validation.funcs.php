@@ -6,7 +6,7 @@ function safePOST($variable)  {
 
 function validStringMaxLength($value, $min, $max) {
     $isOkay = false;
-    if(strlen($value) <= $max && strlen($value) >= $min && !is_numeric($value)) {
+    if(strlen($value) <= $max && strlen($value) >= $min) {
         $isOkay = true;
     }
     return $isOkay;

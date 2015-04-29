@@ -7,7 +7,7 @@
 	define('emailMaxLength', 50);
 	define('minLength', 5);
 	define('sexMaxValue', 2);
-	define('genreMaxValue', 13);
+	define('genreMaxValue', 20);
 	define('countryMaxValue', 11);
 
 	$addr = "localhost";
