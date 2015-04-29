@@ -104,7 +104,7 @@
                       echo '<p>Your details have been saved successfully.</p>';
                     echo '</div>';
                   }else{
-                    echo '<div class="tipP">To access extra features please <a href="register.php">register here</a>.</div>';
+                    echo '<div class="tipP">Welcome to your profile. Here you can edit or close your account.</div>';
                   }
                 ?>
                 <form class="loginForm" action="#" method="post">
