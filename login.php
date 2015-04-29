@@ -1,11 +1,6 @@
 <?php
   require_once('core/init.php');
 
-  if($_POST){
-    echo $_POST['username'];
-    echo $_POST['password'];
-  }
-
   if(loggedIn()){
       header('Location: index.php');
   }

@@ -1,22 +1,24 @@
 <?php
+	define('loginMaxLength', 14);
+	define('passwdMaxLength', 32);
+	define('nicknameMaxLength', 25);
+	define('emailMaxLength', 50);
+	define('minLength', 5);
+	define('sexMaxValue', 2);
+	define('genreMaxValue', 13);
+	define('countryMaxValue', 11);
+
+	$addr = "localhost";
+	$user = "l017063e";
+	$password = "l017063e";
+	$db = "l017063e";
+
 	session_start();
-	
-	require_once('config.php');
+
 	require_once("functions\connection.funcs.php");
 	require_once('functions\login.functions.php');
 	require_once('functions\db.functions.php');
 
 	if(loggedIn()){
 		$username = $_SESSION['username'];
-
-		$con = mysqli_connect($addr, $user, $password, $db);
-
-		$data = mysqli_query($con, "SELECT nickname, email, country, genre FROM users WHERE '$username' = username LIMIT 1");
-
-		while($row = mysqli_fetch_array($data)){
-			$nickname = $row['nickname'];
-			$email = $row['email'];
-			$country = $row['country'];
-			$genre = $row['genre'];
-		}
 	}

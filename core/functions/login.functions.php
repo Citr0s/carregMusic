@@ -48,7 +48,7 @@ function HtmlText($value) {
 function validateFormField($value, $field) {
     $errorMessage = '';
 
-	require_once('\..\config.php');
+	require_once('\..\init.php');
 	
     switch($field) {
         case 'username':
