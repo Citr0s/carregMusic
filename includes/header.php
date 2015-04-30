@@ -13,7 +13,7 @@
     <div id="wrapper">
         <div id="header">
            <div class="container">
-             <div id="firstMenuContainer">
+            <div id="firstMenuContainer">
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
