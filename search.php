@@ -30,7 +30,7 @@
                       $trackPicture = $row['coverPicture'];
                       $trackID = $row['trackID'];
 
-                      echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+                      echo '<tr><td><a href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
 
                     $data = mysqli_query($con, "SELECT * FROM artists 
@@ -44,7 +44,7 @@
                       $artistHistory = $row['artistHistory']; 
                       $artistPicture = $row['artistPicture'];
 
-                      echo '<tr><td><a href="?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
+                      echo '<tr><td><a href="artists.php?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
                     $data = mysqli_query($con, "SELECT concerts.concertName, venues.venueName, countries.countryName
                                                 FROM concerts 
