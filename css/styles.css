@@ -462,3 +462,68 @@ transform: rotate(360deg);
 .trackT{
     color:#999;
 }
+
+/*Artists Page*/
+.topDiv{
+    width:300px;
+    height:300px;
+    position: relative;
+    border:3px solid green;
+}
+.topDiv img{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+    border:3px solid red;
+}
+.innerDiv{
+    border:4px solid orange;
+    width:100%;
+    height:100%;
+    opacity: 1;
+    z-index: 10;
+    background-color:rgba(46, 39, 39, 0.49);/*must be rgba otherwise parent element opaques the link*/
+    transition:opacity 0.6s;/*must be in parent element*/
+}
+.innerDiv:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition:opacity 0.6s;
+}
+.test{
+    display: block;
+    height:150px;
+    text-align: center;
+    color:white;
+    text-decoration: none;
+    font-weight: 900;
+    z-index: 0;  
+    opacity: 1;
+    transition:opacity 0.6s;
+}
+
+.test:hover{color:#fff;
+    opacity: 1;
+}
+
+.usernameC{
+    color:#999;
+    font-style:italic;
+    font-size:12px;
+}
+.rating{
+    padding:5px 15px;
+    margin:0;
+    display:inline-block;
+    font-size:35px;
+    color:#fff;
+    background-color:#3498db;
+    text-align:center;
+}
+.ratingOutOf{
+    font-size:12px;
+    color:#333;
+}

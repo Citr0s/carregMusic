@@ -47,9 +47,17 @@
                       $artistPicture = $row['artistPicture'];
                       $artistID = $row['artistID'];
 
-                      echo '<tr><td><a href="?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
+                      
+                      echo ' <div id="topDiv" class="topDiv">
+                          <img src="css/artistPictures/'. $artistPicture . '  " "class="imageToHover  />
+                          <div id="innerDiv" class="innerDiv">
+                          <a href="?id='.$artistID.'" class="test">'.$artistName.'</a>
+                          </div>
+                          <p class="artistName">'.$artistName.'</p>
+                          </div>';
                     }
 
+                    
                     $ps = ceil($count / $perP);
                     echo '<tr><td>';
                     for($i = 1; $i <= $ps; $i++){
