@@ -32,6 +32,40 @@
 
                       echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
+
+                    echo '<tr><td><p>Rating: 5/5</p></td></tr>';
+
+                    $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                          AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                          INNER JOIN trackArtists USING (trackID)
+                          INNER JOIN artists USING (artistID) WHERE trackID = '$id' 
+                          GROUP BY tracks.trackID
+                          ORDER BY trackTitle ASC LIMIT 1");
+
+                    while($row = mysqli_fetch_array($data)){ 
+                      $trackTitle = $row['trackTitle'];
+                      $artists = $row['artists']; 
+                      $artistCount = $row['artistCount']; 
+                      $trackPicture = $row['coverPicture'];
+                      $trackID = $row['trackID'];
+                    }
+
+                    echo '<tr><td><p>Comments</p></td></tr>';
+
+                    $data = mysqli_query($con, "SELECT * FROM usercomments WHERE trackID = $trackID");
+
+                    while($row = mysqli_fetch_array($data)){ 
+                      $commentUsername = $row['username'];
+                      $userCommentVal = $row['userCommentVal'];
+                      $anyComments = true;
+
+                      echo '</table><div class="tipC"><p>'.$userCommentVal.' - <span class="usernameC">'.$commentUsername.'</span></p></div><table>';
+                    }
+
+                    if(!$anyComments){
+                      echo '</table><div class="tipC"><p><span class="usernameC">No comments found.</span></p></div><table>';
+                    }
+
                   }else{
                     $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
                     $perP = 10; //records per page

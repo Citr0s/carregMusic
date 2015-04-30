@@ -307,6 +307,11 @@ transform: rotate(360deg);
     margin:15px;
     text-align:center;
 }
+.tipC{
+    border:1px solid #333;
+    background-color:#222;
+    margin:1px 5px;
+}
 .tipP{
     border:1px solid #333;
     background-color:#222;
@@ -434,4 +439,9 @@ transform: rotate(360deg);
 }
 .selected{
     border-bottom:1px solid #fff;
+}
+.usernameC{
+    color:#999;
+    font-style:italic;
+    font-size:12px;
 }
