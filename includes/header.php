@@ -13,6 +13,7 @@
     <div id="wrapper">
         <div id="header">
            <div class="container">
+             <div id="firstMenuContainer">
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
@@ -22,7 +23,7 @@
                     <ul>
                         <li><a href="index.php">HOME</a></li>
                         <li><a href="tracks.php">TRACKS</a></li>
-                        <li><a href="">ARTISTS</a></li>
+                        <li><a href="artists.php">ARTISTS</a></li>
                         <li><a href="">CONCERTS</a></li>
                         <li><a href="">SEARCH</a></li>
                     </ul>
@@ -45,5 +46,6 @@
                     </ul>
                 </div>
                </div>
+              </div>
             </div>
         </div>

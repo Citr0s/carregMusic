@@ -12,7 +12,7 @@
                   if(isset($_GET['id'])){
                     $id = sanitise(trim($_GET['id']));
                     if(!is_numeric($id)){
-                      header("Location: artists.php");
+                      header("Location: tracks.php");
                       die();
                     }
                     $data = mysqli_query($con, "SELECT tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
