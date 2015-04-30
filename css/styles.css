@@ -68,10 +68,10 @@ transform: rotate(360deg);
 #threeLineButton {
     visibility: hidden;
     text-decoration: none;
-    font-size: 3em;
+    font-size: 2.5em;
     position: fixed;
     top:0;
-    left:70px;
+    right:10px;
 }
 #banner{
     background: no-repeat url(images/banner.jpg);
@@ -339,24 +339,27 @@ transform: rotate(360deg);
     margin-top:56px;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 805px) {
   
 #responsiveMenuContainer {
-    border:4px solid red;
     width:300px;
     transform:translateX(-100%);
+    visibility: hidden;
 }
 
-.showMenu {
+.showMenu #responsiveMenuContainer{
     transform:translateX(0);
+    visibility: visible;
 }
 
 #threeLineButton {
     display:inline-block;
     visibility: visible;
     position: fixed;
-    top:0;
-    left:70px;
+    color:#fff;
+    float:right;
+    margin:0;
+    padding:0;
 }
 
 #header ul {
