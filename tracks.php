@@ -15,8 +15,9 @@
                       header("Location: tracks.php");
                       die();
                     }
-                    $data = mysqli_query($con, "SELECT tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                    $data = mysqli_query($con, "SELECT genres.genreName, tracks.chartPosition, tracks.releaseDate, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                           AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                          INNER JOIN genres USING (genreID)
                           INNER JOIN trackArtists USING (trackID)
                           INNER JOIN artists USING (artistID) WHERE trackID = '$id' 
                           GROUP BY tracks.trackID
@@ -26,11 +27,19 @@
 
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle'];
+                      $trackReleaseDate = $row['releaseDate'];
+                      $trackChartPosition = $row['chartPosition'];
+                      $genre = $row['genreName'];
+                      $trackTitle = $row['trackTitle'];
                       $artists = $row['artists']; 
                       $artistCount = $row['artistCount']; 
                       $trackPicture = $row['coverPicture'];
 
-                      echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+
+                      echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p>
+                      <p><span class="trackT">Release Date:</span> '.$trackReleaseDate.'</p>
+                      <p><span class="trackT">Genre:</span> '.$genre.'</p>
+                      <p><span class="trackT">Highest Chart Position:</span> '.$trackChartPosition.'</p></td></tr>';
                     }
 
                     echo '<tr><td><p>Rating</p></td></tr>';
