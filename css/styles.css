@@ -493,7 +493,7 @@ transform: rotate(360deg);
     cursor: pointer;
     transition:opacity 0.6s;
 }
-.test{
+.artistHoverLinks{
     display: block;
     height:150px;
     text-align: center;
@@ -505,7 +505,7 @@ transform: rotate(360deg);
     transition:opacity 0.6s;
 }
 
-.test:hover{color:#fff;
+.artistHoverLinks:hover{color:#fff;
     opacity: 1;
 }
 
