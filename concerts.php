@@ -4,6 +4,7 @@
 
     $con = mysqli_connect($addr, $user, $password, $db);
 ?>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Concerts</h2>
@@ -15,22 +16,51 @@
                       header("Location: tracks.php");
                       die();
                     }
-                    $data = mysqli_query($con, "SELECT tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
-                          AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
-                          INNER JOIN trackArtists USING (trackID)
-                          INNER JOIN artists USING (artistID) WHERE trackID = '$id' 
-                          GROUP BY tracks.trackID
-                          ORDER BY trackTitle ASC LIMIT 1");
+                    $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, venues.venueLongitude, venues.venueLatitude, venues.venueCapacity, countries.countryName
+                                                FROM concerts
+                                                INNER JOIN venues USING (venueID) 
+                                                INNER JOIN countries USING (countryID)
+                                                WHERE concertID = $id
+                                                ORDER BY concertName ASC LIMIT 1");
 
-                    echo '<a style="padding:15px;" href="tracks.php">< Back</a>';
+                    echo '<a style="padding:15px;" href="concerts.php">< Back</a>';
 
                     while($row = mysqli_fetch_array($data)){ 
-                      $trackTitle = $row['trackTitle'];
-                      $artists = $row['artists']; 
-                      $artistCount = $row['artistCount']; 
-                      $trackPicture = $row['coverPicture'];
+                      $concertID = $row['concertID'];
+                      $concertName = $row['concertName']; 
+                      $venueName = $row['venueName'];
+                      $venueLongitude = $row['venueLongitude'];
+                      $venueLatitude = $row['venueLatitude'];
+                      $venueCapacity = $row['venueCapacity'];
+                      $countryName = $row['countryName'];
 
-                      echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+                      ?>
+                      <script>
+                        var myCenter=new google.maps.LatLng(<?php echo $venueLatitude; ?>,<?php echo $venueLongitude; ?>);
+
+                        function initialize()
+                        {
+                        var mapProp = {
+                          center:myCenter,
+                          zoom:15,
+                          mapTypeId:google.maps.MapTypeId.ROADMAP
+                          };
+
+                        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+                        var marker=new google.maps.Marker({
+                          position:myCenter,
+                          });
+
+                        marker.setMap(map);
+                        }
+
+                        google.maps.event.addDomListener(window, 'load', initialize);
+                      </script>
+                      <?php
+
+                      echo '<tr><td><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></td></tr>';
+                      echo '<tr><td><div id="googleMap" style="width:500px;height:380px;"></div></td></tr>';
                     }
                   }else{
                     $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, countries.countryName
@@ -45,7 +75,7 @@
                       $venueName = $row['venueName']; 
                       $countryName = $row['countryName'];
 
-                      echo '<tr><td><a href="?id='.$concertID.'"></td><td><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></td></tr>';
+                      echo '<tr><td><a href="?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></a></td></tr>';
                     }
                   }
                 ?>
