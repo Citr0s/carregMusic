@@ -34,7 +34,18 @@
                       echo '<tr><td><img src="css/artistPictures/'. $artistPicture . '" width="250" /></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
                   }else{
-                    $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists ORDER BY artistName ASC");
+                    $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
+                    $perP = 10; //records per page
+
+                    $start = ($p > 1) ? ($p * $perP) - $perP : 0; //start value for getting records from db
+
+                    $data = mysqli_query($con, "SELECT COUNT(*) AS num FROM artists");
+
+                    $row = mysqli_fetch_array($data);
+                    $count = $row['num'];
+
+
+                    $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists ORDER BY artistName ASC LIMIT ".$start.", ".$perP);
 
                     while($row = mysqli_fetch_array($data)){ 
                       $artistName = $row['artistName'];
@@ -44,6 +55,17 @@
 
                       echo '<tr><td><a href="?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
+
+                    $ps = ceil($count / $perP);
+                    echo '<tr><td>';
+                    for($i = 1; $i <= $ps; $i++){
+                      echo '<div class="pagination"><a href="?p='.$i.'"';
+                      if($p === $i){
+                        echo 'class="selected"'; 
+                      }
+                      echo '>'.$i.'</a></div>';
+                    }
+                    echo '</td></tr>';
                   }
                 ?>
                 </table>

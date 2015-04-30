@@ -33,22 +33,43 @@
                       echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
                   }else{
+                    $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
+                    $perP = 10; //records per page
+
+                    $start = ($p > 1) ? ($p * $perP) - $perP : 0; //start value for getting records from db
+
+                    $data = mysqli_query($con, "SELECT COUNT(*) AS num FROM tracks");
+
+                    $row = mysqli_fetch_array($data);
+                    $count = $row['num'];
+
                     $data = mysqli_query($con, "SELECT trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                           AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                           INNER JOIN trackArtists USING (trackID)
                           INNER JOIN artists USING (artistID) 
                           GROUP BY tracks.trackID
-                          ORDER BY trackTitle ASC");
+                          ORDER BY trackTitle ASC LIMIT ".$start.", ".$perP);
 
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle'];
                       $artists = $row['artists']; 
-                      $artistCount = $row['artistCount']; 
+                      $artistCount = $row['artistCount'];
                       $trackPicture = $row['coverPicture'];
                       $trackID = $row['trackID'];
 
                       echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
+
+                    $ps = ceil($count / $perP);
+                    echo '<tr><td>';
+                    for($i = 1; $i <= $ps; $i++){
+                      echo '<div class="pagination"><a href="?p='.$i.'"';
+                      if($p === $i){
+                        echo 'class="selected"'; 
+                      }
+                      echo '>'.$i.'</a></div>';
+                    }
+                    echo '</td></tr>';
                   }
                 ?>
                 </table>

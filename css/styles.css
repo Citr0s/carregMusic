@@ -424,3 +424,10 @@ transform: rotate(360deg);
     padding:5px;
     color:#000;
 }
+.pagination{
+    display:inline-block;
+    margin:5px;
+}
+.selected{
+    border-bottom:1px solid #fff;
+}
