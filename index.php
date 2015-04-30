@@ -31,7 +31,7 @@
             <div id="sidebar">
                 <h2>SEARCH</h2>
                 <form action="search.php" method="get">
-                    <input type="text" name="search" value="album, artist, concert">
+                    <input type="text" name="search" placeholder="album, artist, concert">
                     <button id="submit"><img src="css/images/search.png" alt="search"></button>
                 </form>
                 <h2>CONCERTS</h2>
