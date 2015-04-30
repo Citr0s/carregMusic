@@ -4,12 +4,19 @@
 
     $con = mysqli_connect($addr, $user, $password, $db);
 ?>
+        <style>
+          .tipP{
+            margin:15px 5px;
+          }
+          td{
+            padding:0px 15px;
+          }
+        </style>
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Search</h2>
-                <table style="margin:15px;">
-                  <div class="tipP"><p>Search artists, tracks or venues.</p></div>
-                  <form method="get" action=""><input type="text" id="searchLarge" name="search" value="<?php if($_GET){HtmlText($_GET['search']);} ?>" placeholder="album, artist, concert"></form>
+                <div class="tipP"><p>Search artists, tracks or venues.</p></div>
+                <div class="tipEmpty"><form method="get" action=""><input type="text" id="searchLarge" name="search" value="<?php if($_GET){HtmlText($_GET['search']);} ?>" placeholder="Search for album, artist, concert or venue."></form></div>
                 <?php
                   if(isset($_GET['search'])){
                     $search = sanitise(trim($_GET['search']));
@@ -21,7 +28,7 @@
                                                 GROUP BY tracks.trackID
                                                 ORDER BY artistName ASC");
 
-                    echo '</table><div class="tipP"><p>Tracks</p></div><table>';
+                    echo '<div class="tipP"><p>Tracks</p></div><table>';
                     
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle']; 
@@ -46,7 +53,7 @@
 
                       echo '<tr><td><a href="artists.php?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
-                    $data = mysqli_query($con, "SELECT concerts.concertName, venues.venueName, countries.countryName
+                    $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, countries.countryName
                                                 FROM concerts 
                                                 INNER JOIN venues USING (venueID) 
                                                 INNER JOIN countries USING (countryID)
@@ -54,14 +61,15 @@
                                                 LIKE '%" . $search . "%' AND concerts.ConcertDate >= CURDATE()
                                                 ORDER BY concertName ASC");
 
-                    echo '</table><div class="tipP"><p>Venue</p></div><table>';
+                    echo '</table><div class="tipP"><p>Venues</p></div><table>';
                     
                     while($row = mysqli_fetch_array($data)){ 
+                      $concertID = $row['concertID'];
                       $concertName = $row['concertName']; 
                       $venueName = $row['venueName']; 
                       $countryName = $row['countryName']; 
 
-                      echo '<tr><td><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></td></tr>';
+                      echo '<tr><td><a href="concerts.php?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></a></td></tr>';
                     }
                   }
                 ?>

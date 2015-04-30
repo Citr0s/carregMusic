@@ -303,6 +303,10 @@ transform: rotate(360deg);
     width:230px;
     margin:0 10px 10px 10px;
 }
+.tipEmpty{
+    margin:15px;
+    text-align:center;
+}
 .tipP{
     border:1px solid #333;
     background-color:#222;
