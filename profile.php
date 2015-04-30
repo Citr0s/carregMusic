@@ -33,7 +33,7 @@
                 $errorMessages[$field] = ucfirst($field).' is a required field';
             }
           }else{
-            if($msg = validateFormField($fieldValue, $field)) {
+            if($msg = validateFormField($fieldValue, $field)){
                 $errorMessages[$field] = $msg;
             }
           }
@@ -100,7 +100,7 @@
                       echo '<p>Your details have been saved successfully.</p>';
                     echo '</div>';
                   }else{
-                    echo '<div class="tipP">Welcome to your profile. Here you can edit or close your account.</div>';
+                    echo '<div class="tipP"><p>Welcome to your profile. Here you can edit or close your account.</p></div>';
                   }
                 ?>
                 <form class="loginForm" action="#" method="post">

@@ -25,9 +25,9 @@ function validIntegerRange($value, $min, $max) {
     return filter_var($value, FILTER_VALIDATE_INT, $options);
 }
 
-function validStringMaxLength($value, $max) {
+function validStringMaxLength($value, $min, $max) {
     $isOkay = false;
-    if(strlen($value) <= $max && !is_numeric($value)) {
+    if(strlen($value) >= $min && strlen($value) <= $max && !is_numeric($value)) {
         $isOkay = true;
     }
     return $isOkay;

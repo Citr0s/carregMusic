@@ -15,8 +15,7 @@
 	$password = "l017063e";
 	$db = "l017063e";
 
-
-	require_once("functions\connection.funcs.php");
+	require_once("functions\conn.functions.php");
 	require_once('functions\login.functions.php');
 	require_once('functions\db.functions.php');
 
