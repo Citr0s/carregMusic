@@ -13,24 +13,40 @@
                 <?php
                   if(isset($_GET['search'])){
                     $search = sanitise(trim($_GET['search']));
-                      $data = mysqli_query($con, "SELECT trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName separator ' and ') 
-                          AS artists, tracks.coverPicture, count(trackArtists.trackID) AS artistCount FROM tracks
-                          INNER JOIN trackArtists USING (trackID)
-                          INNER JOIN artists USING (artistID) 
-                          WHERE artists.artistName LIKE '%" . $search . "%'
-                          GROUP BY tracks.trackID
-                          ORDER BY artistName ASC");
-                      
-                      while($row = mysqli_fetch_array($data)){ 
-                        $trackTitle = $row['trackTitle']; 
-                        $artists = $row['artists']; 
-                        $artistCount = $row['artistCount']; 
-                        $trackPicture = $row['coverPicture'];
-                        $trackID = $row['trackID'];
+                    $data = mysqli_query($con, "SELECT trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName separator ' and ') 
+                                                AS artists, tracks.coverPicture, count(trackArtists.trackID) AS artistCount FROM tracks
+                                                INNER JOIN trackArtists USING (trackID)
+                                                INNER JOIN artists USING (artistID) 
+                                                WHERE artists.artistName LIKE '%" . $search . "%'
+                                                GROUP BY tracks.trackID
+                                                ORDER BY artistName ASC");
 
-                        echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+                    echo '</table><div class="tipP"><p>Tracks</p></div><table>';
+                    
+                    while($row = mysqli_fetch_array($data)){ 
+                      $trackTitle = $row['trackTitle']; 
+                      $artists = $row['artists']; 
+                      $artistCount = $row['artistCount']; 
+                      $trackPicture = $row['coverPicture'];
+                      $trackID = $row['trackID'];
+
+                      echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+                    }
+
+                    $data = mysqli_query($con, "SELECT * FROM artists 
+                                                WHERE artists.artistName LIKE '%" . $search . "%' ORDER By artistName ASC");
+
+                    echo '</table><div class="tipP"><p>Artists</p></div><table>';
+                    
+                    while($row = mysqli_fetch_array($data)){ 
+                      $artistID = $row['artistID'];
+                      $artistName = $row['artistName'];
+                      $artistHistory = $row['artistHistory']; 
+                      $artistPicture = $row['artistPicture'];
+
+                      echo '<tr><td><a href="?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
+                    }
                   }
-                }
                 ?>
                 </table>
             </div>
