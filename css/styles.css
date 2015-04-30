@@ -361,9 +361,7 @@ transform: rotate(360deg);
     margin:0;
     padding:0;
 }
-
 #header ul {
-   
     background-color:#888;
     -webkit-padding-start: 0px;
     margin:0 0;
@@ -383,7 +381,15 @@ transform: rotate(360deg);
    padding:0;
    float: none;
 }
-
+.top5albumCover {
+    text-align: center;
+    padding:0;
+    margin:0;
+    margin:0;
+}
+.artistName{
+    padding:15px;
+}
 #mainContent .top5albumCover p{
     width:100%;
     text-align: left;
@@ -394,22 +400,21 @@ transform: rotate(360deg);
     width:200px;
     height:200px;
 }
-
-.top5albumCover {
-    text-align: center;
-    padding:0;
-    margin:0;
-}
-.artistName{
-    padding:15px;
-}
 #sidebar{
     width:80%;
     min-width: 80%;
     margin:0 auto;
     border:4px solid red;
 }
-
+#mainContent{
+    float:none;
+    width:90%;
+    margin:auto;
+    border:3px solid red;
+}
+#mainContent h2{
+    width:90%;    
+    }
 }/*end of media query 500px*/
 #searchLarge{
     width:955px;
