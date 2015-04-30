@@ -13,11 +13,12 @@
     <div id="wrapper">
         <div id="header">
            <div class="container">
+                           <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
              <div id="firstMenuContainer">
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
-                <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
+
                 <div id="responsiveMenuContainer">
                 <div class="floatLeft">
                     <ul>
