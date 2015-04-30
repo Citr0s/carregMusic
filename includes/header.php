@@ -13,6 +13,7 @@
     <div id="wrapper">
         <div id="header">
            <div class="container">
+             <div id="firstMenuContainer">
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
@@ -45,5 +46,6 @@
                     </ul>
                 </div>
                </div>
+              </div>
             </div>
         </div>
