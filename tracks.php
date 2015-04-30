@@ -33,12 +33,20 @@
                       echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
                   }else{
-                    $data = mysqli_query($con, "SELECT trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
-                          AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
-                          INNER JOIN trackArtists USING (trackID)
-                          INNER JOIN artists USING (artistID) 
-                          GROUP BY tracks.trackID
-                          ORDER BY trackTitle ASC");
+                    $data = mysqli_query($con, "SELECT concerts.concertName, venues.venueName, countries.countryName
+      FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
+      ORDER BY concertName ASC";
+  $result=mysqli_query($conn, $query);    
+  
+  while($row = mysqli_fetch_array($result)){ 
+           $concertName=$row['concertName']; 
+           $venueName=$row['venueName']; 
+           $countryName=$row['countryName']; 
+    //Display the result of the array 
+    echo $concertName . "<br>"; 
+    echo $venueName . "<br>";
+    echo $countryName . "<br>";
+  }");
 
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle'];

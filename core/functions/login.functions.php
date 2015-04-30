@@ -52,13 +52,13 @@ function validateFormField($value, $field) {
 	
     switch($field) {
         case 'username':
-            if(!validStringMaxLength($value, 25)) {
-                $errorMessage = 'Name must be 5 characters or less and must be a string';
+             if(!validStringMaxLength($value, minLength, nicknameMaxLength)) {
+                $errorMessage = 'Username must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
             }
             break;
         case 'nickname':
             if(!validStringMaxLength($value, minLength, nicknameMaxLength)) {
-                $errorMessage = 'Login must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
+                $errorMessage = 'Nickname must have between '.minLength.' and '.nicknameMaxLength.' characters and must be a string';
             }
             break;
 		case 'email':
