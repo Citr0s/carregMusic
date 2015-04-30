@@ -33,26 +33,27 @@
                       echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
 
-                    echo '<tr><td><p>Rating: 5/5</p></td></tr>';
-
-                    $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
-                          AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
-                          INNER JOIN trackArtists USING (trackID)
-                          INNER JOIN artists USING (artistID) WHERE trackID = '$id' 
-                          GROUP BY tracks.trackID
-                          ORDER BY trackTitle ASC LIMIT 1");
+                    $anyRatings = false;
+                    $userRatings = 0;
+                    $data = mysqli_query($con, "SELECT *, COUNT(*) AS ratings FROM userratings WHERE trackID = $id");
 
                     while($row = mysqli_fetch_array($data)){ 
-                      $trackTitle = $row['trackTitle'];
-                      $artists = $row['artists']; 
-                      $artistCount = $row['artistCount']; 
-                      $trackPicture = $row['coverPicture'];
-                      $trackID = $row['trackID'];
+                      $ratingsUsername = $row['username'];
+                      $userRatings += $row['userRating'];
+                      $anyRatings = true;
+                      $ratings = $row['ratings'];
+                    }
+                    if(!$anyRatings || $ratings == 0){
+                      echo '<tr><td><p>Rating: - / 5</p></td></tr>';
+                    }else{
+                      $AvrRating = round($userRatings / $ratings, 1);
+                      echo '<tr><td><p>Rating: '.$AvrRating.' / 5</p></td></tr>';
                     }
 
                     echo '<tr><td><p>Comments</p></td></tr>';
 
-                    $data = mysqli_query($con, "SELECT * FROM usercomments WHERE trackID = $trackID");
+                    $anyComments = false;
+                    $data = mysqli_query($con, "SELECT * FROM usercomments WHERE trackID = $id");
 
                     while($row = mysqli_fetch_array($data)){ 
                       $commentUsername = $row['username'];
