@@ -46,6 +46,23 @@
 
                       echo '<tr><td><a href="?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
+                    $data = mysqli_query($con, "SELECT concerts.concertName, venues.venueName, countries.countryName
+                                                FROM concerts 
+                                                INNER JOIN venues USING (venueID) 
+                                                INNER JOIN countries USING (countryID)
+                                                WHERE venueName 
+                                                LIKE '%" . $search . "%' AND concerts.ConcertDate >= CURDATE()
+                                                ORDER BY concertName ASC");
+
+                    echo '</table><div class="tipP"><p>Venue</p></div><table>';
+                    
+                    while($row = mysqli_fetch_array($data)){ 
+                      $concertName = $row['concertName']; 
+                      $venueName = $row['venueName']; 
+                      $countryName = $row['countryName']; 
+
+                      echo '<tr><td><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></td></tr>';
+                    }
                   }
                 ?>
                 </table>
