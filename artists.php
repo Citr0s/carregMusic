@@ -7,12 +7,6 @@
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Artists</h2>
-                <div class="artistContainer">
-                <img src="#" atl="alt tag">
-                  <div class="artistHover">
-                    <p>Text Hover</p>
-                  </div>
-                </div>
                 <table style="margin:15px;">
                 <?php
                   if(isset($_GET['id'])){
