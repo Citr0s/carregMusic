@@ -403,4 +403,10 @@ transform: rotate(360deg);
 .artistName{
     padding:15px;
 }
+#sidebar{
+    width:80%;
+    min-width: 80%;
+    margin:0 auto;
+    border:4px solid red;
+}
 }/*end of media query 500px*/
