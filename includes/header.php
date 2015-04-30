@@ -24,7 +24,7 @@
                         <li><a href="index.php">HOME</a></li>
                         <li><a href="tracks.php">TRACKS</a></li>
                         <li><a href="artists.php">ARTISTS</a></li>
-                        <li><a href="conerts.php">CONCERTS</a></li>
+                        <li><a href="concerts.php">CONCERTS</a></li>
                         <li><a href="">SEARCH</a></li>
                     </ul>
                 </div>
