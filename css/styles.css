@@ -224,6 +224,7 @@ transform: rotate(360deg);
     height:100%;
     border-bottom:2px solid #2980b9;
     margin:62px 0px;
+    padding-bottom:15px;
     color:#fff;
     background-color:#000;
 }
@@ -444,4 +445,17 @@ transform: rotate(360deg);
     color:#999;
     font-style:italic;
     font-size:12px;
+}
+.rating{
+    padding:5px 15px;
+    margin:0;
+    display:inline-block;
+    font-size:35px;
+    color:#fff;
+    background-color:#3498db;
+    text-align:center;
+}
+.ratingOutOf{
+    font-size:12px;
+    color:#333;
 }

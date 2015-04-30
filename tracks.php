@@ -33,6 +33,8 @@
                       echo '<tr><td><img src="css/coverPictures/'. $trackPicture . '" width="250" /></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
 
+                    echo '<tr><td><p>Rating</p></td></tr>';
+
                     $anyRatings = false;
                     $userRatings = 0;
                     $data = mysqli_query($con, "SELECT *, COUNT(*) AS ratings FROM userratings WHERE trackID = $id");
@@ -44,10 +46,10 @@
                       $ratings = $row['ratings'];
                     }
                     if(!$anyRatings || $ratings == 0){
-                      echo '<tr><td><p>Rating: - / 5</p></td></tr>';
+                      echo '<tr><td><p class="rating">-</p></td></tr>';
                     }else{
                       $AvrRating = round($userRatings / $ratings, 1);
-                      echo '<tr><td><p>Rating: '.$AvrRating.' / 5</p></td></tr>';
+                      echo '<tr><td><p class="rating">'.$AvrRating.'<span class="ratingOutOf">/5</span></p></td></tr>';
                     }
 
                     echo '<tr><td><p>Comments</p></td></tr>';
@@ -64,7 +66,7 @@
                     }
 
                     if(!$anyComments){
-                      echo '</table><div class="tipC"><p><span class="usernameC">No comments found.</span></p></div><table>';
+                      echo '</table><div class="tipC class"><p><span class="usernameC">No comments found.</span></p></div><table>';
                     }
 
                   }else{
