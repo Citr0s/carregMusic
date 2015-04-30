@@ -47,6 +47,7 @@
                     <a href=""><img class="concertImg" src="css/images/banner1.jpg" alt="album image"></a>
                     <p class="concertTxt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus!</p>
                 </div>
+                <div class="clear"></div>
             </div>
         </div>
 <?php include_once 'includes/footer.php'; ?>
