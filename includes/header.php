@@ -13,18 +13,17 @@
     <div id="wrapper">
         <div id="header">
            <div class="container">
-                           <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
              <div id="firstMenuContainer">
                <div class="floatLeft">
                     <a href="index.php"><img src="css/images/logo.png" alt="logo"></a>
                 </div>
-
+                <a id="threeLineButton" href="#menuContainer" class="menuButton">&equiv;</a>
                 <div id="responsiveMenuContainer">
                 <div class="floatLeft">
                     <ul>
                         <li><a href="index.php">HOME</a></li>
                         <li><a href="tracks.php">TRACKS</a></li>
-                        <li><a href="artists.php">ARTISTS</a></li>
+                        <li><a href="">ARTISTS</a></li>
                         <li><a href="">CONCERTS</a></li>
                         <li><a href="">SEARCH</a></li>
                     </ul>
