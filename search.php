@@ -15,28 +15,27 @@
                       header("Location: search.php");
                       die();
                     }
-                    $query="select tracks.trackTitle, GROUP_CONCAT(artists.artistName separator ' and ') 
-                          AS artists, tracks.trackPicture, count(trackArtists.trackID) AS artistCount FROM tracks
+                      $data = mysqli_query($con, "SELECT tracks.trackTitle, GROUP_CONCAT(artists.artistName separator ' and ') 
+                          AS artists, tracks.coverPicture, count(trackArtists.trackID) AS artistCount FROM tracks
                           INNER JOIN trackArtists USING (trackID)
                           INNER JOIN artists USING (artistID) 
-                          WHERE artists.artistName LIKE '%" . $name . "%'
+                          WHERE artists.artistName LIKE '%" . $id . "%'
                           GROUP BY tracks.trackID
-                          ORDER BY artistName ASC"; //<--Change how you want to order it
-                      $result=mysqli_query($conn, $query);    
+                          ORDER BY artistName ASC");    
                       
-                      while($row = mysqli_fetch_array($result)){ 
-                               $trackTitle=$row['trackTitle']; 
-                               $artists=$row['artists']; 
-                               $artistCount=$row['artistCount']; 
-                           $trackPicture=$row['trackPicture'];
-                        //Display the result of the array 
+                      while($row = mysqli_fetch_array($data)){ 
+                        $trackTitle = $row['trackTitle']; 
+                        $artists = $row['artists']; 
+                        $artistCount = $row['artistCount']; 
+                        $trackPicture = $row['coverPicture'];
+
                         echo $trackTitle . "<br>"; 
                         echo $artists . "<br>";
                         echo $trackPicture . "<br>";
                   }
                 }else{
                   echo '<div class="tipP"><p>Search artists, tracks or venues.</p></div>';
-                  echo '<tr><td><form method="get" action=""><input type="text" name="search" placeholder="album, artist, concert"></form></td></tr>';
+                  echo '<tr><td><form method="get" action=""><input type="text" id="searchLarge" name="search" placeholder="album, artist, concert"></form></td></tr>';
                 }
                 ?>
                 </table>

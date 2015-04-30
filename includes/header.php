@@ -25,7 +25,7 @@
                         <li><a href="tracks.php">TRACKS</a></li>
                         <li><a href="artists.php">ARTISTS</a></li>
                         <li><a href="concerts.php">CONCERTS</a></li>
-                        <li><a href="">SEARCH</a></li>
+                        <li><a href="search.php">SEARCH</a></li>
                     </ul>
                 </div>
                 <div class="floatRight">
