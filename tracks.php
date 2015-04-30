@@ -45,12 +45,11 @@
                     echo '<tr><td><p>Rating</p></td></tr>';
 
                     $anyRatings = false;
-                    $userRatings = 0;
-                    $data = mysqli_query($con, "SELECT *, COUNT(*) AS ratings FROM userratings WHERE trackID = $id");
+                    $data = mysqli_query($con, "SELECT *, COUNT(*) AS ratings, SUM(userRating) AS userRatings FROM userratings WHERE trackID = $id");
 
                     while($row = mysqli_fetch_array($data)){ 
                       $ratingsUsername = $row['username'];
-                      $userRatings += $row['userRating'];
+                      $userRatings = $row['userRatings'];
                       $anyRatings = true;
                       $ratings = $row['ratings'];
                     }
