@@ -61,6 +61,7 @@ transform: rotate(360deg);
     background-color:#3498db;
     border-radius:15px;
 }
+
 #header .register:hover{
     background-color:#2980b9;
     color:#fff;
@@ -356,6 +357,12 @@ transform: rotate(360deg);
     transform:translateX(0);
     visibility: visible;
 }
+#header .register{
+    border-radius: 0;
+}
+#header .register:hover{
+    border-radius:0;
+}
 .clear{
     clear:both;
 }
@@ -376,12 +383,16 @@ transform: rotate(360deg);
 #header ul li {
     display: block;
     width:100%;
-    border:3px solid black;
+    border:1px solid black;
+}
+#header ul li a:hover{
+    background-color:#3498db;
+    color:#fff;
+    border-radius: 0;
 }
 
 #header ul li a {
     display: block;
-    
 }
 .floatRight, .floatLeft{
    margin:0;
