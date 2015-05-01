@@ -458,6 +458,7 @@ transform: rotate(360deg);
     color:#3498db;
     font-weight: bold;
     text-decoration: none;
+    color:#fff;
 }
 .formContainer a:hover{
     color:#fff;
