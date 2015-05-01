@@ -15,6 +15,62 @@
                       header("Location: tracks.php");
                       die();
                     }
+                    if($_POST){
+                      $errorMessages = [];
+
+                      $expected = array('comment',);
+                      $required = array('comment');
+
+                      foreach($expected as $field) {
+                        $fieldValue = trim($_POST[$field]);
+                        if(empty($fieldValue)){
+                          if(isRequired($field, $required)) {
+                              $errorMessages[$field] = ucfirst($field).' is a required field';
+                          }
+                        }else{
+                          if($msg = validateFormField($fieldValue, $field)) {
+                              $errorMessages[$field] = $msg;
+                          }
+                        }
+                      }
+
+                      $alreadyCommented = false;
+
+                      $data = mysqli_query($con, "SELECT username FROM usercomments WHERE username = '$username' AND trackID = $id");
+
+                      while($row = mysqli_fetch_array($data)){
+                        $alreadyCommented = true;
+                      }
+
+                      if($alreadyCommented){
+                        $errorMessages['form'] = 'You can only comment once.';
+                      }
+
+                      if(!$errorMessages){
+                        $con = mysqli_connect($addr, $user, $password, $db);
+                        $comment = sanitise(trim($_POST['comment']));
+
+                        mysqli_query($con, "INSERT INTO usercomments (username, trackID, userCommentVal) VALUES('$username', '$id', '$comment')") 
+                        or die("Query adding new comment failed:" . mysqli_error($con)); 
+
+                        echo "Comment added successfully. Please wait for redirection.";
+                        header("Location: tracks.php?id=".$id."&success");                          
+
+                      }else{
+                        echo '<div class="tipE">';
+                        foreach($errorMessages as $error){
+                          echo '<p>'.$error.'</p>';
+                        }
+                        echo '</div>';
+                      }
+                    }
+
+                    if(isset($_GET['success'])){
+                      echo '<div class="tipS">';
+                      echo '<p>Your comment has been added successfully.</p>';
+                      echo '</div>';
+                    }
+
                     $data = mysqli_query($con, "SELECT genres.genreName, tracks.chartPosition, tracks.releaseDate, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                           AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                           INNER JOIN genres USING (genreID)
@@ -85,7 +141,7 @@
                                  <td>Comment:</td>
                              </tr>
                              <tr>
-                               <td><textarea name="commentVal" id="commentTxtAra" cols="50" rows="5"></textarea></td>
+                               <td><textarea name="comment" id="commentTxtAra" cols="50" rows="5" placeholder="Your comment"></textarea></td>
                              </tr>
                              <tr>
                                  <td><button class="loginRegisterButton">COMMENT</button></td>
