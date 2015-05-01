@@ -23,7 +23,7 @@
                           GROUP BY tracks.trackID
                           ORDER BY trackTitle ASC LIMIT 1");
 
-                    echo '<a class="backLink" href="tracks.php">< Back</a>';
+                    echo '<a href="tracks.php">< Back</a>';
 
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle'];

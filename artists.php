@@ -18,7 +18,7 @@
                     $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists WHERE artistID = '$id' 
                           ORDER BY artistName ASC LIMIT 1");
 
-                    echo '<a style="padding:15px;" href="artists.php">< Back</a>';
+                    echo '<a class="backLink" href="artists.php">< Back</a>';
 
                     while($row = mysqli_fetch_array($data)){ 
                       $artistName = $row['artistName'];
