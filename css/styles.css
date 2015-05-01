@@ -562,4 +562,9 @@ transform: rotate(360deg);
     padding-left:20px;
     margin:10px;
 }
-
+.loginForm{
+    margin:0px;
+}
+.loginForm td{
+    text-align:left;
+}

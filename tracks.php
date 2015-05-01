@@ -80,7 +80,7 @@
                     if(loggedIn()){
                       ?>
                       <form class="loginForm" action="#" method="post">
-                         <table>
+                         <table class="loginForm">
                               <tr>
                                  <td>Comment:</td>
                              </tr>
