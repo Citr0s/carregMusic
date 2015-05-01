@@ -53,7 +53,6 @@
                           <div id="innerDiv" class="innerDiv">
                           <a href="?id='.$artistID.'" class="artistHoverLinks">'.$artistName.'</a>
                           </div>
-                          <p class="artistName">'.$artistName.'</p>
                           </div>';
                     }
 
