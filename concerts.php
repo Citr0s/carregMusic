@@ -23,7 +23,7 @@
                                                 WHERE concertID = $id
                                                 ORDER BY concertName ASC LIMIT 1");
 
-                    echo '<a style="padding:15px;" href="concerts.php">< Back</a>';
+                    echo '<a class="backLink" href="concerts.php">< Back</a>';
 
                     while($row = mysqli_fetch_array($data)){ 
                       $concertID = $row['concertID'];
