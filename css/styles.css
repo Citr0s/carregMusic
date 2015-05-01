@@ -551,6 +551,7 @@ transform: rotate(360deg);
 }
 .backLink{
     float:left;
+    text-align:left;
     padding-left:20px;
     margin:10px;
 }
