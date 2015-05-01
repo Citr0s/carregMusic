@@ -50,7 +50,7 @@
                       
                       echo ' <div id="topDiv" class="topDiv">
                           <img src="css/artistPictures/'. $artistPicture . '  " "class="imageToHover  />
-                          <div id="innerDiv" class="innerDiv">
+                          <div class="innerDiv">
                           <a href="?id='.$artistID.'" class="artistHoverLinks">'.$artistName.'</a>
                           </div>
                           </div>';
