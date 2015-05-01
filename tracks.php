@@ -77,6 +77,26 @@
                       echo '</table><div class="tipC class"><p><span class="usernameC">No comments found.</span></p></div><table>';
                     }
 
+                    if(loggedIn()){
+                      ?>
+                      <form class="loginForm" action="#" method="post" style="padding:15px;">
+                         <table>
+                              <tr>
+                                 <td>Comment:</td>
+                             </tr>
+                             <tr>
+                               <td><textarea name="commentVal" id="commentTxtAra" cols="50" rows="5"></textarea></td>
+                             </tr>
+                             <tr>
+                                 <td><button class="loginRegisterButton">COMMENT</button></td>
+                             </tr>
+                         </table>
+                      </form>
+                      <?php
+                    }else{
+                      echo '</table><div class="tipC class"><p><span class="usernameC"><a href="login.php">Login</a> to add comments.</span></p></div><table>';
+                    }
+
                   }else{
                     $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
                     $perP = 10; //records per page
