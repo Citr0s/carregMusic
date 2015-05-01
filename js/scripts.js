@@ -97,7 +97,7 @@ function passwordVal () {
 //        canSubmit = false;  
 //    }
 
-    if(Password1.value !== PasswordCheck.value){
+    if(Password1.value !== PasswordCheck.value || Password1.value == ""){
         Password1.setAttribute("class", "notValid");
         PasswordCheck.setAttribute("class", "notValid");;
         addErrorMessage(3);
