@@ -48,7 +48,7 @@
                       $artistID = $row['artistID'];
 
                       
-                      echo ' <div id="topDiv" class="topDiv">
+                      echo ' <div class="topDiv">
                           <img src="css/artistPictures/'. $artistPicture . '  " "class="imageToHover  />
                           <div class="innerDiv">
                           <a href="?id='.$artistID.'" class="artistHoverLinks">'.$artistName.'</a>
