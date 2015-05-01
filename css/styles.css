@@ -528,7 +528,7 @@ transform: rotate(360deg);
 
 .artistHoverLinks:hover{
     opacity: 0.8;
-    background-color:rgba(0, 0, 0, 0.68);/*must be rgba otherwise parent element opaques the link*/
+    background-color:rgba(0, 0, 0, 1);/*must be rgba otherwise parent element opaques the link*/
 }
 
 .usernameC{
