@@ -132,14 +132,14 @@ function addErrorMessage (i){
 
             var newElement = document.createElement("p");
             newElement.setAttribute("class", "appendedError");
-            newElement.setAttribute("id", "remove" + i);
+            newElement.setAttribute("id", "remove" + [i]);
             newElement.innerHTML=errorText;
             formField[i].appendChild(newElement);
 }//need to know both child and parent element to remove, that why id is created above with element.
 
 function removeErrorMessage (i){
-    if(document.getElementById("remove" + i)!=null){
-    var child = document.getElementById("remove" + i);
+    if(document.getElementById("remove" + [i])!=null){
+    var child = document.getElementById("remove" + [i]);
     var parent = formField[i];
     parent.removeChild(child);
     }
