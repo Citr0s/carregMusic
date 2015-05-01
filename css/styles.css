@@ -399,7 +399,7 @@ transform: rotate(360deg);
 }
 .topDiv{
     height:auto;
-}/*findthis*/
+}
 .topDiv{
     height:125px;
 }
@@ -435,6 +435,15 @@ transform: rotate(360deg);
 #mainContent h2{
     width:90%;    
     }
+.formContainer table {
+    width:80%;
+    margin:auto;
+}
+.formContainer table td{
+    display: block;
+    width:100%;
+    text-align: center;
+}
 }/*end of media query 500px*/
 #searchLarge{
     width:955px;
