@@ -368,6 +368,11 @@ transform: rotate(360deg);
 .bigH2{
     text-align: center;
 }
+h2{
+    min-width: none;
+    min-height: none;
+    width:100%;
+}
 .tipEmpty, .tipC, .tipP, .tipE, .tipS{
     text-align: center;
 }
@@ -590,16 +595,12 @@ transform: rotate(360deg);
     padding-left:20px;
     margin:10px;
 }
-.loginForm{
-   
-}
 .loginForm td{
     text-align:left;
 }
 .loginForm textarea{
     color:#000;
 }
-
 .floatLeft p, #footerLogo, #footerImgContainer{
     float:left;
 }
