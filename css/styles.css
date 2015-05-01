@@ -226,6 +226,7 @@ transform: rotate(360deg);
     margin:62px 0px;
     color:#fff;
     background-color:#000;
+    text-align: center;
 }
 .formContainer h2 {
     font-size: 5em;
