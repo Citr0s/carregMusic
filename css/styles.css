@@ -205,6 +205,11 @@ transform: rotate(360deg);
 #footer p{
     padding-top:3px;
     padding-left:10px;
+    width:100px;
+}
+
+.socialImg{
+    margin:0 5px;
 }
 .albumCoverImage {
     display: inline-block;
@@ -593,4 +598,12 @@ transform: rotate(360deg);
 }
 .loginForm textarea{
     color:#000;
+}
+
+.floatLeft p, #footerLogo, #footerImgContainer{
+    float:left;
+}
+#footerImgContainer{
+    float:right;
+    width:150px;
 }
