@@ -231,14 +231,12 @@ transform: rotate(360deg);
 .formContainer td{
     text-align: left;
 }
-
 .formContainer h2 {
     font-size: 5em;
     padding:15px;
     font-weight:200;
     margin:0px;
 }
-
 .formContainer p {
     margin-left:10px;
 }
@@ -398,6 +396,18 @@ transform: rotate(360deg);
 }
 .artistName{
     padding:15px;
+}
+.topDiv{
+    height:auto;
+}/*findthis*/
+.topDiv{
+    height:125px;
+}
+.artistHoverLinks{
+    height:200px;
+}
+.topDiv img{
+    height:200px;
 }
 #mainContent .top5albumCover p{
     width:100%;
