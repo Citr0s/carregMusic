@@ -568,3 +568,6 @@ transform: rotate(360deg);
 .loginForm td{
     text-align:left;
 }
+.loginForm textarea{
+    color:#000;
+}
