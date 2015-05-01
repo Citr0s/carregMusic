@@ -459,9 +459,6 @@ transform: rotate(360deg);
     font-weight: bold;
     text-decoration: none;
 }
-.formContainer a:hover{
-    color:#fff;
-}
 
 /*Artists Page*/
 .topDiv{
