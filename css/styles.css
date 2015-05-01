@@ -18,6 +18,9 @@ select{
     margin:0 auto;
     width:100%;
 }
+#firstMenuContainer{
+    height: 100px;
+}
 #header{
     margin:0 auto;
     width:100%;
@@ -44,7 +47,7 @@ select{
 transform: rotate(360deg);
 #header ul{
     -webkit-padding-start: 0px;
-    margin-left:15px;
+
 }
 #header li{
     display:inline-block;
