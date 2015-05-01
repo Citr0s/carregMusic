@@ -258,7 +258,7 @@ transform: rotate(360deg);
     text-align:right;
 }
 .loginForm .tdR{
-    text-align:left;
+    text-align:center;
 }
 .loginForm .tdR select{
     width:215px;
@@ -306,6 +306,9 @@ transform: rotate(360deg);
     width:230px;
     margin:0 10px 10px 10px;
 }
+.tipEmpty, .tipC, .tipP, .tipE, .tipS{
+    text-align: left;
+}
 .tipEmpty{
     margin:15px;
     text-align:center;
@@ -319,6 +322,7 @@ transform: rotate(360deg);
     border:1px solid #333;
     background-color:#222;
     margin:0px 5px;
+    text-align: left;
 }
 .tipE{
     border:1px solid #e74c3c;
@@ -359,6 +363,19 @@ transform: rotate(360deg);
 .bigH2{
     text-align: center;
 }
+.tipEmpty, .tipC, .tipP, .tipE, .tipS{
+    text-align: center;
+}
+.loginForm{
+    margin:auto;
+}
+.loginRegisterButton{
+    float: none;
+    margin:auto;
+    width:200px;
+    margin-top:10px;
+    }
+    
 #sidebar h2{
     max-width: 90%;
     min-width: none;
@@ -569,7 +586,7 @@ transform: rotate(360deg);
     margin:10px;
 }
 .loginForm{
-    margin:0px;
+   
 }
 .loginForm td{
     text-align:left;
