@@ -469,12 +469,11 @@ transform: rotate(360deg);
     height:200px;
     position: relative;
     margin:10px;
-    border:2px solid #242424;
     display: inline-block;
 }
 .topDiv img{
     width:100%;
-    height:100%;
+    max-height: 100%;
     position: absolute;
     top:0;
     left:0;
@@ -495,13 +494,12 @@ transform: rotate(360deg);
     opacity: 0;
     position: relative;
     overflow: hidden;
-    color:#fff;
+    color:#3498db;
 }
 
 .artistHoverLinks:hover{
-    color:#fff;
     opacity: 0.8;
-    background-color:rgba(46, 39, 39, 0.49);/*must be rgba otherwise parent element opaques the link*/
+    background-color:rgba(0, 0, 0, 0.68);/*must be rgba otherwise parent element opaques the link*/
 }
 
 .usernameC{
