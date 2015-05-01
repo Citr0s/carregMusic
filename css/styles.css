@@ -347,6 +347,10 @@ transform: rotate(360deg);
 
 @media all and (max-width: 805px) {
   
+#sidebar h2{
+    max-width: 90%;
+    min-width: none;
+}
 #responsiveMenuContainer {
     width:300px;
     transform:translateX(-100%);
@@ -441,7 +445,6 @@ transform: rotate(360deg);
     float:none;
     width:90%;
     margin:auto;
-    border:3px solid #888;
 }
 #mainContent h2{
     width:90%;    
@@ -455,6 +458,7 @@ transform: rotate(360deg);
     width:100%;
     text-align: center;
 }
+
 }/*end of media query 500px*/
 #searchLarge{
     width:955px;
