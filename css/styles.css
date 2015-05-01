@@ -408,7 +408,7 @@ transform: rotate(360deg);
 .floatRight, .floatLeft{
    margin:0;
    padding:0;
-   float: none;
+   float: left;
 }
 .top5albumCover {
     text-align: center;
