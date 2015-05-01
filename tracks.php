@@ -15,10 +15,10 @@
                       header("Location: tracks.php");
                       die();
                     }
-                    if($_POST){
+                    if(isset($_POST['comment'])){
                       $errorMessages = [];
 
-                      $expected = array('comment',);
+                      $expected = array('comment');
                       $required = array('comment');
 
                       foreach($expected as $field) {
@@ -54,7 +54,7 @@
                         or die("Query adding new comment failed:" . mysqli_error($con)); 
 
                         echo "Comment added successfully. Please wait for redirection.";
-                        header("Location: tracks.php?id=".$id."&success");                          
+                        header("Location: tracks.php?id=".$id."&successC");                          
 
                       }else{
                         echo '<div class="tipE">';
@@ -65,9 +65,69 @@
                       }
                     }
 
-                    if(isset($_GET['success'])){
+                    if(isset($_POST['rating'])){
+                      $errorMessages = [];
+
+                      $expected = array('rating');
+                      $required = array('rating');
+
+                      foreach($expected as $field) {
+                        $fieldValue = trim($_POST[$field]);
+                        if(empty($fieldValue)){
+                          if(isRequired($field, $required)) {
+                              $errorMessages[$field] = ucfirst($field).' is a required field';
+                          }
+                        }else{
+                          if($msg = validateFormField($fieldValue, $field)) {
+                              $errorMessages[$field] = $msg;
+                          }
+                        }
+                      }
+
+                      $alreadyRated = false;
+
+                      $data = mysqli_query($con, "SELECT username FROM userratings WHERE username = '$username' AND trackID = $id");
+
+                      while($row = mysqli_fetch_array($data)){
+                        $alreadyRated = true;
+                      }
+
+                      if($alreadyRated){
+                        $errorMessages['form'] = 'You can only rate once.';
+                      }
+
+                      if(!$errorMessages){
+                        $con = mysqli_connect($addr, $user, $password, $db);
+                        $rating = sanitise(trim($_POST['rating']));
+
+                        if(!is_numeric($rating)){
+                          header("Location: tracks.php?id=".$id);
+                          die();
+                        }
+
+                        mysqli_query($con, "INSERT INTO userratings (username, trackID, userRating) VALUES('$username', '$id', '$rating')") 
+                        or die("Query adding new comment failed:" . mysqli_error($con)); 
+
+                        echo "Rating added successfully. Please wait for redirection.";
+                        header("Location: tracks.php?id=".$id."&successR");                          
+
+                      }else{
+                        echo '<div class="tipE">';
+                        foreach($errorMessages as $error){
+                          echo '<p>'.$error.'</p>';
+                        }
+                        echo '</div>';
+                      }
+                    }
+
+                    if(isset($_GET['successC'])){
                       echo '<div class="tipS">';
                       echo '<p>Your comment has been added successfully.</p>';
+                      echo '</div>';
+                    }
+                    if(isset($_GET['successR'])){
+                      echo '<div class="tipS">';
+                      echo '<p>Your rating has been added successfully.</p>';
                       echo '</div>';
                     }
 
@@ -116,6 +176,22 @@
                       echo '<tr><td><p class="rating">'.$AvrRating.'<span class="ratingOutOf">/5</span></p></td></tr>';
                     }
 
+                    $alreadyRated = false;
+
+                    $data = mysqli_query($con, "SELECT username FROM userratings WHERE username = '$username' AND trackID = $id");
+
+                    while($row = mysqli_fetch_array($data)){
+                      $alreadyRated = true;
+                    }
+
+                    if(loggedIn() && !$alreadyRated){
+                      echo '<tr><td><form action="#" method="post"><select name="rating">';
+                      for($i = 1; $i <= 5; $i++){
+                        echo '<option value="'.$i.'">'.$i.'</option>';
+                      }
+                      echo '</select></td><td><button class="loginRegisterButton">RATE</button></form> </td></tr>';
+                    }
+
                     echo '<tr><td><p>Comments</p></td></tr>';
 
                     $anyComments = false;
@@ -133,7 +209,16 @@
                       echo '</table><div class="tipC class"><p><span class="usernameC">No comments found.</span></p></div><table>';
                     }
 
+                    $alreadyCommented = false;
+
+                    $data = mysqli_query($con, "SELECT username FROM usercomments WHERE username = '$username' AND trackID = $id");
+
+                    while($row = mysqli_fetch_array($data)){
+                      $alreadyCommented = true;
+                    }
+
                     if(loggedIn()){
+                      if(!$alreadyCommented){
                       ?>
                       <form class="loginForm" action="#" method="post">
                          <table class="loginForm">
@@ -149,6 +234,7 @@
                          </table>
                       </form>
                       <?php
+                      }
                     }else{
                       echo '</table><div class="tipC class"><p><span class="usernameC"><a href="login.php">Login</a> to add comments.</span></p></div><table>';
                     }
