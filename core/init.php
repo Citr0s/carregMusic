@@ -5,7 +5,7 @@
 	define('passwdMaxLength', 32);
 	define('nicknameMaxLength', 25);
 	define('emailMaxLength', 50);
-	define('minLength', 5);
+	define('minLength', 3);
 	define('sexMaxValue', 2);
 	define('genreMaxValue', 20);
 	define('countryMaxValue', 11);
