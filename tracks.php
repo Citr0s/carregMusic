@@ -176,20 +176,22 @@
                       echo '<tr><td><p class="rating">'.$AvrRating.'<span class="ratingOutOf">/5</span></p></td></tr>';
                     }
 
-                    $alreadyRated = false;
+                    if(loggedIn()){
+                      $alreadyRated = false;
 
-                    $data = mysqli_query($con, "SELECT username FROM userratings WHERE username = '$username' AND trackID = $id");
+                      $data = mysqli_query($con, "SELECT username FROM userratings WHERE username = '$username' AND trackID = $id");
 
-                    while($row = mysqli_fetch_array($data)){
-                      $alreadyRated = true;
-                    }
-
-                    if(loggedIn() && !$alreadyRated){
-                      echo '<tr><td><form action="#" method="post"><select name="rating">';
-                      for($i = 1; $i <= 5; $i++){
-                        echo '<option value="'.$i.'">'.$i.'</option>';
+                      while($row = mysqli_fetch_array($data)){
+                        $alreadyRated = true;
                       }
-                      echo '</select></td><td><button class="loginRegisterButton">RATE</button></form> </td></tr>';
+
+                      if(!$alreadyRated){
+                        echo '<tr><td><form action="#" method="post"><select name="rating">';
+                        for($i = 1; $i <= 5; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        echo '</select></td><td><button class="loginRegisterButton">RATE</button></form> </td></tr>';
+                      }
                     }
 
                     echo '<tr><td><p>Comments</p></td></tr>';
@@ -211,13 +213,14 @@
 
                     $alreadyCommented = false;
 
-                    $data = mysqli_query($con, "SELECT username FROM usercomments WHERE username = '$username' AND trackID = $id");
-
-                    while($row = mysqli_fetch_array($data)){
-                      $alreadyCommented = true;
-                    }
-
                     if(loggedIn()){
+
+                      $data = mysqli_query($con, "SELECT username FROM usercomments WHERE username = '$username' AND trackID = $id");
+
+                      while($row = mysqli_fetch_array($data)){
+                        $alreadyCommented = true;
+                      }
+
                       if(!$alreadyCommented){
                       ?>
                       <form class="loginForm" action="#" method="post">
