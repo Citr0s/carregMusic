@@ -228,6 +228,10 @@ transform: rotate(360deg);
     background-color:#000;
     text-align: center;
 }
+.formContainer td{
+    text-align: left;
+}
+
 .formContainer h2 {
     font-size: 5em;
     padding:15px;
