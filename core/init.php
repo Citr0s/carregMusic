@@ -9,6 +9,7 @@
 	define('sexMaxValue', 2);
 	define('genreMaxValue', 20);
 	define('countryMaxValue', 11);
+	define('commentMaxLength', 120);
 
 	$addr = "localhost";
 	$user = "l017063e";

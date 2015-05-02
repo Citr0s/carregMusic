@@ -33,7 +33,7 @@
                         <?php
                             if(loggedIn()){
                                 echo '
-                                    <li><a href="profile.php?'.$username.'">'.$username.'</a></li>
+                                    <li><a href="profile.php?'.$username.'&activity">'.$username.'</a></li>
                                     <li><a href="logout.php">Logout</a></li>
                                     ';
                             }else{

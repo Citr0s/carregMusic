@@ -86,6 +86,11 @@ function validateFormField($value, $field) {
                 $errorMessage = 'Please choose your favorite genre from dropdown list.';
             }
             break;
+        case 'comment':
+            if(!validStringMaxLength($value, minLength, commentMaxLength)) {
+                $errorMessage = 'Comment must have between '.minLength.' and '.commentMaxLength.' characters and must be a string';
+            }
+            break; 
     }
     return $errorMessage;
 }

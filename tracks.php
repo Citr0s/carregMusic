@@ -229,7 +229,7 @@
                                  <td>Comment:</td>
                              </tr>
                              <tr>
-                               <td><textarea name="comment" id="commentTxtAra" cols="50" rows="5" placeholder="Your comment"></textarea></td>
+                               <td><textarea name="comment" id="commentTxtAra" cols="50" rows="5" placeholder="Your comment"><?php if($_POST){HtmlText($_POST['comment']);} ?></textarea></td>
                              </tr>
                              <tr>
                                  <td><button class="loginRegisterButton">COMMENT</button></td>

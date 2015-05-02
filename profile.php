@@ -89,6 +89,25 @@
             <div class="formContainer">
                 <h2 class="bigH2"><?php echo $username; ?></h2>
                 <?php
+                  if(isset($_GET['del'])){
+                    $id = sanitise(trim($_GET['del']));
+                    if(!is_numeric($id)){
+                      header("Location: artists.php");
+                      die();
+                    }
+
+                    $data = mysqli_query($con, "SELECT * FROM `usercomments` WHERE username = '$username' && trackID = $id LIMIT 1") or header("Location: index.php");
+                    
+                    $row = mysqli_fetch_array($data);
+
+                    if($row['username'] != $username){
+                      header("Location: index.php");
+                      die();
+                    }else{
+                      mysqli_query($con, "DELETE FROM `usercomments` WHERE trackID = $id AND username = '$username'");
+                      header("Location: profile.php?".$username."&activity&successD");
+                    }
+                  }
                   if($_POST){
                     echo '<div class="tipE">';
                     foreach($errorMessages as $error){
@@ -110,6 +129,33 @@
                     <li><a href="?<?php echo $username; ?>&close" <?php if(isset($_GET['close'])){ echo 'class="selected"';}?>>CLOSE</a></li>
                   </ul>
                 </div>
+                <?php if(isset($_GET['activity'])){ ?>
+                  <table><tr><td><p>Your Comments</p></td></tr>
+                <?php
+                  $anyComments = false;
+                  $data = mysqli_query($con, "SELECT usercomments.username, usercomments.trackID, usercomments.userCommentVal, tracks.chartPosition, tracks.releaseDate, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                                              AS artists, tracks.coverPicture FROM tracks
+                                              INNER JOIN usercomments USING (trackID)
+                                              INNER JOIN trackArtists USING (trackID)
+                                              INNER JOIN artists USING (artistID) WHERE username = 'test2'
+                                              GROUP BY tracks.trackID");
+
+                    while($row = mysqli_fetch_array($data)){ 
+                      $commentUsername = $row['username'];
+                      $userCommentVal = $row['userCommentVal'];
+                      $trackTitle = $row['trackTitle'];
+                      $trackArtist = $row['artists'];
+                      $coverPicture = $row['coverPicture'];
+                      $trackID = $row['trackID'];
+                      $anyComments = true;
+
+                      echo '</table><div class="tipC"><div class="floatRight" style="margin:5px;"><a href="?del='.$trackID.'">[x]</a></div><p><A href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'.$coverPicture.'" width="25" /></a> '.$userCommentVal.' - <span class="usernameC">'.$trackArtist.' - '.$trackTitle.'</span></p></div><table>';
+                    }
+
+                    if(!$anyComments){
+                      echo '</table><div class="tipC class"><p><span class="usernameC">No comments found.</span></p></div><table>';
+                    }
+                }elseif(isset($_GET['edit'])){ ?>
                 <form class="loginForm" action="#" method="post">
                    <table>
                         <th colspan="2" align="left">Update Your Information</th>
@@ -145,6 +191,7 @@
                        </tr>
                    </table>
                 </form>
+                <?php } ?>
             </div>
         </div>
 <?php include_once 'includes/footer.php'; ?>
