@@ -120,7 +120,7 @@ transform: rotate(360deg);
     font-weight:500;
 }
 #mainContent #top5albums{
-    padding:5px;
+    padding:3px;
 }
 #mainContent .top5albumCover{
     margin-bottom:5px;
@@ -366,6 +366,32 @@ transform: rotate(360deg);
     padding-left:300px;
 }
 
+@media all and (max-width: 1018px) {
+    #mainContent{
+        display: block;
+        float:none;
+        margin:auto;
+        overflow:hidden;
+    }
+    #sidebar{
+        display: block;
+        width:70%;
+        max-width: 600px;
+        min-width: 600px;
+        float:none;
+        margin:0 auto 60px auto;
+        overflow:hidden;
+    }
+    #mainContent h2, #sidebar h2{
+        width:100%;
+        max-width: none;
+    }
+    .concertBox{
+        float:none;
+        display:border:3px solid red;
+    }
+}
+
 @media all and (max-width: 805px) {
 .bigH2{
     text-align: center;
@@ -457,12 +483,13 @@ h2{
     height:200px;
 }
 #mainContent .top5albumCover p{
-    width:100%;
+    width:60%;
     text-align: left;
     margin:15px 0 0 0;
 }
  #top5albums{
     width:100%;
+    padding:0;
 }
 #mainContent .top5albumCover img{
     width:200px;
@@ -527,6 +554,11 @@ h2{
 }
 
 }/*end of media query 500px*/
+@media all and (max-width: 450px) {
+    .concertImg{
+        margin:auto;
+    }
+}
 #searchLarge{
     width:955px;
     padding:5px;
@@ -667,20 +699,3 @@ h2{
     border-bottom:none;
 }
 
-@media all and (max-width: 1018px) {
-    #mainContent{
-        border:3px solid red;
-        display: block;
-        float:none;
-        margin:auto;
-    }
-    #sidebar{
-        border:3px solid red;
-        display: block;
-        width:70%;
-        max-width: 600px;
-        min-width: 600px;
-        float:none;
-        margin:auto;
-    }
-}
