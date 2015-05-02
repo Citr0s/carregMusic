@@ -510,7 +510,7 @@ h2{
     display:inline-block;
     margin:5px;
 }
-.selected{
+.selectedP{
     border-bottom:1px solid #fff;
 }
 .usernameC{

@@ -275,7 +275,7 @@
                     for($i = 1; $i <= $ps; $i++){
                       echo '<div class="pagination"><a href="?p='.$i.'"';
                       if($p === $i){
-                        echo 'class="selected"'; 
+                        echo 'class="selectedP"'; 
                       }
                       echo '>'.$i.'</a></div>';
                     }
