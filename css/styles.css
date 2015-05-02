@@ -609,3 +609,24 @@ h2{
     width:150px;
     margin-right:20px;
 }
+.profileMenu{
+    border-bottom:2px solid #3498db;
+    text-align:left;
+    margin-bottom:5px;
+}
+.profileMenu ul{
+    margin-bottom:0px;
+}
+.profileMenu li{
+    list-style:none;
+    display:inline-block;
+    padding:5px;
+}
+.profileMenu a{
+    color:#fff;
+    padding:5px 10px;
+}
+.selected{
+    background-color:#3498db;
+    border-bottom:none;
+}

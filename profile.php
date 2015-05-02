@@ -103,6 +103,13 @@
                     echo '<div class="tipP"><p>Welcome to your profile. Here you can edit or close your account.</p></div>';
                   }
                 ?>
+                <div class="profileMenu">
+                  <ul>
+                    <li><a href="?<?php echo $username; ?>&activity" <?php if(isset($_GET['activity']) || (!isset($_GET['edit'])) && !isset($_GET['close'])){ echo 'class="selected"';}?>>ACTIVITY</a></li>
+                    <li><a href="?<?php echo $username; ?>&edit" <?php if(isset($_GET['edit'])){ echo 'class="selected"';}?>>EDIT</a></li>
+                    <li><a href="?<?php echo $username; ?>&close" <?php if(isset($_GET['close'])){ echo 'class="selected"';}?>>CLOSE</a></li>
+                  </ul>
+                </div>
                 <form class="loginForm" action="#" method="post">
                    <table>
                         <th colspan="2" align="left">Update Your Information</th>
