@@ -145,7 +145,7 @@ transform: rotate(360deg);
     color:#000;
 }
 #sidebar h2{
-    width:100%;
+    width:90%;
     max-width:365px;
     min-width:365px;
     background-color:#ccc;
@@ -388,7 +388,7 @@ h2{
     
 #sidebar h2{
     max-width: 90%;
-    min-width: none;
+    min-width: 300px;
 }
 #responsiveMenuContainer {
     width:300px;
@@ -459,14 +459,16 @@ h2{
     text-align: left;
     margin:15px 0 0 0;
 }
-
+ #top5albums{
+    width:100%;
+}
 #mainContent .top5albumCover img{
     width:200px;
     height:200px;
 }
 #sidebar{
     float:none;
-    min-width: none;
+    min-width: 300px;
     max-width: none;
     width:90%;
     margin:0 auto 60px auto;
@@ -476,6 +478,8 @@ h2{
     float:none;
     width:90%;
     margin:auto;
+    max-width:none;
+    min-width: none;
 }
 #mainContent h2{
     width:90%;    
