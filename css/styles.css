@@ -666,3 +666,21 @@ h2{
     background-color:#3498db;
     border-bottom:none;
 }
+
+@media all and (max-width: 1018px) {
+    #mainContent{
+        border:3px solid red;
+        display: block;
+        float:none;
+        margin:auto;
+    }
+    #sidebar{
+        border:3px solid red;
+        display: block;
+        width:70%;
+        max-width: 600px;
+        min-width: 600px;
+        float:none;
+        margin:auto;
+    }
+}
