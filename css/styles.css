@@ -367,6 +367,7 @@ transform: rotate(360deg);
 }
 
 @media all and (max-width: 1018px) {
+
     #mainContent{
         display: block;
         float:none;
@@ -388,11 +389,29 @@ transform: rotate(360deg);
     }
     .concertBox{
         float:none;
-        display:border:3px solid red;
+
     }
 }
 
 @media all and (max-width: 805px) {
+    #commentTxtAra{
+    float:none;
+    width:100%;
+    margin:auto;
+    margin:0;
+    padding:0;
+}
+#commentButton{
+    float:none;
+    width:120px;
+    height:40px;
+    margin:0;
+    padding:0;
+}
+#artistComments{
+    width:400px;
+    margin:0auto;
+}
 .bigH2{
     text-align: center;
 }
@@ -412,8 +431,7 @@ h2{
     margin:auto;
     width:200px;
     margin-top:10px;
-    }
-    
+}    
 #sidebar h2{
     max-width: 90%;
     min-width: 300px;
@@ -423,7 +441,6 @@ h2{
     transform:translateX(-100%);
     visibility: hidden;
 }
-
 .showMenu #responsiveMenuContainer{
     transform:translateX(0);
     visibility: visible;
@@ -698,4 +715,23 @@ h2{
     background-color:#3498db;
     border-bottom:none;
 }
+#rateButton{
+    display: block;
 
+}
+#buttonTd{
+    display: block;
+    float:left;
+    margin:20px 0;
+}
+#buttonTd button{
+    width:120px;
+    height:40px;
+}
+#ratingSelect{
+    display:block;
+    margin:10px 0;
+}
+#commentButton{
+    float:left;
+}

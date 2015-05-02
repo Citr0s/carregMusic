@@ -186,11 +186,11 @@
                       }
 
                       if(!$alreadyRated){
-                        echo '<tr><td><form action="#" method="post"><select name="rating">';
+                        echo '<tr><td id="ratingSelect"><form action="#" method="post"><select name="rating">';
                         for($i = 1; $i <= 5; $i++){
                           echo '<option value="'.$i.'">'.$i.'</option>';
                         }
-                        echo '</select></td><td><button class="loginRegisterButton">RATE</button></form> </td></tr>';
+                        echo '</select></td><td id="buttonTd"><button id="rateButton" class="loginRegisterButton">RATE</button></form> </td></tr>';
                       }
                     }
 
@@ -224,15 +224,15 @@
                       if(!$alreadyCommented){
                       ?>
                       <form class="loginForm" action="#" method="post">
-                         <table class="loginForm">
+                         <table id="artistComments" class="loginForm">
                               <tr>
                                  <td>Comment:</td>
                              </tr>
                              <tr>
-                               <td><textarea name="comment" id="commentTxtAra" cols="50" rows="5" placeholder="Your comment"><?php if($_POST){HtmlText($_POST['comment']);} ?></textarea></td>
+                               <td id="commentTd"><textarea name="comment" id="commentTxtAra" cols="50" rows="5" placeholder="Your comment"><?php if($_POST){HtmlText($_POST['comment']);} ?></textarea></td>
                              </tr>
                              <tr>
-                                 <td><button class="loginRegisterButton">COMMENT</button></td>
+                                 <td><button id="commentButton" class="loginRegisterButton">COMMENT</button></td>
                              </tr>
                          </table>
                       </form>
