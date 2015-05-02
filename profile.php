@@ -22,7 +22,29 @@
     $errorMessages = array();
 
     if($_POST){
-      if(isset($_POST['password']) || isset($_POST['passwordCheck'])){
+
+      if(isset($_POST['passwordDel'])){
+
+        $password = sanitise(trim($_POST['passwordDel']));
+
+        $data = mysqli_query($con, "SELECT username, userPassword FROM users WHERE username = '$username' LIMIT 1");
+
+        while($row = mysqli_fetch_array($data)){
+          $usernameDB = $row['username'];
+          $passwordDB = $row['userPassword'];
+        }
+
+        if($username === $usernameDB && $password === $passwordDB){
+            mysqli_query($con, "UPDATE users SET userDeleted = 1 WHERE username = '$username'");
+
+            setcookie('username', '', time() - 3600, '/');    
+            session_destroy();
+
+            header('Location: index.php');
+        }else{
+            $errorMessages['form'] = 'Password incorrect';
+        }
+      }elseif(isset($_POST['password']) || isset($_POST['passwordCheck'])){
         $expected = array('password', 'passwordCheck');
         $required = array('password', 'passwordCheck');
 
@@ -144,6 +166,7 @@
                   }else{
                     echo '<div class="tipP"><p>Welcome to your profile. Here you can edit or close your account.</p></div>';
                   }
+
                 ?>
                 <div class="profileMenu">
                   <ul>
@@ -241,7 +264,23 @@
                        </tr>
                    </table>
                 </form>
-                <?php } ?>
+                <?php }elseif(isset($_GET['close'])){ ?>
+                <div class="tipP"><p>Please enter your password to close your account.</p></div>
+                <form class="loginForm" action="#" method="post">
+                   <table>
+                        <th colspan="2" align="left">Close your account</th>
+                       <tr>
+                           <td>Password:</td><td><input type="password" name="passwordDel" placeholder="password"></td>
+                        </tr>
+                       <tr>
+                           <td></td><td><button class="loginRegisterButton">CLOSE ACCOUNT</button></td>
+                       </tr>
+                   </table>
+                </form>
+                <?php }else{
+                    header("Location: profile.php?".$username."&activity");
+                    die();
+                  } ?>
             </div>
         </div>
 <?php include_once 'includes/footer.php'; ?>

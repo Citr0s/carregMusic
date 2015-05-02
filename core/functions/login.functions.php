@@ -97,15 +97,12 @@ function validateFormField($value, $field) {
 
 
 function loggedIn(){
-/*    $loggedIn = false;
+    $loggedIn = false;
 
     if(isset($_SESSION['username']) || isset($_COOKIE['username'])){
         $loggedIn = true;
     }
-
     return $loggedIn;
-*/
-	return (isset($_SESSION['username']) || isset($_COOKIE['username'])); //not tested yet, shoulda work
 }
 
 

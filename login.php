@@ -34,17 +34,22 @@
         $usernameDB = '';
         $passwordDB = '';
 
-        $data = mysqli_query($con, "SELECT username, userPassword FROM users WHERE username = '$username' LIMIT 1");
+        $data = mysqli_query($con, "SELECT username, userPassword, userDeleted FROM users WHERE username = '$username' LIMIT 1");
 
         while($row = mysqli_fetch_array($data)){
           $usernameDB = $row['username'];
           $passwordDB = $row['userPassword'];
+          $userDeleted = $row['userDeleted'];
         }
 
         if($username === $usernameDB && $password === $passwordDB){
+          if($userDeleted == 1){
+              header("Location: login.php?deleted");
+          }else{
             $_SESSION['username'] = $username;
             setcookie('username', $username, 3600, '/');
             header('Location: index.php');
+          }
         }else{
             $errorMessages['form'] = 'Username or Password incorrect';
         }
@@ -63,10 +68,16 @@
                       echo '<p>'.$error.'</p>';
                     }
                     echo '</div>';
-                  }else if($_GET){
-                    echo '<div class="tipS">';
-                      echo '<p>You have been registered successfully. You can now log in.</p>';
-                    echo '</div>';
+                  }elseif($_GET){
+                    if(isset($_GET['deleted'])){
+                      echo '<div class="tipE">';
+                        echo '<p>This account has been closed.</p>';
+                      echo '</div>';
+                    }else{
+                      echo '<div class="tipS">';
+                        echo '<p>You have been registered successfully. You can now log in.</p>';
+                      echo '</div>';
+                    }
                   }else{
                     echo '<div class="tipP"><p>To access extra features please <a href="register.php">register here</a>.</p></div>';
                   }
