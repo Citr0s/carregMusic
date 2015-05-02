@@ -192,7 +192,8 @@ transform: rotate(360deg);
     font-size:10px;
     padding-top:8px;
 }
-#footer img{
+
+#footerLogo img{
     height:40px;
     -webkit-transition: -webkit-transform .8s ease-in-out;
     transition: transform .8s ease-in-out;
@@ -207,9 +208,10 @@ transform: rotate(360deg);
     padding-left:10px;
     width:120px;
 }
-
 .socialImg{
-    margin:0 5px;
+    margin:5px;
+    width:25px;
+    height:25px;
 }
 .albumCoverImage {
     display: inline-block;
