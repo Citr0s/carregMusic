@@ -477,6 +477,7 @@ h2{
     clear:both;
     overflow:hidden;
 }
+
 #mainContent{
     float:none;
     width:90%;
@@ -488,16 +489,41 @@ h2{
 #mainContent h2, #sidebar h2{
     width:100%;
     min-width: none;
+    max-width:none;
     }
 
 .formContainer table {
     width:100%;
     margin:0;
 }
+.concertBox{
+   
+    width:90%;
+    margin:10px auto;
+    max-width: none;
+    min-width: none;
+    text-align: center;
+}
+.concertTxt{
+    display: block;
+    width:300px;
+    margin:0 auto;
+}
 .formContainer table td{
     display: block;
     width:100%;
     text-align: center;
+    margin: auto;
+}
+.concertImg{
+    display:block;
+    vertical-align: top;
+    width:200px;
+    height:200px;
+    margin:0 auto;
+}
+.concertTxt {
+    display:block;
 }
 
 }/*end of media query 500px*/
@@ -639,4 +665,22 @@ h2{
 .selected{
     background-color:#3498db;
     border-bottom:none;
+}
+
+@media all and (max-width: 1018px) {
+    #mainContent{
+        border:3px solid red;
+        display: block;
+        float:none;
+        margin:auto;
+    }
+    #sidebar{
+        border:3px solid red;
+        display: block;
+        width:70%;
+        max-width: 600px;
+        min-width: 600px;
+        float:none;
+        margin:auto;
+    }
 }
