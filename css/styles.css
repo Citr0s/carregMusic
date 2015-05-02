@@ -543,17 +543,17 @@ h2{
     margin: auto;
 }
 .concertImg{
-    display:block;
+    display:inline-block;
     vertical-align: top;
     width:200px;
     height:200px;
     margin:0 auto;
 }
 .concertTxt {
-    display:block;
+    display:inline-block;
 }
 
-}/*end of media query 500px*/
+}/*end of media query 800px*/
 @media all and (max-width: 450px) {
     .concertImg{
         margin:auto;
