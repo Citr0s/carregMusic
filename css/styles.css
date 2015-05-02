@@ -209,9 +209,9 @@ transform: rotate(360deg);
     width:120px;
 }
 .socialImg{
-    margin:5px;
     width:25px;
     height:25px;
+    padding:10px;
 }
 .albumCoverImage {
     display: inline-block;
