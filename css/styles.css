@@ -475,6 +475,7 @@ h2{
     width:90%;
     margin:0 auto 60px auto;
     clear:both;
+    overflow:hidden;
 }
 #mainContent{
     float:none;
@@ -482,10 +483,13 @@ h2{
     margin:auto;
     max-width:none;
     min-width: none;
+    overflow:hidden;
 }
-#mainContent h2{
-    width:90%;    
+#mainContent h2, #sidebar h2{
+    width:100%;
+    min-width: none;
     }
+
 .formContainer table {
     width:100%;
     margin:0;
