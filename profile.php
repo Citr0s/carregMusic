@@ -89,10 +89,10 @@
             <div class="formContainer">
                 <h2 class="bigH2"><?php echo $username; ?></h2>
                 <?php
-                  if(isset($_GET['del'])){
-                    $id = sanitise(trim($_GET['del']));
+                  if(isset($_GET['delC'])){
+                    $id = sanitise(trim($_GET['delC']));
                     if(!is_numeric($id)){
-                      header("Location: artists.php");
+                      header("Location: index.php");
                       die();
                     }
 
@@ -108,15 +108,38 @@
                       header("Location: profile.php?".$username."&activity&successD");
                     }
                   }
+                  if(isset($_GET['delR'])){
+                    $id = sanitise(trim($_GET['delR']));
+                    if(!is_numeric($id)){
+                      header("Location: index.php");
+                      die();
+                    }
+
+                    $data = mysqli_query($con, "SELECT * FROM `userratings` WHERE username = '$username' && trackID = $id LIMIT 1") or header("Location: index.php");
+                    
+                    $row = mysqli_fetch_array($data);
+
+                    if($row['username'] != $username){
+                      header("Location: index.php");
+                      die();
+                    }else{
+                      mysqli_query($con, "DELETE FROM `userratings` WHERE trackID = $id AND username = '$username'");
+                      header("Location: profile.php?".$username."&activity&successD");
+                    }
+                  }
                   if($_POST){
                     echo '<div class="tipE">';
                     foreach($errorMessages as $error){
                       echo '<p>'.$error.'</p>';
                     }
                     echo '</div>';
-                  }else if(isset($_GET['success'])){
+                  }elseif(isset($_GET['success'])){
                     echo '<div class="tipS">';
                       echo '<p>Your details have been saved successfully.</p>';
+                    echo '</div>';
+                  }elseif(isset($_GET['successD'])){
+                    echo '<div class="tipS">';
+                      echo '<p>Record deleted successfully.</p>';
                     echo '</div>';
                   }else{
                     echo '<div class="tipP"><p>Welcome to your profile. Here you can edit or close your account.</p></div>';
@@ -130,6 +153,33 @@
                   </ul>
                 </div>
                 <?php if(isset($_GET['activity'])){ ?>
+                  
+                  <table><tr><td><p>Your Ratings</p></td></tr>
+                <?php
+                  $anyComments = false;
+                  $data = mysqli_query($con, "SELECT userratings.username, userratings.trackID, userratings.userRating, tracks.chartPosition, tracks.releaseDate, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                                              AS artists, tracks.coverPicture FROM tracks
+                                              INNER JOIN userratings USING (trackID)
+                                              INNER JOIN trackArtists USING (trackID)
+                                              INNER JOIN artists USING (artistID) WHERE username = 'test2'
+                                              GROUP BY tracks.trackID");
+
+                    while($row = mysqli_fetch_array($data)){ 
+                      $commentUsername = $row['username'];
+                      $userRating = $row['userRating'];
+                      $trackTitle = $row['trackTitle'];
+                      $trackArtist = $row['artists'];
+                      $coverPicture = $row['coverPicture'];
+                      $trackID = $row['trackID'];
+                      $anyComments = true;
+
+                      echo '</table><div class="tipC"><div class="floatRight" style="margin:5px;"><a href="?delR='.$trackID.'">[x]</a></div><p><A href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'.$coverPicture.'" width="25" /></a> '.$userRating.' - <span class="usernameC">'.$trackArtist.' - '.$trackTitle.'</span></p></div><table>';
+                    }
+
+                    if(!$anyComments){
+                      echo '</table><div class="tipC class"><p><span class="usernameC">No ratings found.</span></p></div><table>';
+                    }
+                ?>                    
                   <table><tr><td><p>Your Comments</p></td></tr>
                 <?php
                   $anyComments = false;
@@ -149,7 +199,7 @@
                       $trackID = $row['trackID'];
                       $anyComments = true;
 
-                      echo '</table><div class="tipC"><div class="floatRight" style="margin:5px;"><a href="?del='.$trackID.'">[x]</a></div><p><A href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'.$coverPicture.'" width="25" /></a> '.$userCommentVal.' - <span class="usernameC">'.$trackArtist.' - '.$trackTitle.'</span></p></div><table>';
+                      echo '</table><div class="tipC"><div class="floatRight" style="margin:5px;"><a href="?delC='.$trackID.'">[x]</a></div><p><A href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'.$coverPicture.'" width="25" /></a> '.$userCommentVal.' - <span class="usernameC">'.$trackArtist.' - '.$trackTitle.'</span></p></div><table>';
                     }
 
                     if(!$anyComments){
