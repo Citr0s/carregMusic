@@ -6,7 +6,8 @@ var canSubmit = false;
 var errorMessage = document.createElement("p");
 errorMessage.setAttribute("class", "appendedError");
 var formField = document.getElementsByTagName("tr");
-
+var Password1 = document.getElementById("Password1");
+var PasswordCheck = document.getElementById("PasswordCheck");
 
 function addListener (object, event, functio) 
 {
