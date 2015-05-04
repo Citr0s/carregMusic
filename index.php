@@ -23,7 +23,7 @@
                     if(loggedIn()){
                         $con = mysqli_connect($addr, $user, $password, $db);
                         $neededTracks = 5;
-                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                     AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                     INNER JOIN trackArtists USING (trackID)
                                                     INNER JOIN artists USING (artistID) 
@@ -49,7 +49,7 @@
                         <?php
                         }
                         if($neededTracks > 0){
-                            $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                            $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                         AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                         INNER JOIN trackArtists USING (trackID)
                                                         INNER JOIN artists USING (artistID) 
@@ -75,7 +75,7 @@
                         }
                     }else{
                         $con = mysqli_connect($addr, $user, $password, $db);
-                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                     AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                     INNER JOIN trackArtists USING (trackID)
                                                     INNER JOIN artists USING (artistID) 
