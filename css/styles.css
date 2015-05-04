@@ -310,8 +310,11 @@ transform: rotate(360deg);
 .concertTxt {
     vertical-align: top;
     display:inline-block;
-    width:230px;
+    width:100%;
     margin:0 10px 10px 10px;
+}
+.concertTxt a{
+    color:#3498db;
 }
 .tipEmpty, .tipC, .tipP, .tipE, .tipS{
     text-align: left;
@@ -590,6 +593,11 @@ h2{
 }
 .usernameC{
     color:#999;
+    font-style:italic;
+    font-size:12px;
+}
+.usernameD{
+    color:#333;
     font-style:italic;
     font-size:12px;
 }

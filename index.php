@@ -1,31 +1,101 @@
-<?php include_once 'includes/header.php'; ?>
+<?php 
+    require_once('core/init.php');
+    include_once 'includes/header.php';
+?>
         <div class="container">
             <div id="banner">
                 <div class="h1bg"><h1>CARREG MUSIC</h1></div>
             </div>
             <div id="mainContent">
-                <h2>TOP 5</h2>
+                <?php
+                    $con = mysqli_connect($addr, $user, $password, $db);
+                    $data = mysqli_query($con, "SELECT genres.genreName FROM genres INNER JOIN users USING(genreID) WHERE username = '$username' LIMIT 1");
+
+                    $row = mysqli_fetch_array($data);
+
+                    $favGenre = $row['genreName'];
+                ?>
+                <h2>5 RANDOM TRACKS <?php if(loggedIn()){ echo ' <span class="usernameD">BASED ON YOUR FAVOURITE GENRE ('.strtoupper($favGenre).')</span>';} ?></h2>
                 <div id="top5albums">
-                   <div class="top5albumCover">
-                        <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">TESTING A PUSH consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
+                <?php
+                    if(loggedIn()){
+                        $con = mysqli_connect($addr, $user, $password, $db);
+                        $neededTracks = 5;
+                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                                                    AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                                                    INNER JOIN trackArtists USING (trackID)
+                                                    INNER JOIN artists USING (artistID) 
+                                                    INNER JOIN genres USING(genreID) 
+                                                    WHERE genreNAME LIKE '%" . $favGenre . "%'
+                                                    GROUP BY tracks.trackID
+                                                    ORDER BY RAND()
+                                                    LIMIT 5");        
+
+                        while($row = mysqli_fetch_array($data)){ 
+                            $neededTracks--;
+                            $trackTitle = $row['trackTitle']; 
+                            $artists = $row['artists']; 
+                            $artistCount = $row['artistCount']; 
+                            $coverPicture = $row['coverPicture'];
+                            $trackID = $row['trackID'];
+
+                        ?>
+                            <div class="top5albumCover">
+                                <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
+                                <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
+                            </div>
+                        <?php
+                        }
+                        if($neededTracks > 0){
+                            $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                                                        AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                                                        INNER JOIN trackArtists USING (trackID)
+                                                        INNER JOIN artists USING (artistID) 
+                                                        INNER JOIN genres USING(genreID) 
+                                                        WHERE genreNAME NOT LIKE '%" . $favGenre . "%'
+                                                        GROUP BY tracks.trackID
+                                                        ORDER BY RAND()
+                                                        LIMIT " . $neededTracks);
+
+                            while($row = mysqli_fetch_array($data)){ 
+                                $trackTitle = $row['trackTitle']; 
+                                $artists = $row['artists']; 
+                                $artistCount = $row['artistCount']; 
+                                $coverPicture = $row['coverPicture'];
+                                $trackID = $row['trackID'];
+                        ?>
+                            <div class="top5albumCover">
+                                <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
+                                <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
+                            </div>
+                        <?php
+                            }
+                        }
+                    }else{
+                        $con = mysqli_connect($addr, $user, $password, $db);
+                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' and ') 
+                                                    AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                                                    INNER JOIN trackArtists USING (trackID)
+                                                    INNER JOIN artists USING (artistID) 
+                                                    GROUP BY tracks.trackID
+                                                    ORDER BY RAND()
+                                                    LIMIT 5");
+                            
+                        while($row = mysqli_fetch_array($data)){ 
+                            $trackTitle = $row['trackTitle']; 
+                            $artists = $row['artists']; 
+                            $artistCount = $row['artistCount']; 
+                            $coverPicture = $row['coverPicture'];
+                            $trackID = $row['trackID'];
+                ?>
+                    <div class="top5albumCover">
+                        <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
+                        <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
                     </div>
-                   <div class="top5albumCover">
-                        <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
-                    </div>
-                   <div class="top5albumCover">
-                        <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!e</p>
-                    </div>
-                   <div class="top5albumCover">
-                        <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
-                    </div>
-                   <div class="top5albumCover">
-                        <a href=""><img class="albumCoverImage" src="css/images/banner1.jpg" alt="album image"></a>
-                        <p class="albumCoverText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus. Numquam, temporibus eligendi sunt pariatur repellendus debitis autem iusto praesentium veniam atque a! Quia, nam, dolore. Consectetur, doloremque!</p>
-                    </div>
+                <?php
+                        }
+                    }
+                ?>
                 </div>
             </div>
             <div id="sidebar">
@@ -34,19 +104,76 @@
                     <input type="text" name="search" placeholder="album, artist, concert">
                     <button id="submit"><img src="css/images/search.png" alt="search"></button>
                 </form>
-                <h2>CONCERTS</h2>
+                <h2>UPCOMING CONCERTS</h2>
+                <?php
+                if(loggedIn()){
+                    $con = mysqli_connect($addr, $user, $password, $db);
+                    $data = mysqli_query($con, "SELECT countries.countryName FROM countries INNER JOIN users USING(countryID) WHERE username = '$username' LIMIT 1");
+
+                    $row = mysqli_fetch_array($data);
+
+                    $country = $row['countryName'];
+                    $neededConcerts = 3;
+                    $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                                                FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
+                                                WHERE concertDate > CURDATE() and countryName like '%" . $country . "%'
+                                                ORDER BY RAND() 
+                                                LIMIT 3");        
+
+                    while($row = mysqli_fetch_array($data)){ 
+                        $neededConcerts--;
+                        $concertName = $row['concertName']; 
+                        $venueName = $row['venueName']; 
+                        $countryName = $row['countryName'];
+                        $concertID = $row['concertID'];
+                    ?>
+                    <div class="concertBox">
+                        <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
+                    </div>
+                    <?php
+                    }
+
+                    if($neededConcerts > 0){
+                            
+                        $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                                                    FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
+                                                    WHERE concertDate > CURDATE() and countryName NOT LIKE '% " . $country . "%'
+                                                    ORDER BY RAND() 
+                                                    LIMIT " . $neededConcerts);        
+
+                    while($row = mysqli_fetch_array($data)){ 
+                        $concertName = $row['concertName']; 
+                        $venueName = $row['venueName']; 
+                        $countryName = $row['countryName'];
+                        $concertID = $row['concertID'];
+                    ?>
+                    <div class="concertBox">
+                        <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
+                    </div>
+                    <?php
+                    }
+                            
+                    }
+                }else{
+                    $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                                                FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
+                                                WHERE concertDate > CURDATE()
+                                                ORDER BY RAND() 
+                                                LIMIT 3");
+
+                    while($row = mysqli_fetch_array($data)){ 
+                             $concertName = $row['concertName']; 
+                             $venueName = $row['venueName']; 
+                             $countryName = $row['countryName'];
+                             $concertID = $row['concertID'];
+                ?>
                 <div class="concertBox">
-                    <a href=""><img class="concertImg" src="css/images/banner1.jpg" alt="album image"></a>
-                    <p class="concertTxt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus!</p>
+                    <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
                 </div>
-                 <div class="concertBox">
-                    <a href=""><img class="concertImg" src="css/images/banner1.jpg" alt="album image"></a>
-                    <p class="concertTxt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus!</p>
-                </div>
-                <div class="concertBox">
-                    <a href=""><img class="concertImg" src="css/images/banner1.jpg" alt="album image"></a>
-                    <p class="concertTxt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, cupiditate minima necessitatibus!</p>
-                </div>
+                <?php
+                    }
+                }
+                ?>
                 <div class="clear"></div>
             </div>
         </div>
