@@ -36,7 +36,7 @@
 
                       ?>
                       <script>
-                        var myCenter=new google.maps.LatLng(<?php echo $venueLatitude; ?>,<?php echo $venueLongitude; ?>);
+                        var myCenter = new google.maps.LatLng(<?php echo $venueLatitude; ?>,<?php echo $venueLongitude; ?>);
 
                         function initialize()
                         {
@@ -60,6 +60,7 @@
                       <?php
 
                       echo '<tr><td><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></td></tr>';
+                      echo '<tr><td><p class="artistName">Capacity: '.$venueCapacity.'</p></td></tr>';
                       echo '<tr><td><div id="googleMap" style="width:500px;height:380px;"></div></td></tr>';
                     }
                   }else{
