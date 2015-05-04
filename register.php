@@ -109,4 +109,5 @@
                 
             </div>
         </div>
+            <script src="js/scripts.js"></script>
 <?php include_once 'includes/footer.php'; ?>
