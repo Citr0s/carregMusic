@@ -57,8 +57,27 @@
                                                 FROM concerts 
                                                 INNER JOIN venues USING (venueID) 
                                                 INNER JOIN countries USING (countryID)
-                                                WHERE venueName 
-                                                LIKE '%" . $search . "%' AND concerts.ConcertDate >= CURDATE()
+                                                WHERE concertName LIKE '%" . $search . "%' 
+                                                AND concerts.ConcertDate >= CURDATE()
+                                                ORDER BY concertName ASC");
+
+                    echo '</table><div class="tipP"><p>Concerts</p></div><table>';
+                    
+                    while($row = mysqli_fetch_array($data)){ 
+                      $concertID = $row['concertID'];
+                      $concertName = $row['concertName']; 
+                      $venueName = $row['venueName']; 
+                      $countryName = $row['countryName']; 
+
+                      echo '<tr><td><a href="concerts.php?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></a></td></tr>';
+                    }
+
+                    $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, countries.countryName
+                                                FROM concerts 
+                                                INNER JOIN venues USING (venueID) 
+                                                INNER JOIN countries USING (countryID)
+                                                WHERE venueName LIKE '%" . $search . "%' 
+                                                AND concerts.ConcertDate >= CURDATE()
                                                 ORDER BY concertName ASC");
 
                     echo '</table><div class="tipP"><p>Venues</p></div><table>';
