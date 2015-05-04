@@ -184,7 +184,7 @@
                                               AS artists, tracks.coverPicture FROM tracks
                                               INNER JOIN userratings USING (trackID)
                                               INNER JOIN trackArtists USING (trackID)
-                                              INNER JOIN artists USING (artistID) WHERE username = 'test2'
+                                              INNER JOIN artists USING (artistID) WHERE username = '$username'
                                               GROUP BY tracks.trackID");
 
                     while($row = mysqli_fetch_array($data)){ 
@@ -210,7 +210,7 @@
                                               AS artists, tracks.coverPicture FROM tracks
                                               INNER JOIN usercomments USING (trackID)
                                               INNER JOIN trackArtists USING (trackID)
-                                              INNER JOIN artists USING (artistID) WHERE username = 'test2'
+                                              INNER JOIN artists USING (artistID) WHERE username = '$username'
                                               GROUP BY tracks.trackID");
 
                     while($row = mysqli_fetch_array($data)){ 
