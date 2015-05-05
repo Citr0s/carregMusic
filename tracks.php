@@ -258,6 +258,71 @@
                       echo '</table><div class="tipC class"><p><span class="usernameC"><a href="login.php">Login</a> to add comments.</span></p></div><table>';
                     }
 
+                        echo '<table style="margin:15px;">';
+                      ?>
+                         <tr>
+                             <td style="padding-bottom:15px;">Recommended</td>
+                         </tr>
+                      <?php
+                        
+                        $initialTrackID = 13;
+                        $userArray = array();
+
+                        $data = mysqli_query($con, "SELECT username FROM userratings WHERE trackID = " . $initialTrackID . " AND
+                                                    (userRating = 4 OR userRating = 5) AND username NOT LIKE '" . $username . "'");
+                        
+                        while($row = mysqli_fetch_array($data)){ 
+                                 $userArray[] = $row['username'];
+                        }
+                        
+                        $trackArray = array();
+                        
+                        if(count($userArray) > 0){
+                          for($i = 0; $i < count($userArray); $i++){
+
+                            $data = mysqli_query($con, "SELECT trackID FROM userratings WHERE trackID != " . $initialTrackID . " AND
+                                                        (userRating = 4 OR userRating = 5) AND username LIKE '" . $userArray[$i] . "'");    
+                          
+                            while($row = mysqli_fetch_array($data)){ 
+                                   $trackArray[]=$row['trackID'];
+                            }
+                            
+                          }
+                          
+                          $filteredTracksArray = array();
+                          
+                          for($i = 0; $i < count($trackArray); $i++){
+                            if(!in_array($trackArray[$i], $filteredTracksArray)){
+                              $filteredTracksArray[] = $trackArray[$i];
+                            }
+                          }
+                          $requiredTracks = 3;
+                          for($i = 0; $i < count($filteredTracksArray); $i++){
+                            if($requiredTracks > 0){
+
+                              $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                                                          AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                                                          INNER JOIN trackArtists USING (trackID)
+                                                          INNER JOIN artists USING (artistID) 
+                                                          WHERE trackID = " . $filteredTracksArray[$i] . "
+                                                          GROUP BY tracks.trackID");    
+                          
+                              while($row = mysqli_fetch_array($data)){
+                                $requiredTracks--;
+                                $trackTitle = $row['trackTitle'];
+                                $artists = $row['artists']; 
+                                $artistCount = $row['artistCount']; 
+                                $coverPicture = $row['coverPicture'];
+                                $trackID = $row['trackID'];
+
+                                //Display the result of the array 
+                                echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $coverPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
+                                
+                              }
+                            }
+                          }
+                        }
+                        echo '</table>';
                   }else{
                     if(isset($_GET['sort'])){
                       $sort = sanitise(trim($_GET['sort']));
