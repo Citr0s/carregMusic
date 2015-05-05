@@ -8,6 +8,22 @@
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Concerts</h2>
+                <?php
+                  if(!isset($_GET['id'])){
+                ?>
+                <form method="get" action="" class="floatLeft">
+                  <select name="sort" style="margin:15px;">
+                    <option value="ca">Concert A-Z</option>
+                    <option value="cz">Concert Z-A</option>
+                    <option value="sf">Sooner First</option>
+                    <option value="lf">Later First</option>
+                  </select>
+                  <button class="loginRegisterButton">SORT</button>
+                </form>
+                <div class="clear"></div>
+                <?php
+                  }
+                ?>
                 <table style="margin:15px;">
                 <?php
                   if(isset($_GET['id'])){
@@ -86,19 +102,60 @@
                     }
 
                   }else{
-                    $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, countries.countryName
+
+                    if(isset($_GET['sort'])){
+                      $sort = sanitise(trim($_GET['sort']));
+                      switch($sort){
+                        case 'ca':
+                          $extraArgs = '';
+                          $sort = 'concertName ASC';
+                          break;
+                        case 'cz':
+                          $extraArgs = '';
+                          $sort = 'concertName DESC';
+                          break;
+                        case 'sf':
+                          $extraArgs = 'WHERE concerts.concertDate > CURDATE()';
+                          $sort = 'DATE ASC';
+                          break;
+                        case 'lf':
+                          $extraArgs = 'WHERE concerts.concertDate > CURDATE()';
+                          $sort = 'DATE DESC';
+                          break;
+                        default:
+                          $extraArgs = '';
+                          $sort = 'concertName ASC';
+                          break;
+                      }
+                    }else{
+                      $extraArgs = '';
+                      $sort = 'concertName ASC';
+                    }
+
+                    $data = mysqli_query($con, "SELECT concertID, concerts.concertName, venues.venueName, countries.countryName, concerts.concertDate, UNIX_TIMESTAMP(concerts.concertDate) AS DATE
                                                 FROM concerts 
                                                 INNER JOIN venues USING (venueID) 
                                                 INNER JOIN countries USING (countryID)
-                                                ORDER BY concertName ASC");   
+                                                ".$extraArgs."
+                                                ORDER BY ".$sort);   
   
                     while($row = mysqli_fetch_array($data)){
                       $concertID = $row['concertID'];
                       $concertName = $row['concertName']; 
                       $venueName = $row['venueName']; 
                       $countryName = $row['countryName'];
+                      $concertDate = floor((strtotime($row['concertDate']) - time()) / 86400);
 
-                      echo '<tr><td><a href="?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></a></td></tr>';
+                      echo '<tr><td><a href="?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.') (';
+                      if($concertDate == 1){
+                        echo $concertDate.' day';
+                      }
+                      if($concertDate < 0){
+                        echo abs($concertDate).' days ago';
+                      }else{
+                        echo $concertDate.' days left';
+                      }
+                      echo ')</p></a></td></tr>';
                     }
                   }
                 ?>

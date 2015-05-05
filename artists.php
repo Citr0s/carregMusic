@@ -5,6 +5,20 @@
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Artists</h2>
+                <?php
+                  if(!isset($_GET['id'])){
+                ?>
+                <form method="get" action="" class="floatLeft">
+                  <select name="sort" style="margin:15px;">
+                    <option value="aa">Artist A-Z</option>
+                    <option value="az">Artist Z-A</option>
+                  </select>
+                  <button class="loginRegisterButton">SORT</button>
+                </form>
+                <div class="clear"></div>
+                <?php
+                  }
+                ?>
                 <table style="margin:15px;">
                 <?php
                   if(isset($_GET['id'])){
@@ -46,6 +60,23 @@
                       echo '<p class="usernameC">Currently not on tour.</p></td></tr>';
                     }
                   }else{
+                    if(isset($_GET['sort'])){
+                      $sort = sanitise(trim($_GET['sort']));
+                      switch($sort){
+                        case 'aa':
+                          $sort = 'artistName ASC';
+                          break;
+                        case 'az':
+                          $sort = 'artistName DESC';
+                          break;
+                        default:
+                          $sort = 'artistName ASC';
+                          break;
+                      }
+                    }else{
+                      $sort = 'artistName ASC';
+                    }
+
                     $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
                     $perP = 10; //records per page
 
@@ -56,8 +87,7 @@
                     $row = mysqli_fetch_array($data);
                     $count = $row['num'];
 
-
-                    $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists ORDER BY artistName ASC LIMIT ".$start.", ".$perP);
+                    $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists ORDER BY ".$sort." LIMIT ".$start.", ".$perP);
 
                     while($row = mysqli_fetch_array($data)){ 
                       $artistName = $row['artistName'];
@@ -74,11 +104,16 @@
                           </div>';
                     }
 
-                    
+                    if(isset($_GET['sort'])){
+                      $linkP = 'artists.php?sort='.$_GET['sort'].'&';
+                    }else{
+                      $linkP = '?';
+                    }
+
                     $ps = ceil($count / $perP);
                     echo '<tr><td>';
                     for($i = 1; $i <= $ps; $i++){
-                      echo '<div class="pagination"><a href="?p='.$i.'"';
+                      echo '<div class="pagination"><a href="'.$linkP.'p='.$i.'"';
                       if($p === $i){
                         echo 'class="selectedP"'; 
                       }
