@@ -362,7 +362,7 @@ transform: rotate(360deg);
 }
 .appendedError{ 
     color:red;
-    width:250px;
+    width:300px;
     position: absolute;
 }
 .profile{
