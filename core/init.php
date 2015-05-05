@@ -23,3 +23,5 @@
 	if(loggedIn()){
 		$username = $_SESSION['username'];
 	}
+
+	$con = mysqli_connect($addr, $user, $password, $db);

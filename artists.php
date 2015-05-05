@@ -1,8 +1,6 @@
 <?php 
     require_once 'core/init.php';
     include_once 'includes/header.php';
-
-    $con = mysqli_connect($addr, $user, $password, $db);
 ?>
         <div class="container">
             <div class="formContainer">
@@ -16,16 +14,36 @@
                       die();
                     }
                     $data = mysqli_query($con, "SELECT artistID, artistName, artistHistory, artistPicture FROM artists WHERE artistID = '$id' 
-                          ORDER BY artistName ASC LIMIT 1");
+                                                ORDER BY artistName ASC LIMIT 1");
 
                     echo '<a class="backLink" href="artists.php">< Back</a>';
+                    $row = mysqli_fetch_array($data);
+                    $artistName = $row['artistName'];
+                    $artistHistory = $row['artistHistory']; 
+                    $artistPicture = $row['artistPicture'];
 
+                    echo '<tr><td><img src="css/artistPictures/'. $artistPicture . '" width="250" /></td><td><p class="artistName">'.$artistName.'</p><p>'.$artistHistory.'</p></td></tr>';
+
+                    $count = 0;
+                    $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                                                FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
+                                                INNER JOIN concertartists USING(concertID) INNER JOIN artists USING (artistID)
+                                                WHERE artistName LIKE '%" . $artistName . "%' AND concerts.ConcertDate >= CURDATE()
+                                                ORDER BY concertName ASC");
+                      
                     while($row = mysqli_fetch_array($data)){ 
-                      $artistName = $row['artistName'];
-                      $artistHistory = $row['artistHistory']; 
-                      $artistPicture = $row['artistPicture'];
+                             $concertName = $row['concertName']; 
+                             $venueName = $row['venueName']; 
+                             $countryName = $row['countryName'];
+                             $councertID = $row['concertID'];
+                             $count++;
+                    }
 
-                      echo '<tr><td><img src="css/artistPictures/'. $artistPicture . '" width="250" /></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
+                    echo '<tr><td></td><td><p>'.$artistName.'\'s Upcoming Concerts:</p><td>';
+                    if($count > 0){
+                      echo '<p><A href="concerts.php?id='.$councertID.'">'.$concertName.' - '.$venueName.' ('.$countryName.')</a></p></td></tr>';
+                    }else{
+                      echo '<p class="usernameC">Currently not on tour.</p></td></tr>';
                     }
                   }else{
                     $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
