@@ -104,6 +104,7 @@
                 <h2>SEARCH</h2>
                 <form action="search.php" method="get">
                     <input type="text" name="search" placeholder="album, artist, concert">
+                    <input type="hidden" name="criteria" value="artists" />
                     <button id="submit"><img src="css/images/search.png" alt="search"></button>
                 </form>
                 <h2>UPCOMING CONCERTS</h2>

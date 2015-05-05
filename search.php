@@ -16,17 +16,29 @@
             <div class="formContainer">
                 <h2 class="bigH2">Search</h2>
                 <div class="tipP"><p>Search artists, tracks or venues.</p></div>
-                <div class="tipEmpty"><form method="get" action=""><input type="text" id="searchLarge" name="search" value="<?php if($_GET){HtmlText($_GET['search']);} ?>" placeholder="Search for album, artist, concert or venue."></form></div>
+                <div class="tipEmpty">
+                  <form method="get" action="">
+                    <input type="text" id="searchLarge" name="search" value="<?php if($_GET){HtmlText($_GET['search']);} ?>" placeholder="Search for album, artist, concert or venue.">
+                    <select name="criteria">
+                      <option value="artists">Artists</option>
+                      <option value="tracks">Tracks</option>
+                      <option value="concerts">Concerts</option>
+                      <option value="venues">Venues</option>
+                    </select>
+                    <button class="loginRegisterButton" style="float:none;">SEARCH</button>
+                  </form>
+                </div>
                 <?php
                   if(isset($_GET['search'])){
                     $search = sanitise(trim($_GET['search']));
-                    echo '<div class="tipP"><p>Tracks</p></div>';
                     
-                    if(isset($_GET['search'])){
+                    if(isset($_GET['criteria']) && $_GET['criteria'] === 'tracks'){
+                      echo '<div class="tipP"><p>Tracks</p></div>';
                     ?>
                     <div class="tipP">
                         <form method="get" action="">
                           <input type="hidden" name="search" value="<?php echo $_GET['search']; ?>" />
+                          <input type="hidden" name="criteria" value="<?php echo $_GET['criteria']; ?>" />
                           <select name="sort" style="margin:15px;">
                             <option value="aa">Artist A-Z</option>
                             <option value="az">Artist Z-A</option>
@@ -38,7 +50,6 @@
                       </div>
                       <table>
                     <?php
-                      }
 
                       if(isset($_GET['sort'])){
                         $sort = sanitise(trim($_GET['sort']));
@@ -80,6 +91,7 @@
 
                       echo '<tr><td><a href="tracks.php?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
+                    }elseif(isset($_GET['criteria']) && $_GET['criteria'] === 'artists'){
 
                       echo '</table><div class="tipP"><p>Artists</p></div><table>';
 
@@ -88,6 +100,7 @@
                     <div class="tipP">
                         <form method="get" action="">
                           <input type="hidden" name="search" value="<?php echo $_GET['search']; ?>" />
+                          <input type="hidden" name="criteria" value="<?php echo $_GET['criteria']; ?>" />
                           <select name="sort" style="margin:15px;">
                             <option value="aa">Artist A-Z</option>
                             <option value="az">Artist Z-A</option>
@@ -132,7 +145,7 @@
 
                       echo '<tr><td><a href="artists.php?id='.$artistID.'"><img src="css/artistPictures/'. $artistPicture . '" width="150" /></a></td><td><p class="artistName">'.$artistName.'</p></td></tr>';
                     }
-
+                  }elseif(isset($_GET['criteria']) && $_GET['criteria'] === 'concerts'){
                     echo '</table><div class="tipP"><p>Concerts</p></div><table>';
 
                     if(isset($_GET['search'])){
@@ -140,6 +153,7 @@
                     <div class="tipP">
                         <form method="get" action="">
                           <input type="hidden" name="search" value="<?php echo $_GET['search']; ?>" />
+                          <input type="hidden" name="criteria" value="<?php echo $_GET['criteria']; ?>" />
                           <select name="sort" style="margin:15px;">
                             <option value="ca">Concert A-Z</option>
                             <option value="cz">Concert Z-A</option>
@@ -208,6 +222,7 @@
                       }
                       echo ')</p></a></td></tr>';
                     }
+                  }elseif(isset($_GET['criteria']) && $_GET['criteria'] === 'venues'){
 
                     echo '</table><div class="tipP"><p>Venues</p></div><table>';
 
@@ -216,6 +231,7 @@
                     <div class="tipP">
                         <form method="get" action="">
                           <input type="hidden" name="search" value="<?php echo $_GET['search']; ?>" />
+                          <input type="hidden" name="criteria" value="<?php echo $_GET['criteria']; ?>" />
                           <select name="sort" style="margin:15px;">
                             <option value="ca">Venue A-Z</option>
                             <option value="cz">Venue Z-A</option>
@@ -261,6 +277,7 @@
                       echo '<tr><td><a href="concerts.php?id='.$concertID.'"><p class="artistName">'.$concertName.' - '.$venueName.' ('.$countryName.')</p></a></td></tr>';
                     }
                   }
+                }
                 ?>
                 </table>
             </div>
