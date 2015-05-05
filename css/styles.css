@@ -330,6 +330,7 @@ transform: rotate(360deg);
     border:1px solid #333;
     background-color:#222;
     margin:1px 5px;
+    word-wrap:break-word;
 }
 .tipP{
     border:1px solid #333;

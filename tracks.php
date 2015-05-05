@@ -301,6 +301,9 @@
                               $filteredTracksArray[] = $trackArray[$i];
                             }
                           }
+
+                          shuffle($filteredTracksArray);
+
                           $requiredTracks = 3;
                           for($i = 0; $i < count($filteredTracksArray); $i++){
                             if($requiredTracks > 0){
