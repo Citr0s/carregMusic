@@ -28,7 +28,7 @@ function userNameVal () {
     
     //if (!isHTML5Supported()){
        
-        if(registerUserName.value.length <= 2)
+        if(registerUserName.value.length <= 2 || registerUserName.value.length >= 120)
         {
             canSubmit = false;
             registerUserName.setAttribute("class", "notValid");
@@ -48,7 +48,7 @@ function nickNameVal () {
     
     //if (!isHTML5Supported()){
        
-        if(nickName.value.length <= 2)
+        if(nickName.value.length <= 2 || nickName.value.length >= 120)
         {
             canSubmit = false;
             nickName.setAttribute("class", "notValid");
@@ -98,7 +98,7 @@ function passwordVal () {
 //        canSubmit = false;  
 //    }
 
-    if(Password1.value !== PasswordCheck.value || Password1.value == ""){
+    if(Password1.value !== PasswordCheck.value || Password1.value.length <= 3 || Password1.value.length >= 120){
         Password1.setAttribute("class", "notValid");
         PasswordCheck.setAttribute("class", "notValid");;
         addErrorMessage(3);
@@ -115,15 +115,15 @@ function passwordVal () {
     }
 
     //}//end of html5support
-}//end of valEmail function
+}//end of passwordval function
 
 
 function addErrorMessage (i){
 
             switch(i) {
-                case 0: errorText="Username must be 3 characters"
+                case 0: errorText="Must be between 3 and 122 characters."
                 break;
-                case 1: errorText="Nickname must be 3 characters"
+                case 1: errorText="Must be between 3 and 122 characters."
                 break;
                 case 2: errorText="Must be a valid email."
                 break;
