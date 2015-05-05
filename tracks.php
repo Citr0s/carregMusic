@@ -265,11 +265,16 @@
                          </tr>
                       <?php
                         
-                        $initialTrackID = 13;
+                        $initialTrackID = $id;
                         $userArray = array();
 
-                        $data = mysqli_query($con, "SELECT username FROM userratings WHERE trackID = " . $initialTrackID . " AND
-                                                    (userRating = 4 OR userRating = 5) AND username NOT LIKE '" . $username . "'");
+                        if(loggedIn()){
+                          $data = mysqli_query($con, "SELECT username FROM userratings WHERE trackID = " . $initialTrackID . " AND
+                                                      (userRating = 4 OR userRating = 5) AND username NOT LIKE '" . $username . "'");
+                        }else{
+                          $data = mysqli_query($con, "SELECT username FROM userratings WHERE trackID = " . $initialTrackID);
+                        }
+
                         
                         while($row = mysqli_fetch_array($data)){ 
                                  $userArray[] = $row['username'];
