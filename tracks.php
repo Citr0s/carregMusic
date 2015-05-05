@@ -7,6 +7,22 @@
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Tracks</h2>
+                <?php
+                  if(!isset($_GET['id'])){
+                ?>
+                <form method="get" action="" class="floatLeft">
+                  <select name="sort" style="margin:15px;">
+                    <option value="aa">Artist A-Z</option>
+                    <option value="az">Artist Z-A</option>
+                    <option value="ta">Track A-Z</option>
+                    <option value="tz">Track Z-A</option>
+                  </select>
+                  <button class="loginRegisterButton">SORT</button>
+                </form>
+                <div class="clear"></div>
+                <?php
+                  }
+                ?>
                 <table style="margin:15px;">
                 <?php
                   if(isset($_GET['id'])){
@@ -243,6 +259,28 @@
                     }
 
                   }else{
+                    if(isset($_GET['sort'])){
+                      $sort = sanitise(trim($_GET['sort']));
+                      switch($sort){
+                        case 'aa':
+                          $sort = 'artistName ASC';
+                          break;
+                        case 'az':
+                          $sort = 'artistName DESC';
+                          break;
+                        case 'ta':
+                          $sort = 'trackTitle ASC';
+                          break;
+                        case 'tz':
+                          $sort = 'trackTitle DESC';
+                          break;
+                        default:
+                          $sort = 'artistName ASC';
+                          break;
+                      }
+                    }else{
+                      $sort = 'artistName ASC';
+                    }
                     $p = isset($_GET['p']) ? (int)$_GET['p'] : 1; //check if page set, if not set page tp 1
                     $perP = 10; //records per page
 
@@ -258,7 +296,7 @@
                           INNER JOIN trackArtists USING (trackID)
                           INNER JOIN artists USING (artistID) 
                           GROUP BY tracks.trackID
-                          ORDER BY trackTitle ASC LIMIT ".$start.", ".$perP);
+                          ORDER BY ".$sort." LIMIT ".$start.", ".$perP);
 
                     while($row = mysqli_fetch_array($data)){ 
                       $trackTitle = $row['trackTitle'];
@@ -270,10 +308,16 @@
                       echo '<tr><td><a href="?id='.$trackID.'"><img src="css/coverPictures/'. $trackPicture . '" width="150" /></a></td><td><p class="artistName">'.$artists.' - '.$trackTitle.'</p></td></tr>';
                     }
 
+                    if(isset($_GET['sort'])){
+                      $linkP = 'tracks.php?sort='.$_GET['sort'].'&';
+                    }else{
+                      $linkP = '?';
+                    }
+
                     $ps = ceil($count / $perP);
                     echo '<tr><td>';
                     for($i = 1; $i <= $ps; $i++){
-                      echo '<div class="pagination"><a href="?p='.$i.'"';
+                      echo '<div class="pagination"><a href="'.$linkP.'p='.$i.'"';
                       if($p === $i){
                         echo 'class="selectedP"'; 
                       }

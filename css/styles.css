@@ -178,6 +178,9 @@ transform: rotate(360deg);
     border-right:1px solid #3498db;
     border-bottom:1px solid #3498db;
 }
+.clear{
+    clear:both;
+}
 #footer{
     clear:both;
     margin:0 auto;
