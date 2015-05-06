@@ -26,7 +26,7 @@ addListener(nickName, "blur", nickNameVal);
 
 function userNameVal () {
     
-    //if (!isHTML5Supported()){
+   if (!Modernizr.inputtypes.email){
        
         if(registerUserName.value.length <= 2 || registerUserName.value.length >= 120)
         {
@@ -41,12 +41,12 @@ function userNameVal () {
             canSubmit = true;
         }
         
-    //}//end of html5support
+   }//end of html5support
 }//end of valFirstName function
 
 function nickNameVal () {
     
-    //if (!isHTML5Supported()){
+    if (!Modernizr.inputtypes.email){
        
         if(nickName.value.length <= 2 || nickName.value.length >= 120)
         {
@@ -61,11 +61,11 @@ function nickNameVal () {
             canSubmit = true;
         }
         
-    //}//end of html5support
+    }//end of html5support
 }//end of valFirstName function
 
 function emailVal () {
- //if(!isHTML5Support()){   
+
     var emailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     
     if(!emailCheck.test(email.value)){
@@ -81,22 +81,11 @@ function emailVal () {
         canSubmit = true;
     }
     
-    //}//end of html5support
+
 }//end of valEmail function
 
 function passwordVal () {
- //if(!isHTML5Support()){   
-    
-//    if(Password1.value == null || Password1.value == ""){
-//        Password1.setAttribute("class", "notValid");
-//        addErrorMessage(3);
-//        canSubmit = false;  
-//    }
-//    if(PasswordCheck.value == null || PasswordCheck.value == ""){
-//        PasswordCheck.setAttribute("class", "notValid");
-//        addErrorMessage(3);
-//        canSubmit = false;  
-//    }
+if (!Modernizr.inputtypes.email){ 
 
     if(Password1.value !== PasswordCheck.value || Password1.value.length <= 3 || Password1.value.length >= 120){
         Password1.setAttribute("class", "notValid");
@@ -114,7 +103,7 @@ function passwordVal () {
         canSubmit = true;
     }
 
-    //}//end of html5support
+    }//end of html5support
 }//end of passwordval function
 
 

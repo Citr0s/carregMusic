@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Carreg Music</title>
+    <script type="text/javascript" src="js/modernizr.js"></script>
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
