@@ -65,6 +65,7 @@ function nickNameVal () {
 }//end of valFirstName function
 
 function emailVal () {
+        if (!Modernizr.inputtypes.email){
 
     var emailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     
@@ -81,13 +82,13 @@ function emailVal () {
         canSubmit = true;
     }
     
-
+}//end of modernizer
 }//end of valEmail function
 
 function passwordVal () {
 if (!Modernizr.inputtypes.email){ 
 
-    if(Password1.value !== PasswordCheck.value || Password1.value.length <= 3 || Password1.value.length >= 120){
+    if(Password1.value !== PasswordCheck.value || Password1.value.length <= 3 || Password1.value.length >= 120 ){
         Password1.setAttribute("class", "notValid");
         PasswordCheck.setAttribute("class", "notValid");;
         addErrorMessage(3);
@@ -95,8 +96,8 @@ if (!Modernizr.inputtypes.email){
     }
     
     else {
-        Password1.removeAttribute("class", "isValid"); 
-        PasswordCheck.removeAttribute("class", "isValid"); 
+        Password1.removeAttribute("class", "notValid"); 
+        PasswordCheck.removeAttribute("class", "notValid"); 
         Password1.setAttribute("class", "isValid");
         PasswordCheck.setAttribute("class", "isValid");
         removeErrorMessage(3);
