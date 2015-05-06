@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        
+        <div class="clear"></div>
     </div>
     <script src="js/responsiveMenu.js"></script>
 </body>
