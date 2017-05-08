@@ -35,4 +35,15 @@ class TrackRepository
                                                         ORDER BY RAND()
                                                         LIMIT " . $requiredTracks);
     }
+
+    public function getRandomTracks($numberOfTracks)
+    {
+        return mysqli_query($this->database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                                                    AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
+                                                    INNER JOIN trackArtists USING (trackID)
+                                                    INNER JOIN artists USING (artistID) 
+                                                    GROUP BY tracks.trackID
+                                                    ORDER BY RAND()
+                                                    LIMIT " . $numberOfTracks);
+    }
 }
