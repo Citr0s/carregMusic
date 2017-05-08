@@ -3,6 +3,7 @@
 namespace CarregMusic;
 
 use CarregMusic\Repositories\GenreRepository;
+use CarregMusic\Repositories\TrackRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../credentials.php';
@@ -29,3 +30,4 @@ if(loggedIn()){
 
 $database = new Database(mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE));
 $genreRepository = new GenreRepository($database);
+$trackRepository = new TrackRepository($database);
