@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00701485-4630-4e36-9bd8-5d4b83f0ae6b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/Repositories/TrackRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/carregMusic.iml" afterPath="$PROJECT_DIR$/.idea/carregMusic.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/init.php" afterPath="$PROJECT_DIR$/core/init.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/Repositories/TrackRepository.php" afterPath="$PROJECT_DIR$/core/Repositories/TrackRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,15 +41,14 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="65" lean-forward="true" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+            <state relative-caret-position="347">
+              <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
               <folding>
-                <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-                <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-                <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-                <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-                <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-                <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+                <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+                <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+                <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+                <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+                <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
               </folding>
             </state>
           </provider>
@@ -71,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/core/Database.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -81,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/core/Repositories/GenreRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding>
                 <marker date="1494245311000" expanded="true" signature="271:375" ph="SELECT genre... genres" />
               </folding>
@@ -154,56 +151,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tests" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carregMusic" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repositories" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -326,7 +273,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2603000" />
+    <option name="totallyTimeSpent" value="2757000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="741" extended-state="6" />
@@ -393,12 +340,11 @@
         <state relative-caret-position="150">
           <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
-            <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-            <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+            <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+            <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
@@ -460,12 +406,11 @@
         <state relative-caret-position="120">
           <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
           <folding>
-            <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-            <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+            <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+            <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
@@ -527,12 +472,11 @@
         <state relative-caret-position="225">
           <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding>
-            <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-            <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+            <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+            <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
@@ -663,12 +607,11 @@
         <state relative-caret-position="138">
           <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
-            <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-            <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+            <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+            <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
@@ -753,7 +696,7 @@
     <entry file="file://$PROJECT_DIR$/core/Database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -784,37 +727,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/Repositories/TrackRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <marker date="1494246404000" expanded="true" signature="269:1063" ph="SELECT track... tracks" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/Repositories/GenreRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
             <marker date="1494245311000" expanded="true" signature="271:375" ph="SELECT genre... genres" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/Repositories/TrackRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+          <folding>
+            <marker date="1494246622000" expanded="true" signature="269:1063" ph="SELECT track... tracks" />
+            <marker date="1494246622000" expanded="true" signature="1204:2033" ph="SELECT track... tracks" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="65" lean-forward="true" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+        <state relative-caret-position="347">
+          <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
           <folding>
-            <marker date="1494246411000" expanded="true" signature="1763:2595" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="3621:4237" ph="SELECT track... tracks" />
-            <marker date="1494246411000" expanded="true" signature="5728:5842" ph="SELECT count... countries" />
-            <marker date="1494246411000" expanded="true" signature="6060:6524" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="7335:7819" ph="SELECT conce... concerts" />
-            <marker date="1494246411000" expanded="true" signature="8600:9022" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="2795:3411" ph="SELECT track... tracks" />
+            <marker date="1494246637000" expanded="true" signature="4902:5016" ph="SELECT count... countries" />
+            <marker date="1494246637000" expanded="true" signature="5234:5698" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="6509:6993" ph="SELECT conce... concerts" />
+            <marker date="1494246637000" expanded="true" signature="7774:8196" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
