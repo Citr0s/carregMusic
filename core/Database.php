@@ -6,7 +6,7 @@ class Database
 {
     public $connection;
 
-    public function __construct(){
+    function __construct(){
         $host = "localhost";
         $user = "homestead";
         $password = "secret";

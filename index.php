@@ -8,13 +8,8 @@
             </div>
             <div id="mainContent">
                 <?php
-                    if(loggedIn()){
-                    $data = mysqli_query($database->connection, "SELECT genres.genreName FROM genres INNER JOIN users USING(genreID) WHERE username = '$username' LIMIT 1");
-
-                    $row = mysqli_fetch_array($data);
-
-                    $favGenre = $row['genreName'];
-                    }
+                    if(loggedIn())
+                        $favGenre = $genreRepository->getFavouriteGenreFor($username);
                 ?>
                 <h2>5 RANDOM TRACKS <?php if(loggedIn()){ echo ' <span class="usernameD">BASED ON YOUR FAVOURITE GENRE ('.strtoupper($favGenre).')</span>';} ?></h2>
                 <div id="top5albums">

@@ -2,6 +2,8 @@
 
 namespace CarregMusic;
 
+use CarregMusic\Repositories\GenreRepository;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 session_start();
@@ -25,3 +27,4 @@ if(loggedIn()){
 }
 
 $database = new Database();
+$genreRepository = new GenreRepository($database);
