@@ -12,13 +12,13 @@
 	define('commentMaxLength', 120);
 
 	$addr = "localhost";
-	$user = "l017063e";
-	$password = "l017063e";
-	$db = "l017063e";
+	$user = "homestead";
+	$password = "secret";
+	$db = "carregMusic";
 
-	require_once("functions\conn.functions.php");
-	require_once('functions\login.functions.php');
-	require_once('functions\db.functions.php');
+	require_once('functions/conn.functions.php');
+	require_once('functions/login.functions.php');
+	require_once('functions/db.functions.php');
 
 	if(loggedIn()){
 		$username = $_SESSION['username'];
