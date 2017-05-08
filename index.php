@@ -1,5 +1,5 @@
 <?php 
-    require_once('core/init.php');
+    require_once 'core/init.php';
     include_once 'includes/header.php';
 ?>
         <div class="container">
@@ -9,8 +9,7 @@
             <div id="mainContent">
                 <?php
                     if(loggedIn()){
-                    $con = mysqli_connect($addr, $user, $password, $db);
-                    $data = mysqli_query($con, "SELECT genres.genreName FROM genres INNER JOIN users USING(genreID) WHERE username = '$username' LIMIT 1");
+                    $data = mysqli_query($database->connection, "SELECT genres.genreName FROM genres INNER JOIN users USING(genreID) WHERE username = '$username' LIMIT 1");
 
                     $row = mysqli_fetch_array($data);
 
@@ -21,9 +20,8 @@
                 <div id="top5albums">
                 <?php
                     if(loggedIn()){
-                        $con = mysqli_connect($addr, $user, $password, $db);
                         $neededTracks = 5;
-                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                        $data = mysqli_query($database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                     AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                     INNER JOIN trackArtists USING (trackID)
                                                     INNER JOIN artists USING (artistID) 
@@ -49,7 +47,7 @@
                         <?php
                         }
                         if($neededTracks > 0){
-                            $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                            $data = mysqli_query($database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                         AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                         INNER JOIN trackArtists USING (trackID)
                                                         INNER JOIN artists USING (artistID) 
@@ -74,8 +72,7 @@
                             }
                         }
                     }else{
-                        $con = mysqli_connect($addr, $user, $password, $db);
-                        $data = mysqli_query($con, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+                        $data = mysqli_query($database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                     AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                     INNER JOIN trackArtists USING (trackID)
                                                     INNER JOIN artists USING (artistID) 
@@ -110,14 +107,13 @@
                 <h2>UPCOMING CONCERTS</h2>
                 <?php
                 if(loggedIn()){
-                    $con = mysqli_connect($addr, $user, $password, $db);
-                    $data = mysqli_query($con, "SELECT countries.countryName FROM countries INNER JOIN users USING(countryID) WHERE username = '$username' LIMIT 1");
+                    $data = mysqli_query($database->connection, "SELECT countries.countryName FROM countries INNER JOIN users USING(countryID) WHERE username = '$username' LIMIT 1");
 
                     $row = mysqli_fetch_array($data);
 
                     $country = $row['countryName'];
                     $neededConcerts = 3;
-                    $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                    $data = mysqli_query($database->connection, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
                                                 FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
                                                 WHERE concertDate > CURDATE() and countryName like '%" . $country . "%'
                                                 ORDER BY RAND() 
@@ -138,7 +134,7 @@
 
                     if($neededConcerts > 0){
                             
-                        $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                        $data = mysqli_query($database->connection, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
                                                     FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
                                                     WHERE concertDate > CURDATE() and countryName NOT LIKE '% " . $country . "%'
                                                     ORDER BY RAND() 
@@ -158,7 +154,7 @@
                             
                     }
                 }else{
-                    $data = mysqli_query($con, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
+                    $data = mysqli_query($database->connection, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
                                                 FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
                                                 WHERE concertDate > CURDATE()
                                                 ORDER BY RAND() 
