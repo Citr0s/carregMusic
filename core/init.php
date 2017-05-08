@@ -5,6 +5,7 @@ namespace CarregMusic;
 use CarregMusic\Repositories\GenreRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../credentials.php';
 
 session_start();
 
@@ -26,10 +27,5 @@ if(loggedIn()){
     $username = $_SESSION['username'];
 }
 
-$host = "localhost";
-$user = "homestead";
-$password = "secret";
-$username = "carregMusic";
-
-$database = new Database(mysqli_connect($host, $user, $password, $username));
+$database = new Database(mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE));
 $genreRepository = new GenreRepository($database);

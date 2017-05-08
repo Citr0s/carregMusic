@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00701485-4630-4e36-9bd8-5d4b83f0ae6b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/Tests/DatabaseTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/credentials.example.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/credentials.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/Database.php" afterPath="$PROJECT_DIR$/core/Database.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/init.php" afterPath="$PROJECT_DIR$/core/init.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +18,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/init.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="435">
+              <caret line="29" column="74" lean-forward="false" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="credentials.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/credentials.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -43,6 +52,26 @@
                 <marker date="1494245411000" expanded="true" signature="8129:8613" ph="SELECT conce... concerts" />
                 <marker date="1494245411000" expanded="true" signature="9394:9816" ph="SELECT conce... concerts" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="credentials.example.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/credentials.example.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,13 +118,15 @@
       <list>
         <option value="$PROJECT_DIR$/core/functions/db.functions.php" />
         <option value="$PROJECT_DIR$/core/composer.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/core/Repositories/GenreRepository.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/core/Database.php" />
         <option value="$PROJECT_DIR$/core/Tests/DatabaseTest.php" />
         <option value="$PROJECT_DIR$/core/init.php" />
+        <option value="$PROJECT_DIR$/credentials.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/credentials.example.php" />
       </list>
     </option>
   </component>
@@ -181,13 +212,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="compos&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/composer.json" />
+    <property name="SearchEverywhereHistoryKey" value=".git&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/.gitignore&#10;compos&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/composer.json" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/core" />
     </key>
   </component>
@@ -269,6 +301,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="00701485-4630-4e36-9bd8-5d4b83f0ae6b" name="Default" comment="" />
@@ -278,12 +313,12 @@
       <updated>1493900310037</updated>
       <workItem from="1493900313994" duration="126000" />
       <workItem from="1493900489400" duration="351000" />
-      <workItem from="1494243636555" duration="1690000" />
+      <workItem from="1494243636555" duration="1868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2167000" />
+    <option name="totallyTimeSpent" value="2345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="741" extended-state="6" />
@@ -346,14 +381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/functions/db.functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -379,22 +406,6 @@
           <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="40" />
           <folding>
             <marker date="1494245311000" expanded="true" signature="271:375" ph="SELECT genre... genres" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="56" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
-          <folding>
-            <marker date="1494245411000" expanded="true" signature="726:1523" ph="SELECT track... tracks" />
-            <marker date="1494245411000" expanded="true" signature="2557:3389" ph="SELECT track... tracks" />
-            <marker date="1494245411000" expanded="true" signature="4415:5031" ph="SELECT track... tracks" />
-            <marker date="1494245411000" expanded="true" signature="6522:6636" ph="SELECT count... countries" />
-            <marker date="1494245411000" expanded="true" signature="6854:7318" ph="SELECT conce... concerts" />
-            <marker date="1494245411000" expanded="true" signature="8129:8613" ph="SELECT conce... concerts" />
-            <marker date="1494245411000" expanded="true" signature="9394:9816" ph="SELECT conce... concerts" />
           </folding>
         </state>
       </provider>
@@ -433,8 +444,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/init.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        <state relative-caret-position="435">
+          <caret line="29" column="74" lean-forward="false" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="56" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+          <folding>
+            <marker date="1494245411000" expanded="true" signature="726:1523" ph="SELECT track... tracks" />
+            <marker date="1494245411000" expanded="true" signature="2557:3389" ph="SELECT track... tracks" />
+            <marker date="1494245411000" expanded="true" signature="4415:5031" ph="SELECT track... tracks" />
+            <marker date="1494245411000" expanded="true" signature="6522:6636" ph="SELECT count... countries" />
+            <marker date="1494245411000" expanded="true" signature="6854:7318" ph="SELECT conce... concerts" />
+            <marker date="1494245411000" expanded="true" signature="8129:8613" ph="SELECT conce... concerts" />
+            <marker date="1494245411000" expanded="true" signature="9394:9816" ph="SELECT conce... concerts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentials.example.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentials.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
           <folding />
         </state>
       </provider>
