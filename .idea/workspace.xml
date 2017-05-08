@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00701485-4630-4e36-9bd8-5d4b83f0ae6b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +25,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="credentials.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="credentials.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/credentials.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -52,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+            <state relative-caret-position="30">
+              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -120,10 +121,10 @@
         <option value="$PROJECT_DIR$/core/Database.php" />
         <option value="$PROJECT_DIR$/core/Tests/DatabaseTest.php" />
         <option value="$PROJECT_DIR$/core/init.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/credentials.example.php" />
         <option value="$PROJECT_DIR$/credentials.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -209,7 +210,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="readme&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/README.md&#10;.git&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/.gitignore&#10;compos&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/composer.json" />
+    <property name="SearchEverywhereHistoryKey" value=".git&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/.gitignore&#10;readme&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/README.md&#10;compos&#9;FILE&#9;file:///Users/miloszdura/work/carregMusic/composer.json" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -310,12 +311,12 @@
       <updated>1493900310037</updated>
       <workItem from="1493900313994" duration="126000" />
       <workItem from="1493900489400" duration="351000" />
-      <workItem from="1494243636555" duration="1949000" />
+      <workItem from="1494243636555" duration="1966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2426000" />
+    <option name="totallyTimeSpent" value="2443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="741" extended-state="6" />
@@ -463,14 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/credentials.example.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -494,6 +487,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
           <folding />
         </state>
       </provider>
