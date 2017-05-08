@@ -26,5 +26,10 @@ if(loggedIn()){
     $username = $_SESSION['username'];
 }
 
-$database = new Database();
+$host = "localhost";
+$user = "homestead";
+$password = "secret";
+$username = "carregMusic";
+
+$database = new Database(mysqli_connect($host, $user, $password, $username));
 $genreRepository = new GenreRepository($database);

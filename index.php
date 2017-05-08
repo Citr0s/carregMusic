@@ -1,16 +1,15 @@
 <?php 
     require_once 'core/init.php';
     include_once 'includes/header.php';
+
+    if(loggedIn())
+        $favGenre = $genreRepository->getFavouriteGenreFor($username);
 ?>
         <div class="container">
             <div id="banner">
                 <div class="h1bg"><h1>CARREG MUSIC</h1></div>
             </div>
             <div id="mainContent">
-                <?php
-                    if(loggedIn())
-                        $favGenre = $genreRepository->getFavouriteGenreFor($username);
-                ?>
                 <h2>5 RANDOM TRACKS <?php if(loggedIn()){ echo ' <span class="usernameD">BASED ON YOUR FAVOURITE GENRE ('.strtoupper($favGenre).')</span>';} ?></h2>
                 <div id="top5albums">
                 <?php
