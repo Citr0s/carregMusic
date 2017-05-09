@@ -14,26 +14,28 @@
                 <div id="top5albums">
                 <?php
                     if(loggedIn()){
+                        $tracks = $trackService->getAllBasedOnGenreFor($favGenre);
+
                         $neededTracks = 5;
-                        $data = $trackRepository->getAllBasedOnGenreFor($favGenre);
+                        $neededTracks -= sizeof($tracks);
 
-                        while($row = mysqli_fetch_array($data)){ 
-                            $neededTracks--;
-                            $trackTitle = $row['trackTitle']; 
-                            $artists = $row['artists']; 
-                            $artistCount = $row['artistCount']; 
-                            $coverPicture = $row['coverPicture'];
-                            $trackID = $row['trackID'];
-
+                        foreach($tracks as $track)
+                        {
                         ?>
                             <div class="top5albumCover">
-                                <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
-                                <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
+                                <a href="<?php echo 'tracks.php?id='.$track->id; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $track->picture; ?>" alt="<?php echo $track->title; ?>"></a>
+                                <p class="albumCoverText"><?php echo $track->artists." - ".$track->title; ?></p>
                             </div>
                         <?php
                         }
-                        if($neededTracks > 0){
+                        if($neededTracks > 0)
+                        {
                             $data = $trackRepository->getAllRecommendedFor($genre, $neededTracks);
+
+                            if(!$data)
+                            {
+                                echo 'We were unable to find any recommended tracks.';
+                            }else{
 
                             while($row = mysqli_fetch_array($data)){ 
                                 $trackTitle = $row['trackTitle']; 
@@ -48,12 +50,18 @@
                             </div>
                         <?php
                             }
+                            }
                         }
                     }else{
                         $data = $trackRepository->getRandomTracks(5);
-                            
-                        while($row = mysqli_fetch_array($data)){ 
-                            $trackTitle = $row['trackTitle']; 
+
+                        if(!$data) {
+                            echo 'We were unable to get any random tracks.';
+                        }
+                        else
+                            {
+                            while($row = mysqli_fetch_array($data)){
+                            $trackTitle = $row['trackTitle'];
                             $artists = $row['artists']; 
                             $artistCount = $row['artistCount']; 
                             $coverPicture = $row['coverPicture'];
@@ -64,6 +72,7 @@
                         <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
                     </div>
                 <?php
+                        }
                         }
                     }
                 ?>

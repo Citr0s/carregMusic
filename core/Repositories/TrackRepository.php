@@ -3,6 +3,8 @@
 namespace CarregMusic\Repositories;
 
 
+use CarregMusic\Mappers\TrackMapper;
+
 class TrackRepository
 {
     function __construct($database)
@@ -12,7 +14,8 @@ class TrackRepository
 
     public function getAllBasedOnGenreFor($genre)
     {
-        return mysqli_query($this->database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
+        $response = [];
+        $data = mysqli_query($this->database->connection, "SELECT tracks.trackID, tracks.trackTitle, GROUP_CONCAT(artists.artistName SEPARATOR ' & ') 
                                                     AS artists, tracks.coverPicture, COUNT(trackArtists.trackID) AS artistCount FROM tracks
                                                     INNER JOIN trackArtists USING (trackID)
                                                     INNER JOIN artists USING (artistID) 
@@ -21,6 +24,11 @@ class TrackRepository
                                                     GROUP BY tracks.trackID
                                                     ORDER BY RAND()
                                                     LIMIT 5");
+
+        while($row = mysqli_fetch_array($data))
+            array_push($response, TrackMapper::map($row));
+
+        return $response;
     }
 
     public function getAllRecommendedFor($genre, $requiredTracks)
