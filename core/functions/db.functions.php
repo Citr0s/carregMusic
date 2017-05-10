@@ -16,9 +16,11 @@ function generateCountryList()
 }
 function generateGenreList()
 {
-	$data = mysqli_query($database->connection, "SELECT genreID, genreName FROM genres");
+    $genreRepository = new \CarregMusic\Repositories\GenreRepository(new Database());
+    $genres = $genreRepository->getAll();
 
-	while($row = mysqli_fetch_array($data)){
-		echo '<option value="'.$row['genreID'].'">'.$row['genreName'].'</option>';
-	}
+    foreach($genres as $genre)
+    {
+        echo '<option value="'.$genre->id.'">'.$genre->name.'</option>';
+    }
 }

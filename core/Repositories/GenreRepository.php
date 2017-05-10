@@ -2,11 +2,26 @@
 
 namespace CarregMusic\Repositories;
 
+use CarregMusic\Mappers\GenreMapper;
+
 class GenreRepository
 {
     function __construct($database)
     {
         $this->database = $database;
+    }
+
+    public function getAll()
+    {
+        $response = [];
+
+        $data = mysqli_query($this->database->connection, "SELECT * FROM genres");
+
+        while($row = mysqli_fetch_array($data)){
+            array_push($response, GenreMapper::map($row));
+        }
+
+        return $response;
     }
 
     public function getFavouriteGenreFor($username)

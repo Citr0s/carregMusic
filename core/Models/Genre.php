@@ -2,7 +2,8 @@
 
 namespace CarregMusic\Models;
 
-class Country
+
+class Genre
 {
 
     public $id;
