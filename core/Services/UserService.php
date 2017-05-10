@@ -7,14 +7,17 @@ use CarregMusic\Repositories\UserRepository;
 use CarregMusic\Types\CreateUserRequest;
 use CarregMusic\Types\Error;
 use CarregMusic\Types\RegisterResponse;
+use CarregMusic\Validators\UserValidator;
 
 class UserService
 {
     private $repository;
+    private $validator;
 
-    function __construct(UserRepository $repository)
+    function __construct(UserRepository $repository, UserValidator $validator)
     {
         $this->repository = $repository;
+        $this->validator = $validator;
     }
 
     public static function hasSession()
@@ -22,31 +25,14 @@ class UserService
         return isset($_SESSION['username']) || isset($_COOKIE['username']);
     }
 
-    public function register($request)
+    public function register($request) : RegisterResponse
     {
         $registerResponse = new RegisterResponse();
 
-        $expected = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
-        $required = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+        $validationResponse = $this->validator->validate($request);
 
-        foreach($expected as $field)
-        {
-            $fieldValue = trim($_POST[$field]);
-            if(empty($fieldValue))
-            {
-                if(isRequired($field, $required))
-                {
-                    $registerResponse->addError(new Error(ucfirst($field).' is a required field'));
-                }
-            }
-            else
-            {
-                if($msg = validateFormField($fieldValue, $field))
-                {
-                    $registerResponse->addError(new Error($msg));
-                }
-            }
-        }
+        if($validationResponse->hasError)
+            $registerResponse->addErrors($validationResponse->errors);
 
         if($request['password'] !== $request['passwordCheck'])
             $registerResponse->addError(new Error('Passwords don\'t match'));

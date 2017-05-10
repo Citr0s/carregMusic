@@ -7,9 +7,10 @@ use CarregMusic\Controllers\UserController;
 use CarregMusic\Database;
 use CarregMusic\Repositories\UserRepository;
 use CarregMusic\Services\UserService;
+use CarregMusic\Validators\UserValidator;
 
-$controller = new UserController(new UserService(new UserRepository(new Database())));
-$controller->register($_POST);
+$controller = new UserController(new UserService(new UserRepository(new Database()), new UserValidator()));
+$registrationResponse = $controller->register($_POST);
 
 include_once 'includes/header.php';
 ?>
@@ -17,10 +18,10 @@ include_once 'includes/header.php';
             <div class="formContainer">
                 <h2 class="bigH2">Register</h2>
                 <?php
-                  if($_POST){
+                  if($registrationResponse->hasError){
                     echo '<div class="tipE">';
-                    foreach($errorMessages as $error){
-                      echo '<p>'.$error.'</p>';
+                    foreach($registrationResponse->errors as $error){
+                      echo '<p>'.$error->message.'</p>';
                     }
                     echo '</div>';
                   }else{
