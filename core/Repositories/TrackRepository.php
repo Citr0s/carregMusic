@@ -2,7 +2,6 @@
 
 namespace CarregMusic\Repositories;
 
-
 use CarregMusic\Mappers\TrackMapper;
 
 class TrackRepository

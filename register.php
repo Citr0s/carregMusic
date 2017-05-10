@@ -4,8 +4,12 @@ require __DIR__ . '/vendor/autoload.php';
 require_once('bootstrap.php');
 
 use CarregMusic\Controllers\UserController;
+use CarregMusic\Database;
+use CarregMusic\Repositories\UserRepository;
+use CarregMusic\Services\UserService;
 
-UserController::register($_POST);
+$controller = new UserController(new UserService(new UserRepository(new Database())));
+$controller->register($_POST);
 
 include_once 'includes/header.php';
 ?>

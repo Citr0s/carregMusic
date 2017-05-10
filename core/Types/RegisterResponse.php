@@ -3,14 +3,7 @@
 namespace CarregMusic\Types;
 
 
-class RegisterResponse
+class RegisterResponse extends BaseResponse
 {
-    public $hasError;
-    public $error;
 
-    public function addError($error)
-    {
-        $this->hasError = true;
-        $this->error = $error;
-    }
 }

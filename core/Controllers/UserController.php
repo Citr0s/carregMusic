@@ -6,8 +6,14 @@ use CarregMusic\Services\UserService;
 
 class UserController
 {
+    private $service;
 
-    public static function register($request)
+    function __construct($service)
+    {
+        $this->service = $service;
+    }
+
+    public function register($request)
     {
         if(UserService::hasSession())
         {
@@ -18,12 +24,14 @@ class UserController
         if(empty($request))
             return;
 
-        $registrationResponse = UserService::register($request);
+        $registrationResponse = $this->service->register($request);
 
         if(!$registrationResponse->hasError)
         {
-            header('Location: register.php?success');
+            header('Location: register.php?error');
             return;
         }
+
+        header("Location: login.php?success");
     }
 }
