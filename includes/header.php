@@ -1,4 +1,4 @@
-<?php require_once('init.php'); ?>
+<?php require_once('bootsrap.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,5 +1,5 @@
 <?php 
-    require_once 'init.php';
+    require_once 'bootsrap.php';
     include_once 'includes/header.php';
 
     if(!loggedIn()){
