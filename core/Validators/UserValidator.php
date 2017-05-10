@@ -16,21 +16,12 @@ class UserValidator extends BaseValidator
 
     function __construct()
     {
-        $this->usernameMaxLength = 25;
         $this->usernameMinLength = 3;
+        $this->usernameMaxLength = 25;
         $this->emailMinLength = 3;
         $this->emailMaxLength = 50;
         $this->countryMinLength = 0;
         $this->countryMaxLength = 11;
-
-        /*define('passwdMaxLength', 32);
-        define('nicknameMaxLength', 25);
-        define('emailMaxLength', 50);
-        define('minLength', 3);
-        define('sexMaxValue', 2);
-        define('genreMaxValue', 20);
-        define('countryMaxValue', 11);
-        define('commentMaxLength', 120);*/
 
     }
 
@@ -43,7 +34,7 @@ class UserValidator extends BaseValidator
 
         foreach($expected as $field)
         {
-            $fieldValue = trim($_POST[$field]);
+            $fieldValue = trim($request[$field]);
             if(empty($fieldValue) && in_array($field, $required))
                 $response->addError(new Error(ucfirst($field).' is a required field'));
         }
