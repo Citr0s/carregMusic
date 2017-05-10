@@ -51,7 +51,7 @@ class UserService
         $createUserResponse = $this->repository->create($createUserRequest);
 
         if($createUserResponse->hasError)
-            $registerResponse->addError(new Error($createUserResponse->errors[0]->message));
+            $registerResponse->addErrors($createUserResponse->errors);
 
         return $registerResponse;
     }

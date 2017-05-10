@@ -1,9 +1,8 @@
 <?php
   require_once('bootstrap.php');
 
-  if(loggedIn()){
+  if(loggedIn())
       header('Location: index.php');
-  }
 
   $errorMessages = array();
 
