@@ -1,5 +1,5 @@
 <?php
-  require_once('bootsrap.php');
+  require_once('bootstrap.php');
 
   if(loggedIn()){
       header('Location: index.php');

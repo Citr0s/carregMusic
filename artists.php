@@ -1,5 +1,5 @@
 <?php 
-    require_once 'bootsrap.php';
+    require_once 'bootstrap.php';
     include_once 'includes/header.php';
 ?>
         <div class="container">

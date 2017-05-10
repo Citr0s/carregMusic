@@ -1,4 +1,4 @@
-<?php require_once('bootsrap.php'); ?>
+<?php require_once('bootstrap.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

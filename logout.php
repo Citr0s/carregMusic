@@ -1,5 +1,5 @@
 <?php
-	require_once('bootsrap.php');
+	require_once('bootstrap.php');
 
     setcookie('username', '', time() - 3600, '/');    
     session_destroy();

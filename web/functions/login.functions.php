@@ -48,7 +48,7 @@ function HtmlText($value) {
 function validateFormField($value, $field) {
     $errorMessage = '';
 
-	require_once(__DIR__ . '/../../bootsrap.php');
+	require_once(__DIR__ . '/../../bootstrap.php');
 	
     switch($field) {
         case 'username':
