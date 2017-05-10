@@ -1,31 +1,22 @@
 <?php
-function generateCountryList(){
 
-	//very unsafe - will fix later
-    $addr = "localhost";
-    $user = "homestead";
-    $password = "secret";
-    $db = "carregMusic";
+use CarregMusic\Database;
 
-	$con = mysqli_connect($addr, $user, $password, $db);
+require __DIR__ . '/../../vendor/autoload.php';
 
-	$data = mysqli_query($con, "SELECT countryID, countryName FROM countries");
+function generateCountryList()
+{
+    $countryRepository = new \CarregMusic\Repositories\CountryRepository(new Database());
+    $countries = $countryRepository->getAll();
 
-	while($row = mysqli_fetch_array($data)){
-		echo '<option value="'.$row['countryID'].'">'.$row['countryName'].'</option>';
-	}
+    foreach($countries as $country)
+    {
+        echo '<option value="'.$country->id.'">'.$country->name.'</option>';
+    }
 }
-function generateGenreList(){
-
-	//very unsafe - will fix later
-    $addr = "localhost";
-    $user = "homestead";
-    $password = "secret";
-    $db = "carregMusic";
-
-	$con = mysqli_connect($addr, $user, $password, $db);
-
-	$data = mysqli_query($con, "SELECT genreID, genreName FROM genres");
+function generateGenreList()
+{
+	$data = mysqli_query($database->connection, "SELECT genreID, genreName FROM genres");
 
 	while($row = mysqli_fetch_array($data)){
 		echo '<option value="'.$row['genreID'].'">'.$row['genreName'].'</option>';

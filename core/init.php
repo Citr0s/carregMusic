@@ -7,7 +7,6 @@ use CarregMusic\Repositories\TrackRepository;
 use CarregMusic\Services\TrackService;
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../credentials.php';
 
 session_start();
 
@@ -29,7 +28,7 @@ if(loggedIn()){
     $username = $_SESSION['username'];
 }
 
-$database = new Database(mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE));
+$database = new Database();
 $genreRepository = new GenreRepository($database);
 $trackRepository = new TrackRepository($database);
 $trackService = new TrackService($trackRepository);

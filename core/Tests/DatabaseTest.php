@@ -6,9 +6,8 @@ class DatabaseTest extends PHPUnit\Framework\TestCase
 {
     public function testConnectionIsCorrectlyInitialised()
     {
-        $mysqli = $this->createMock(mysqli::class);
-        $subject = new \CarregMusic\Database($mysqli);
+        $subject = new \CarregMusic\Database();
 
-        $this->assertEquals($subject->connection, $mysqli);
+        $this->assertEquals($subject->connection, !isNull());
     }
 }
