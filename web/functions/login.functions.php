@@ -7,10 +7,6 @@ function isRequired($needle, $haystack) {
     return in_array($needle, $haystack);
 }
 
-function safePOST($variable)  {
-    return mysql_real_escape_string($_POST[$variable]);
-}
-
 function validEmail($value) {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
 }
@@ -31,12 +27,6 @@ function validStringMaxLength($value, $min, $max) {
         $isOkay = true;
     }
     return $isOkay;
-}
-
-function HtmlErrorMessage($field, $errorMessages) {
-    if(isset($errorMessages[$field])) {
-        echo '<span class="error_msg">' . sanitise($errorMessages[$field]) . '</span>';
-    }
 }
 
 function HtmlText($value) {
@@ -103,23 +93,6 @@ function loggedIn(){
         $loggedIn = true;
     }
     return $loggedIn;
-}
-
-
-
-function isThisLoginInDB($login)
-{
-    $sameNick = mysql_query("SELECT username from users WHERE username = '".$login."'");
-
-    if (!$sameNick) {
-        die('Query checking login failed.');
-    }
-
-    if (mysql_num_rows($sameNick) > 0) {
-        return true;
-    } else {
-	    return false;
-    }
 }
 
 
