@@ -44,7 +44,7 @@ class UserService
         $createUserRequest->username = sanitise(trim($request['username']));
         $createUserRequest->nickname = sanitise(trim($request['nickname']));
         $createUserRequest->email = sanitise(trim($request['email']));
-        $createUserRequest->password = sanitise(trim($request['password']));
+        $createUserRequest->password = password_hash(sanitise(trim($request['password'])), PASSWORD_BCRYPT);
         $createUserRequest->country = sanitise(trim($request['country']));
         $createUserRequest->genre = sanitise(trim($request['genre']));
 

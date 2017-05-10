@@ -17,15 +17,15 @@ class UserRepository
     {
         $response = new CreateUserResponse();
 
-        $data = mysqli_query($this->database->connection, "SELECT username, userPassword FROM users WHERE username = '$request->username' LIMIT 1");
+        $data = mysqli_query($this->database->connection, "SELECT username, password FROM users WHERE username = '$request->username' LIMIT 1");
 
-        if($data)
+        if($data->num_rows > 0)
         {
             $response->addError(new Error('User with this username already exists.'));
             return $response;
         }
 
-        $data = mysqli_query($this->database->connection, "INSERT INTO users (username, userPassword, userNickname, userEmail, genreID, countryID) VALUES('$request->username', '$request->password', '$request->nickname', '$request->email', '$request->genre', '$request->country')");
+        $data = mysqli_query($this->database->connection, "INSERT INTO users (username, password, nickname, email, genreId, countryId) VALUES('$request->username', '$request->password', '$request->nickname', '$request->email', '$request->genre', '$request->country')");
 
         if(!$data)
         {
