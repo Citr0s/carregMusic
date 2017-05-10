@@ -1,5 +1,5 @@
 <?php 
-    require_once 'core/init.php';
+    require_once 'init.php';
     include_once 'includes/header.php';
 
     $con = mysqli_connect($addr, $user, $password, $db);

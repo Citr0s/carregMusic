@@ -6,7 +6,7 @@ use CarregMusic\Repositories\GenreRepository;
 use CarregMusic\Repositories\TrackRepository;
 use CarregMusic\Services\TrackService;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
@@ -20,9 +20,8 @@ define('genreMaxValue', 20);
 define('countryMaxValue', 11);
 define('commentMaxLength', 120);
 
-require_once('functions/conn.functions.php');
-require_once('functions/login.functions.php');
-require_once('functions/db.functions.php');
+require_once('web/functions/login.functions.php');
+require_once('web/functions/db.functions.php');
 
 if(loggedIn()){
     $username = $_SESSION['username'];

@@ -1,5 +1,5 @@
 <?php
-	require_once('core/init.php');
+	require_once('init.php');
 
     setcookie('username', '', time() - 3600, '/');    
     session_destroy();

@@ -1,5 +1,5 @@
 <?php
-  require_once('core/init.php');
+  require_once('init.php');
 
   if(loggedIn()){
       header('Location: index.php');
