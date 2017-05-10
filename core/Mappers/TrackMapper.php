@@ -2,7 +2,7 @@
 
 namespace CarregMusic\Mappers;
 
-use CarregMusic\Models\Track;
+use CarregMusic\Types\Track;
 
 class TrackMapper
 {

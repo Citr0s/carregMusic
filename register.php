@@ -3,9 +3,9 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once('bootstrap.php');
 
-use CarregMusic\Controllers\RegisterController;
+use CarregMusic\Controllers\UserController;
 
-RegisterController::registerUser($_POST);
+UserController::register($_POST);
 
 include_once 'includes/header.php';
 ?>

@@ -1,8 +1,9 @@
 <?php
 
-namespace CarregMusic\Models;
+namespace CarregMusic\Types;
 
-class Country
+
+class Genre
 {
 
     public $id;

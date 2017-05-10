@@ -1,6 +1,6 @@
 <?php
 
-namespace CarregMusic\Models;
+namespace CarregMusic\Types;
 
 class Track
 {

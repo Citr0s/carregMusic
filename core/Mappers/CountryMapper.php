@@ -3,7 +3,7 @@
 namespace CarregMusic\Mappers;
 
 
-use CarregMusic\Models\Country;
+use CarregMusic\Types\Country;
 
 class CountryMapper
 {

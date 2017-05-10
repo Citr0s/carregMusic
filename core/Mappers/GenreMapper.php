@@ -2,7 +2,7 @@
 
 namespace CarregMusic\Mappers;
 
-use CarregMusic\Models\Genre;
+use CarregMusic\Types\Genre;
 
 class GenreMapper
 {
