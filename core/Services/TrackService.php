@@ -15,4 +15,14 @@ class TrackService
     {
         return $this->repository->getAllBasedOnGenreFor($genre);
     }
+
+    public function getAllRecommendedFor($genre, $neededTracks)
+    {
+        return $this->repository->getAllRecommendedFor($genre, $neededTracks);
+    }
+
+    public function getRandomTracks($neededTracks)
+    {
+        return $this->repository->getRandomTracks($neededTracks);
+    }
 }

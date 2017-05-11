@@ -30,7 +30,7 @@
                         }
                         if($neededTracks > 0)
                         {
-                            $data = $trackRepository->getAllRecommendedFor($genre, $neededTracks);
+                            $data = $trackService->getAllRecommendedFor($favGenre, $neededTracks);
 
                             if(!$data)
                             {
@@ -53,26 +53,25 @@
                             }
                         }
                     }else{
-                        $data = $trackRepository->getRandomTracks(5);
+                        $tracks = $trackService->getRandomTracks(5);
 
-                        if(!$data) {
+                        if(sizeof($tracks) === 0)
                             echo 'We were unable to get any random tracks.';
-                        }
-                        else
-                            {
-                            while($row = mysqli_fetch_array($data)){
-                            $trackTitle = $row['trackTitle'];
-                            $artists = $row['artists']; 
-                            $artistCount = $row['artistCount']; 
-                            $coverPicture = $row['coverPicture'];
-                            $trackID = $row['trackID'];
+
+
+                        while($row = mysqli_fetch_array($data))
+                        {
+                        $trackTitle = $row['trackTitle'];
+                        $artists = $row['artists'];
+                        $artistCount = $row['artistCount'];
+                        $coverPicture = $row['coverPicture'];
+                        $trackID = $row['trackID'];
                 ?>
                     <div class="top5albumCover">
                         <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
                         <p class="albumCoverText"><?php echo $artists." - ".$trackTitle; ?></p>
                     </div>
                 <?php
-                        }
                         }
                     }
                 ?>
@@ -121,17 +120,17 @@
                                                     ORDER BY RAND() 
                                                     LIMIT " . $neededConcerts);        
 
-                    while($row = mysqli_fetch_array($data)){ 
-                        $concertName = $row['concertName']; 
-                        $venueName = $row['venueName']; 
-                        $countryName = $row['countryName'];
-                        $concertID = $row['concertID'];
-                    ?>
-                    <div class="concertBox">
-                        <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
-                    </div>
-                    <?php
-                    }
+                        while($row = mysqli_fetch_array($data)){
+                            $concertName = $row['concertName'];
+                            $venueName = $row['venueName'];
+                            $countryName = $row['countryName'];
+                            $concertID = $row['concertID'];
+                        ?>
+                        <div class="concertBox">
+                            <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
+                        </div>
+                        <?php
+                        }
                             
                     }
                 }else{
