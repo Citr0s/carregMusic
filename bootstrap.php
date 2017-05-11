@@ -2,8 +2,10 @@
 
 namespace CarregMusic;
 
+use CarregMusic\Repositories\ConcertRepository;
 use CarregMusic\Repositories\GenreRepository;
 use CarregMusic\Repositories\TrackRepository;
+use CarregMusic\Services\ConcertService;
 use CarregMusic\Services\TrackService;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -28,6 +30,11 @@ if(loggedIn()){
 }
 
 $database = new Database();
+
 $genreRepository = new GenreRepository($database);
+
 $trackRepository = new TrackRepository($database);
 $trackService = new TrackService($trackRepository);
+
+$concertRepository = new ConcertRepository($database);
+$concertService = new ConcertService($concertRepository);

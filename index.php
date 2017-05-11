@@ -135,17 +135,14 @@
                             
                     }
                 }else{
-                    $data = mysqli_query($database->connection, "SELECT concerts.concertID, concerts.concertName, venues.venueName, countries.countryName
-                                                FROM concerts INNER JOIN venues USING (venueID) INNER JOIN countries USING (countryID)
-                                                WHERE concertDate > CURDATE()
-                                                ORDER BY RAND() 
-                                                LIMIT 3");
+                    $concerts = $concertService->getRandomConcerts(3);
 
-                    while($row = mysqli_fetch_array($data)){ 
-                             $concertName = $row['concertName']; 
-                             $venueName = $row['venueName']; 
-                             $countryName = $row['countryName'];
-                             $concertID = $row['concertID'];
+                    if(sizeof($concerts) === 0)
+                        echo 'We were unable to get any random concerts.';
+
+
+                    foreach($concerts as $concert)
+                    {
                 ?>
                 <div class="concertBox">
                     <p class="concertTxt"><a href="concerts.php?id=<?php echo $concertID; ?>"><?php echo $concertName." - ".$venueName." (".$countryName.")" ?></a></p>
