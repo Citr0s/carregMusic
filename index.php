@@ -59,13 +59,8 @@
                             echo 'We were unable to get any random tracks.';
 
 
-                        while($row = mysqli_fetch_array($data))
+                        foreach($tracks as $track)
                         {
-                        $trackTitle = $row['trackTitle'];
-                        $artists = $row['artists'];
-                        $artistCount = $row['artistCount'];
-                        $coverPicture = $row['coverPicture'];
-                        $trackID = $row['trackID'];
                 ?>
                     <div class="top5albumCover">
                         <a href="<?php echo 'tracks.php?id='.$trackID; ?>"><img class="albumCoverImage" src="css/coverPictures/<?php echo $coverPicture; ?>" alt="<?php echo $trackTitle; ?>"></a>
@@ -138,7 +133,6 @@
 
                     if(sizeof($concerts) === 0)
                         echo 'We were unable to get any random concerts.';
-
 
                     foreach($concerts as $concert)
                     {
