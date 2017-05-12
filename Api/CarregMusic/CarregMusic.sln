@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarregMusic.WebApp", "CarregMusic\CarregMusic.WebApp.csproj", "{D15714DF-766F-4288-8F75-AABABB5E8F74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarregMusic.Core", "CarregMusic.Core\CarregMusic.Core.csproj", "{2D4979AB-4C5F-4EA4-B8DC-66201B00801F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarregMusic.Tests", "CarregMusic.Tests\CarregMusic.Tests.csproj", "{67B6EB63-160B-461F-A4A7-6EE1C8DC5AF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D15714DF-766F-4288-8F75-AABABB5E8F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15714DF-766F-4288-8F75-AABABB5E8F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15714DF-766F-4288-8F75-AABABB5E8F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15714DF-766F-4288-8F75-AABABB5E8F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4979AB-4C5F-4EA4-B8DC-66201B00801F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4979AB-4C5F-4EA4-B8DC-66201B00801F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4979AB-4C5F-4EA4-B8DC-66201B00801F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4979AB-4C5F-4EA4-B8DC-66201B00801F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B6EB63-160B-461F-A4A7-6EE1C8DC5AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B6EB63-160B-461F-A4A7-6EE1C8DC5AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B6EB63-160B-461F-A4A7-6EE1C8DC5AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B6EB63-160B-461F-A4A7-6EE1C8DC5AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
