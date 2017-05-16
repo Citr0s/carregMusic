@@ -12,6 +12,9 @@ class ValidatorsUserValidatorTooShortFieldsTest extends PHPUnit\Framework\TestCa
     {
         $subject = new UserValidator();
 
+        $expected = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+        $required = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+
         $validationRequest = [
             'username' => 'a',
             'nickname' => 'a',
@@ -21,7 +24,7 @@ class ValidatorsUserValidatorTooShortFieldsTest extends PHPUnit\Framework\TestCa
             'country' => 'a',
             'genre' => 'a'
         ];
-        $this->result = $subject->validate($validationRequest);
+        $this->result = $subject->validate($validationRequest, $expected, $required);
 
     }
 

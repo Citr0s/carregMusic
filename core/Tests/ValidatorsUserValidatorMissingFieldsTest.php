@@ -12,6 +12,9 @@ class ValidatorsUserValidatorMissingFieldsTest extends PHPUnit\Framework\TestCas
     {
         $subject = new UserValidator();
 
+        $expected = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+        $required = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+
         $validationRequest = [
             'username' => '',
             'nickname' => '',
@@ -21,7 +24,7 @@ class ValidatorsUserValidatorMissingFieldsTest extends PHPUnit\Framework\TestCas
             'country' => '',
             'genre' => ''
         ];
-        $this->result = $subject->validate($validationRequest);
+        $this->result = $subject->validate($validationRequest, $expected, $required);
 
     }
 
