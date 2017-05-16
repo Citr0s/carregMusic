@@ -7,6 +7,7 @@ use CarregMusic\Repositories\GenreRepository;
 use CarregMusic\Repositories\TrackRepository;
 use CarregMusic\Services\ConcertService;
 use CarregMusic\Services\TrackService;
+use CarregMusic\Services\UserService;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -25,8 +26,8 @@ define('commentMaxLength', 120);
 require_once('web/functions/login.functions.php');
 require_once('web/functions/db.functions.php');
 
-if(loggedIn()){
-    $username = $_SESSION['username'];
+if(UserService::hasSession()){
+    $user = $_SESSION['user'];
 }
 
 $database = new Database();

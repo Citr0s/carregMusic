@@ -1,4 +1,11 @@
-<?php require_once('bootstrap.php'); ?>
+<?php
+
+use CarregMusic\Services\UserService;
+
+require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +39,9 @@
                 <div class="floatRight">
                     <ul>
                         <?php
-                            if(loggedIn()){
+                            if(UserService::hasSession()){
                                 echo '
-                                    <li><a href="profile.php?'.$username.'&activity">'.$username.'</a></li>
+                                    <li><a href="profile.php?'.$user->username.'&activity">'.$user->username.'</a></li>
                                     <li><a href="logout.php">Logout</a></li>
                                     ';
                             }else{
