@@ -1,85 +1,51 @@
 <?php
-  require_once('bootstrap.php');
 
-  if(loggedIn())
-      header('Location: index.php');
+require __DIR__ . '/vendor/autoload.php';
+require_once('bootstrap.php');
 
-  $errorMessages = array();
+use CarregMusic\Controllers\UserController;
+use CarregMusic\Database;
+use CarregMusic\Repositories\UserRepository;
+use CarregMusic\Services\UserService;
+use CarregMusic\Validators\UserValidator;
 
-  if($_POST){
-      $expected = array('username', 'password');
-      $required = array('username', 'password');
+$controller = new UserController(new UserService(new UserRepository(new Database()), new UserValidator()));
+$loginResponse = $controller->login($_POST);
 
-      foreach($expected as $field) {
-        $fieldValue = trim($_POST[$field]);
-        if(empty($fieldValue)){
-          if(isRequired($field, $required)) {
-              $errorMessages[$field] = ucfirst($field).' is a required field';
-          }
-        }else{
-          if($msg = validateFormField($fieldValue, $field)) {
-              $errorMessages[$field] = $msg;
-          }
-        }
-      }
-
-      if(!$errorMessages) {
-          
-        $con = mysqli_connect($addr, $user, $password, $db);
-
-        $username = sanitise(trim($_POST['username']));
-        $password = sanitise(trim($_POST['password']));
-
-        $usernameDB = '';
-        $passwordDB = '';
-
-        $data = mysqli_query($con, "SELECT username, userPassword, userDeleted FROM users WHERE username = '$username' LIMIT 1");
-
-        while($row = mysqli_fetch_array($data)){
-          $usernameDB = $row['username'];
-          $passwordDB = $row['userPassword'];
-          $userDeleted = $row['userDeleted'];
-        }
-
-        if($username === $usernameDB && $password === $passwordDB){
-          if($userDeleted == 1){
-              header("Location: login.php?deleted");
-          }else{
-            $_SESSION['username'] = $username;
-            setcookie('username', $username, 3600, '/');
-            header('Location: index.php');
-          }
-        }else{
-            $errorMessages['form'] = 'Username or Password incorrect';
-        }
-      }
-    }
-  
-  include_once 'includes/header.php'; 
+include_once 'includes/header.php';
 ?>
         <div class="container">
             <div class="formContainer">
                 <h2 class="bigH2">Log in</h2>
                 <?php
-                  if($_POST){
-                    echo '<div class="tipE">';
-                    foreach($errorMessages as $error){
-                      echo '<p>'.$error.'</p>';
+                    if($loginResponse->hasError)
+                    {
+                        echo '<div class="tipE">';
+                        foreach($loginResponse->errors as $error)
+                        {
+                            echo '<p>'.$error->message.'</p>';
+                        }
+                        echo '</div>';
                     }
-                    echo '</div>';
-                  }elseif($_GET){
-                    if(isset($_GET['deleted'])){
-                      echo '<div class="tipE">';
-                        echo '<p>This account has been closed.</p>';
-                      echo '</div>';
-                    }else{
-                      echo '<div class="tipS">';
-                        echo '<p>You have been registered successfully. You can now log in.</p>';
-                      echo '</div>';
+                    elseif($_GET)
+                    {
+                        if(isset($_GET['deleted']))
+                        {
+                            echo '<div class="tipE">';
+                            echo '<p>This account has been closed.</p>';
+                            echo '</div>';
+                        }
+                        else
+                        {
+                            echo '<div class="tipS">';
+                            echo '<p>You have been registered successfully. You can now log in.</p>';
+                            echo '</div>';
+                        }
                     }
-                  }else{
-                    echo '<div class="tipP"><p>To access extra features please <a href="register.php">register here</a>.</p></div>';
-                  }
+                    else
+                    {
+                        echo '<div class="tipP"><p>To access extra features please <a href="register.php">register here</a>.</p></div>';
+                    }
                 ?>
                 <form class="loginForm" action="#" method="post">
                    <table>

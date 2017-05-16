@@ -1,4 +1,5 @@
 <?php
+
 function sanitise($value) {
     return htmlentities($value);
 }

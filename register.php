@@ -18,13 +18,17 @@ include_once 'includes/header.php';
             <div class="formContainer">
                 <h2 class="bigH2">Register</h2>
                 <?php
-                  if($registrationResponse->hasError){
+                  if($registrationResponse->hasError)
+                  {
                     echo '<div class="tipE">';
-                    foreach($registrationResponse->errors as $error){
+                    foreach($registrationResponse->errors as $error)
+                    {
                       echo '<p>'.$error->message.'</p>';
                     }
                     echo '</div>';
-                  }else{
+                  }
+                  else
+                  {
                     echo '<div class="tipP"><p>Already have an account? <a href="login.php">Login here</a>.</p></div>';
                   }
                 ?>

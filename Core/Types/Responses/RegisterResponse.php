@@ -1,6 +1,6 @@
 <?php
 
-namespace CarregMusic\Types;
+namespace CarregMusic\Types\Responses;
 
 
 class RegisterResponse extends BaseResponse

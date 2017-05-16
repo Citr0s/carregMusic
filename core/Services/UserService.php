@@ -2,11 +2,13 @@
 
 namespace CarregMusic\Services;
 
-
+use CarregMusic\Helpers\ValidationHelpers;
 use CarregMusic\Repositories\UserRepository;
-use CarregMusic\Types\CreateUserRequest;
 use CarregMusic\Types\Error;
-use CarregMusic\Types\RegisterResponse;
+use CarregMusic\Types\Requests\CreateUserRequest;
+use CarregMusic\Types\Requests\LoginUserRequest;
+use CarregMusic\Types\Responses\LoginResponse;
+use CarregMusic\Types\Responses\RegisterResponse;
 use CarregMusic\Validators\UserValidator;
 
 class UserService
@@ -22,14 +24,17 @@ class UserService
 
     public static function hasSession()
     {
-        return isset($_SESSION['username']) || isset($_COOKIE['username']);
+        return isset($_SESSION['user']);
     }
 
     public function register($request) : RegisterResponse
     {
         $registerResponse = new RegisterResponse();
 
-        $validationResponse = $this->validator->validate($request);
+        $expected = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+        $required = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
+
+        $validationResponse = $this->validator->validate($request, $expected, $required);
 
         if($validationResponse->hasError)
             $registerResponse->addErrors($validationResponse->errors);
@@ -41,12 +46,12 @@ class UserService
             return $registerResponse;
 
         $createUserRequest = new CreateUserRequest();
-        $createUserRequest->username = sanitise(trim($request['username']));
-        $createUserRequest->nickname = sanitise(trim($request['nickname']));
-        $createUserRequest->email = sanitise(trim($request['email']));
-        $createUserRequest->password = password_hash(sanitise(trim($request['password'])), PASSWORD_BCRYPT);
-        $createUserRequest->country = sanitise(trim($request['country']));
-        $createUserRequest->genre = sanitise(trim($request['genre']));
+        $createUserRequest->username = ValidationHelpers::sanitise(trim($request['username']));
+        $createUserRequest->nickname = ValidationHelpers::sanitise(trim($request['nickname']));
+        $createUserRequest->email = ValidationHelpers::sanitise(trim($request['email']));
+        $createUserRequest->password = password_hash(ValidationHelpers::sanitise(trim($request['password'])), PASSWORD_BCRYPT);
+        $createUserRequest->country = ValidationHelpers::sanitise(trim($request['country']));
+        $createUserRequest->genre = ValidationHelpers::sanitise(trim($request['genre']));
 
         $createUserResponse = $this->repository->create($createUserRequest);
 
@@ -54,5 +59,32 @@ class UserService
             $registerResponse->addErrors($createUserResponse->errors);
 
         return $registerResponse;
+    }
+
+    public function login($request) : LoginResponse
+    {
+        $loginResponse = new LoginResponse();
+
+        $expected = array('username', 'password');
+        $required = array('username', 'password');
+
+        $validationResponse = $this->validator->validate($request, $expected, $required);
+
+        if($validationResponse->hasError)
+            $loginResponse->addErrors($validationResponse->errors);
+
+        if($loginResponse->hasError)
+            return $loginResponse;
+
+        $loginUserRequest = new LoginUserRequest();
+        $loginUserRequest->username = ValidationHelpers::sanitise(trim($request['username']));
+        $loginUserRequest->password = ValidationHelpers::sanitise(trim($request['password']));
+
+        $loginUserResponse = $this->repository->login($loginUserRequest);
+
+        if($loginUserResponse->hasError)
+            $loginResponse->addErrors($loginUserResponse->errors);
+
+        return $loginResponse;
     }
 }

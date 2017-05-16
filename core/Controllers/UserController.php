@@ -3,7 +3,8 @@
 namespace CarregMusic\Controllers;
 
 use CarregMusic\Services\UserService;
-use CarregMusic\Types\RegisterResponse;
+use CarregMusic\Types\Responses\LoginResponse;
+use CarregMusic\Types\Responses\RegisterResponse;
 
 class UserController
 {
@@ -12,6 +13,25 @@ class UserController
     function __construct(UserService $service)
     {
         $this->service = $service;
+    }
+
+    public function login($request) : LoginResponse
+    {
+        if(UserService::hasSession())
+        {
+            header('Location: index.php');
+            return new LoginResponse();
+        }
+
+        if(empty($request))
+            return new LoginResponse();
+
+        $loginResponse = $this->service->login($request);
+
+        if($loginResponse->hasError)
+            return $loginResponse;
+
+        header("Location: login.php?success");
     }
 
     public function register($request) : RegisterResponse
@@ -30,6 +50,6 @@ class UserController
         if($registrationResponse->hasError)
             return $registrationResponse;
 
-        header("Location: login.php?success");
+        header("Location: profile.php");
     }
 }

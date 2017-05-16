@@ -1,10 +1,9 @@
 <?php
 
-namespace CarregMusic\Types;
+namespace CarregMusic\Types\Responses;
 
-class CreateUserRequest
+class CreateUserResponse extends BaseResponse
 {
-
     public $username;
     public $nickname;
     public $email;

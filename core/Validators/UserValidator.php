@@ -3,7 +3,7 @@
 namespace CarregMusic\Validators;
 
 use CarregMusic\Types\Error;
-use CarregMusic\Types\UserValidationResponse;
+use CarregMusic\Types\Responses\UserValidationResponse;
 
 class UserValidator extends BaseValidator
 {
@@ -25,12 +25,9 @@ class UserValidator extends BaseValidator
 
     }
 
-    public function validate($request) : UserValidationResponse
+    public function validate($request, $expected, $required) : UserValidationResponse
     {
         $response = new UserValidationResponse();
-
-        $expected = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
-        $required = array('username', 'nickname', 'email', 'password', 'passwordCheck', 'country', 'genre');
 
         foreach($expected as $field)
         {
@@ -42,25 +39,25 @@ class UserValidator extends BaseValidator
         if($response->hasError)
             return $response;
 
-        if(!self::checkStringLength($request['username'], $this->usernameMinLength, $this->usernameMaxLength))
+        if(array_key_exists('username', $request) && !self::checkStringLength($request['username'], $this->usernameMinLength, $this->usernameMaxLength))
             $response->addError(new Error("Username must have between {$this->usernameMinLength} and {$this->usernameMaxLength} characters and must be a string."));
 
-        if(!self::checkStringLength($request['nickname'], $this->usernameMinLength, $this->usernameMaxLength))
+        if(array_key_exists('nickname', $request) && !self::checkStringLength($request['nickname'], $this->usernameMinLength, $this->usernameMaxLength))
             $response->addError(new Error("Nickname must have between {$this->usernameMinLength} and {$this->usernameMaxLength} characters and must be a string."));
 
-        if(!self::checkEmail($request['email']))
+        if(array_key_exists('email', $request) && !self::checkEmail($request['email']))
             $response->addError(new Error("Invalid email address."));
 
-        if(!self::checkStringLength($request['email'], $this->usernameMinLength, $this->usernameMaxLength))
+        if(array_key_exists('email', $request) && !self::checkStringLength($request['email'], $this->usernameMinLength, $this->usernameMaxLength))
             $response->addError(new Error("Email must have between {$this->emailMinLength} and {$this->emailMaxLength} characters and must be a string."));
 
-        if(!self::checkStringLength($request['password'], $this->usernameMinLength, $this->usernameMaxLength))
+        if(array_key_exists('password', $request) && !self::checkStringLength($request['password'], $this->usernameMinLength, $this->usernameMaxLength))
             $response->addError(new Error("Password must have between {$this->usernameMinLength} and {$this->usernameMaxLength} characters and must be a string."));
 
-        if(!self::checkIntegerRange($request['country'], $this->countryMinLength, $this->countryMaxLength))
+        if(array_key_exists('country', $request) && !self::checkIntegerRange($request['country'], $this->countryMinLength, $this->countryMaxLength))
             $response->addError(new Error("Please choose country from drop-down list."));
 
-        if(!self::checkIntegerRange($request['genre'], $this->countryMinLength, $this->countryMaxLength))
+        if(array_key_exists('genre', $request) && !self::checkIntegerRange($request['genre'], $this->countryMinLength, $this->countryMaxLength))
             $response->addError(new Error("Please choose your favorite genre from drop-down list."));
 
         return $response;
