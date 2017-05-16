@@ -1,111 +1,111 @@
 <?php 
-    require_once 'bootstrap.php';
-    include_once 'includes/header.php';
+require_once 'bootstrap.php';
+include_once 'includes/header.php';
 
-    if(!loggedIn()){
-      header("Location: index.php");
-    }
+if(!loggedIn()){
+  header("Location: index.php");
+}
 
-    $con = mysqli_connect($addr, $user, $password, $db);
+$con = mysqli_connect($addr, $user, $password, $db);
 
-    $data = mysqli_query($con, "SELECT userNickname, userEmail, countries.countryName, genres.genreName, countryID, genreID FROM users INNER JOIN countries USING (countryID) INNER JOIN genres USING (genreID) WHERE username = '$username' LIMIT 1");
+$data = mysqli_query($con, "SELECT userNickname, userEmail, countries.countryName, genres.genreName, countryID, genreID FROM users INNER JOIN countries USING (countryID) INNER JOIN genres USING (genreID) WHERE username = '$username' LIMIT 1");
+
+while($row = mysqli_fetch_array($data)){
+  $nickname = $row['userNickname'];
+  $email = $row['userEmail'];
+  $countryID = $row['countryID'];
+  $country = $row['countryName'];
+  $genreID = $row['genreID'];
+  $genre = $row['genreName'];
+}
+
+$errorMessages = array();
+
+if($_POST){
+
+  if(isset($_POST['passwordDel'])){
+
+    $password = sanitise(trim($_POST['passwordDel']));
+
+    $data = mysqli_query($con, "SELECT username, userPassword FROM users WHERE username = '$username' LIMIT 1");
 
     while($row = mysqli_fetch_array($data)){
-      $nickname = $row['userNickname'];
-      $email = $row['userEmail'];
-      $countryID = $row['countryID'];
-      $country = $row['countryName'];
-      $genreID = $row['genreID'];
-      $genre = $row['genreName'];
+      $usernameDB = $row['username'];
+      $passwordDB = $row['userPassword'];
     }
 
-    $errorMessages = array();
+    if($username === $usernameDB && $password === $passwordDB){
+        mysqli_query($con, "UPDATE users SET userDeleted = 1 WHERE username = '$username'");
 
-    if($_POST){
+        setcookie('username', '', time() - 3600, '/');
+        session_destroy();
 
-      if(isset($_POST['passwordDel'])){
+        header('Location: index.php');
+    }else{
+        $errorMessages['form'] = 'Password incorrect';
+    }
+  }elseif(isset($_POST['password']) || isset($_POST['passwordCheck'])){
+    $expected = array('password', 'passwordCheck');
+    $required = array('password', 'passwordCheck');
 
-        $password = sanitise(trim($_POST['passwordDel']));
-
-        $data = mysqli_query($con, "SELECT username, userPassword FROM users WHERE username = '$username' LIMIT 1");
-
-        while($row = mysqli_fetch_array($data)){
-          $usernameDB = $row['username'];
-          $passwordDB = $row['userPassword'];
-        }
-
-        if($username === $usernameDB && $password === $passwordDB){
-            mysqli_query($con, "UPDATE users SET userDeleted = 1 WHERE username = '$username'");
-
-            setcookie('username', '', time() - 3600, '/');    
-            session_destroy();
-
-            header('Location: index.php');
-        }else{
-            $errorMessages['form'] = 'Password incorrect';
-        }
-      }elseif(isset($_POST['password']) || isset($_POST['passwordCheck'])){
-        $expected = array('password', 'passwordCheck');
-        $required = array('password', 'passwordCheck');
-
-        foreach($expected as $field) {
-          $fieldValue = trim($_POST[$field]);
-          if(empty($fieldValue)){
-            if(isRequired($field, $required)) {
-                $errorMessages[$field] = ucfirst($field).' is a required field';
-            }
-          }else{
-            if($msg = validateFormField($fieldValue, $field)){
-                $errorMessages[$field] = $msg;
-            }
-          }
-        }
-
-        if(!$errorMessages){
-            
-          $con = mysqli_connect($addr, $user, $password, $db);
-
-          $password = sanitise(trim($_POST['password']));
-          $passwordCheck = sanitise(trim($_POST['passwordCheck']));
-
-          if($password !== $passwordCheck){
-            $errorMessages['form'] = 'Passwords don\'t match';
-          }else{
-            mysqli_query($con, "UPDATE users SET userPassword = '$password' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error()); 
-            header("Location: profile.php?".$username."&success");
-          }
+    foreach($expected as $field) {
+      $fieldValue = trim($_POST[$field]);
+      if(empty($fieldValue)){
+        if(isRequired($field, $required)) {
+            $errorMessages[$field] = ucfirst($field).' is a required field';
         }
       }else{
-        $expected = array('nickname', 'email', 'country', 'genre');
-        $required = array('nickname', 'email', 'country', 'genre');
-
-        foreach($expected as $field) {
-          $fieldValue = trim($_POST[$field]);
-          if(empty($fieldValue)){
-            if(isRequired($field, $required)) {
-                $errorMessages[$field] = ucfirst($field).' is a required field';
-            }
-          }else{
-            if($msg = validateFormField($fieldValue, $field)) {
-                $errorMessages[$field] = $msg;
-            }
-          }
-        }
-
-        if(!$errorMessages){
-            
-          $con = mysqli_connect($addr, $user, $password, $db);
-
-          $nickname = sanitise(trim($_POST['nickname']));
-          $email = sanitise(trim($_POST['email']));
-          $country = sanitise(trim($_POST['country']));
-          $genre = sanitise(trim($_POST['genre']));
-
-          mysqli_query($con, "UPDATE users SET userNickname = '$nickname', userEmail = '$email', countryID = '$country', genreID = '$genre' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error()); 
-          header("Location: profile.php?".$username."&success");
+        if($msg = validateFormField($fieldValue, $field)){
+            $errorMessages[$field] = $msg;
         }
       }
     }
+
+    if(!$errorMessages){
+
+      $con = mysqli_connect($addr, $user, $password, $db);
+
+      $password = sanitise(trim($_POST['password']));
+      $passwordCheck = sanitise(trim($_POST['passwordCheck']));
+
+      if($password !== $passwordCheck){
+        $errorMessages['form'] = 'Passwords don\'t match';
+      }else{
+        mysqli_query($con, "UPDATE users SET userPassword = '$password' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error());
+        header("Location: profile.php?".$username."&success");
+      }
+    }
+  }else{
+    $expected = array('nickname', 'email', 'country', 'genre');
+    $required = array('nickname', 'email', 'country', 'genre');
+
+    foreach($expected as $field) {
+      $fieldValue = trim($_POST[$field]);
+      if(empty($fieldValue)){
+        if(isRequired($field, $required)) {
+            $errorMessages[$field] = ucfirst($field).' is a required field';
+        }
+      }else{
+        if($msg = validateFormField($fieldValue, $field)) {
+            $errorMessages[$field] = $msg;
+        }
+      }
+    }
+
+    if(!$errorMessages){
+
+      $con = mysqli_connect($addr, $user, $password, $db);
+
+      $nickname = sanitise(trim($_POST['nickname']));
+      $email = sanitise(trim($_POST['email']));
+      $country = sanitise(trim($_POST['country']));
+      $genre = sanitise(trim($_POST['genre']));
+
+      mysqli_query($con, "UPDATE users SET userNickname = '$nickname', userEmail = '$email', countryID = '$country', genreID = '$genre' WHERE username = '$username'") or die("Query adding new user failed:" . mysql_error());
+      header("Location: profile.php?".$username."&success");
+    }
+  }
+}
 ?>
         <div class="container">
             <div class="formContainer">
