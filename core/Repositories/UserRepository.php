@@ -29,7 +29,7 @@ class UserRepository
             return $response;
         }
 
-        $data = mysqli_query($this->database->connection, "INSERT INTO users (username, password, nickname, email, genreId, countryId) VALUES('$request->username', '$request->password', '$request->nickname', '$request->email', '$request->genre', '$request->country')");
+        $data = $this->database->insert( 'users', ['username', 'password', 'nickname', 'email', 'genreId', 'countryId'], ["'{$request->username}'", "'{$request->password}'", "'{$request->nickname}'", "'{$request->email}'", "'{$request->genre}'", "'{$request->country}'"]);
 
         if(!$data)
         {
