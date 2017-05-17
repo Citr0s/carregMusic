@@ -2,6 +2,7 @@
 
 namespace CarregMusic\Repositories;
 
+use CarregMusic\Database;
 use CarregMusic\Mappers\UserMapper;
 use CarregMusic\Types\Error;
 use CarregMusic\Types\Requests\CreateUserRequest;
@@ -11,7 +12,7 @@ use CarregMusic\Types\Responses\LoginUserResponse;
 
 class UserRepository
 {
-    function __construct($database)
+    function __construct(Database $database)
     {
         $this->database = $database;
     }
@@ -20,7 +21,7 @@ class UserRepository
     {
         $response = new CreateUserResponse();
 
-        $data = mysqli_query($this->database->connection, "SELECT username, password FROM users WHERE username = '$request->username' LIMIT 1");
+        $data = $this->database->get(['username', 'password'], 'users', ['username', "'{$request->username}'"]);
 
         if($data->num_rows > 0)
         {
@@ -43,7 +44,7 @@ class UserRepository
     {
         $response = new LoginUserResponse();
 
-        $data = mysqli_query($this->database->connection, "SELECT username, password FROM users WHERE username = '$request->username' LIMIT 1");
+        $data = $this->database->get(['username', 'password'], 'users', ['username', "'{$request->username}'"]);
 
         if(!$data)
         {
