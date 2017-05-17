@@ -28,4 +28,9 @@ class Database
 
         return mysqli_query($this->connection, "INSERT INTO {$table} ({$columns}) VALUES({$values})");
     }
+
+    public function getAll($table)
+    {
+        return mysqli_query($this->connection, "SELECT * FROM {$table}");
+    }
 }

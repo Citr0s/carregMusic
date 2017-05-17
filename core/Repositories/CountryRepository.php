@@ -3,11 +3,12 @@
 namespace CarregMusic\Repositories;
 
 
+use CarregMusic\Database;
 use CarregMusic\Mappers\CountryMapper;
 
 class CountryRepository
 {
-    function __construct($database)
+    function __construct(Database $database)
     {
         $this->database = $database;
     }
@@ -16,7 +17,7 @@ class CountryRepository
     {
         $response = [];
 
-        $data = mysqli_query($this->database->connection, "SELECT * FROM countries");
+        $data = $this->database->getAll('countries');
 
         while($row = mysqli_fetch_array($data)){
             array_push($response, CountryMapper::map($row));

@@ -2,11 +2,12 @@
 
 namespace CarregMusic\Repositories;
 
+use CarregMusic\Database;
 use CarregMusic\Mappers\GenreMapper;
 
 class GenreRepository
 {
-    function __construct($database)
+    function __construct(Database $database)
     {
         $this->database = $database;
     }
@@ -15,7 +16,7 @@ class GenreRepository
     {
         $response = [];
 
-        $data = mysqli_query($this->database->connection, "SELECT * FROM genres");
+        $data = $this->database->getAll('genres');
 
         while($row = mysqli_fetch_array($data)){
             array_push($response, GenreMapper::map($row));
